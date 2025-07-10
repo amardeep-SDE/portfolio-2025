@@ -165,7 +165,20 @@ const profileData = {
         "Jira", "Docker", "Swagger", "Payment Gateways"
       ]
     }
-  ]
+  ],
+    contact: {
+    email: "amardeep@example.com",
+    phone: "+91-9876543210",
+  },
+  contactInfo: {
+  email: "yourmail@example.com",
+  phone: "+91-9876543210",
+  social: {
+    github: "https://github.com/amardeep1016",
+    linkedin: "https://linkedin.com/in/amardeep-dwivedi",
+  }
+}
+
 };
 
 export default profileData;
