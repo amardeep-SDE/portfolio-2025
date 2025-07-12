@@ -156,7 +156,7 @@ const profileData = {
       companyKey: "experience.0.company",
       roleKey: "experience.0.role",
       locationKey: "experience.0.location",
-      duration: "April 2023 – Present",
+      duration: "April 2023 – June 2025",
       descriptionKey: "experience.0.description",
       skills: [
         "JavaScript", "TypeScript", "React", "Redux Toolkit", "Tailwind CSS",
@@ -168,11 +168,11 @@ const profileData = {
   ],
     contact: {
     email: "amardeep@example.com",
-    phone: "+91-9876543210",
+    phone: "+91-8964051727",
   },
   contactInfo: {
   email: "yourmail@example.com",
-  phone: "+91-9876543210",
+  phone: "+91-8964051727",
   social: {
     github: "https://github.com/amardeep1016",
     linkedin: "https://linkedin.com/in/amardeep-dwivedi",
