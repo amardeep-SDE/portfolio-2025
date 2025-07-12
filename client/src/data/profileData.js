@@ -80,7 +80,7 @@ const profileData = {
     },
     {
       name: "Redux Toolkit",
-      experience: "1.5 yrs",
+      experience: "2 yrs",
       level: "Advanced",
       projects: "6",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
@@ -88,7 +88,7 @@ const profileData = {
     },
     {
       name: "Tailwind CSS",
-      experience: "1.5 yrs",
+      experience: "2 yrs",
       level: "Advanced",
       projects: "15",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
@@ -96,7 +96,7 @@ const profileData = {
     },
     {
       name: "Node.js",
-      experience: "2 yrs",
+      experience: "1 yrs",
       level: "Intermediate",
       projects: "10",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
@@ -104,7 +104,7 @@ const profileData = {
     },
     {
       name: "Express.js",
-      experience: "2 yrs",
+      experience: "1 yrs",
       level: "Intermediate",
       projects: "10",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
@@ -112,7 +112,7 @@ const profileData = {
     },
     {
       name: "MongoDB",
-      experience: "1.5 yrs",
+      experience: "1 yrs",
       level: "Advanced",
       projects: "8",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
