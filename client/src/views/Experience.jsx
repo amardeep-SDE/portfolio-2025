@@ -17,48 +17,45 @@ const Experience = () => {
           {t("experience.heading")}
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-10">
+        <div className="relative pl-6 border-l-[3px] border-cyan-400/40 space-y-12">
           {profileData.experience.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="relative group bg-white/70 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-cyan-500/60 shadow-[0_4px_20px_rgba(0,255,255,0.1)] hover:shadow-cyan-400/30 transition-transform hover:scale-[1.02]"
+              className="relative group bg-white/70 dark:bg-white/5 backdrop-blur-xl rounded-xl p-6 sm:p-8 border-l-[6px] border-cyan-500/60 shadow-md hover:shadow-cyan-400/30 transition-transform hover:scale-[1.01]"
             >
-              {/* Floating Icon */}
-              <div className="absolute -top-7 left-6 bg-gradient-to-r from-cyan-400 to-blue-500 p-[4px] rounded-full shadow-md">
-                <div className="bg-white dark:bg-gray-900 p-2 rounded-full text-cyan-600 dark:text-cyan-400">
-                  <FaBriefcase size={18} />
-                </div>
+              {/* Timeline Dot */}
+              <div className="absolute -left-[18px] top-4 w-5 h-5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 border-4 border-white dark:border-gray-900 shadow-md flex items-center justify-center">
+                <FaBriefcase size={12} className="text-white" />
               </div>
 
-              {/* Title & Info */}
-              <div className="mt-6">
-                <h3 className="text-[20px] sm:text-xl font-bold text-gray-900 dark:text-white mb-1">
+              {/* Role & Info */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                   {t(item.roleKey)}
                 </h3>
-                <p className="text-[14px] text-cyan-700 dark:text-cyan-300 mb-2">
+                <p className="text-sm text-cyan-700 dark:text-cyan-300 mt-1">
                   {t(item.companyKey)} • {t(item.locationKey)} • {item.duration}
                 </p>
               </div>
 
               {/* Description */}
-              <p className="text-[15px] text-gray-700 dark:text-gray-300 leading-[1.6]">
+              <p className="mt-3 text-[15px] text-gray-700 dark:text-gray-300 leading-[1.7]">
                 {t(item.descriptionKey)}
               </p>
 
               {/* Skills */}
-              {item.skills && (
-                <div className="mt-4 text-sm">
-                  <span className="font-semibold text-cyan-500">Skills:</span>{" "}
+              {item.skills?.length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
                   {item.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="inline-block text-[13px] mx-1 text-gray-800 dark:text-gray-200"
+                      className="bg-cyan-100 dark:bg-cyan-700/30 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-xs font-medium"
                     >
-                      • {skill}
+                      {skill}
                     </span>
                   ))}
                 </div>
