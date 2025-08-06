@@ -1,112 +1,79 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { FiMail, FiPhone, FiGithub, FiLinkedin } from "react-icons/fi";
-import profileData from "../data/profileData";
-import styled from "styled-components";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+import profileData from "../data/profileData";
+
 const Footer = () => {
   const { t } = useTranslation();
   const { email, phone, social } = profileData.contactInfo;
 
   return (
-    <StyledWrapper>
-      <footer className="bg-gray-100 dark:bg-gray-900 py-10 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Contact Info */}
-          <div className="text-center md:text-left space-y-2">
-            <p className="flex items-center gap-2 text-gray-800 dark:text-gray-200">
-              <FiMail className="text-indigo-600 dark:text-indigo-400" />
-              <a href={`mailto:${email}`} className="hover:underline">{email}</a>
-            </p>
-            <p className="flex items-center gap-2 text-gray-800 dark:text-gray-200">
-              <FiPhone className="text-indigo-600 dark:text-indigo-400" />
-              <a href={`tel:${phone}`} className="hover:underline">{phone}</a>
-            </p>
-          </div>
-
-          {/* Social Icons */}
-          <div className="card">
-            <div className="socialContainer containerThree">
-              <a href={social.linkedin} target="_blank" rel="noreferrer">
-                <FiLinkedin className="icon" />
-              </a>
-            </div>
-            <div className="socialContainer containerOne">
-              <a href={social.github} target="_blank" rel="noreferrer">
-                <FiGithub className="icon" />
-              </a>
-            </div>
-            <div className="socialContainer containerTwo">
-              <a href={social.twitter} target="_blank" rel="noreferrer">
-                <FaTwitter className="icon" />
-              </a>
-            </div>
-            <div className="socialContainer containerFour">
-              <a href={social.facebook} target="_blank" rel="noreferrer">
-                <FaFacebookF className="icon" />
-              </a>
-            </div>
-          </div>
+    <footer className="bg-gradient-to-r from-[#eef2ff] via-[#e3e8ff] to-[#f4f5ff] dark:from-[#111827] dark:via-[#1e293b] dark:to-[#0f172a] py-10 px-6 border-t border-white/20 dark:border-gray-800 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+        {/* Contact */}
+        <div className="space-y-3 text-center md:text-left">
+          <p className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+            <FiMail className="text-indigo-600 dark:text-indigo-400" />
+            <a href={`mailto:${email}`} className="hover:underline">
+              {email}
+            </a>
+          </p>
+          <p className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+            <FiPhone className="text-indigo-600 dark:text-indigo-400" />
+            <a href={`tel:${phone}`} className="hover:underline">
+              {phone}
+            </a>
+          </p>
         </div>
 
-        {/* Bottom Line */}
-        <div className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
-          © {new Date().getFullYear()} Amardeep Dwivedi. {t("footer.rights", "All rights reserved.")}
+        {/* Social Icons */}
+        <div className="flex gap-4">
+          {[
+            {
+              url: social.linkedin,
+              icon: <FiLinkedin />,
+              hover: "hover:bg-[#0A66C2]",
+            },
+            {
+              url: social.github,
+              icon: <FiGithub />,
+              hover: "hover:bg-[#6e5494]",
+            },
+            {
+              url: social.twitter,
+              icon: <FaTwitter />,
+              hover: "hover:bg-[#1DA1F2]",
+            },
+            {
+              url: social.facebook,
+              icon: <FaFacebookF />,
+              hover: "hover:bg-[#1877F2]",
+            },
+          ].map((item, i) => (
+            <a
+              key={i}
+              href={item.url}
+              target="_blank"
+              rel="noreferrer"
+              className={`
+                w-11 h-11 rounded-2xl flex justify-center items-center transition-transform
+                bg-gray-800/90 dark:bg-gray-700/90 hover:-translate-y-2 ${item.hover}
+              `}
+            >
+              <span className="text-white text-lg">{item.icon}</span>
+            </a>
+          ))}
         </div>
-      </footer>
-    </StyledWrapper>
+      </div>
+
+      {/* Copyright */}
+      <div className="mt-10 text-center text-sm text-gray-600 dark:text-gray-400">
+        © {new Date().getFullYear()} Amardeep Dwivedi.{" "}
+        {t("footer.rights", "All rights reserved.")}
+      </div>
+    </footer>
   );
 };
 
 export default Footer;
-const StyledWrapper = styled.div`
-  .card {
-    display: flex;
-    gap: 16px;
-    padding-top: 1rem;
-  }
-  .socialContainer {
-    width: 44px;
-    height: 44px;
-    background-color: #2c2c2c;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-  }
-  .containerOne:hover {
-    background-color: #d62976; /* GitHub pinky hover */
-  }
-  .containerTwo:hover {
-    background-color: #00acee;
-  }
-  .containerThree:hover {
-    background-color: #0072b1; /* LinkedIn blue */
-  }
-  .containerFour:hover {
-    background-color: #128c7e;
-  }
-  .socialContainer:active {
-    transform: scale(0.92);
-  }
-  .icon {
-    color: #fff;
-    font-size: 18px;
-    animation: none;
-  }
-  .socialContainer:hover .icon {
-    animation: slide-in-top 0.3s both;
-  }
-  @keyframes slide-in-top {
-    0% {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-`;
