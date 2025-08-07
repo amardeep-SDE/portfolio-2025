@@ -34,19 +34,34 @@ const ProjectCard = ({ project }) => {
     <StyledWrapper>
       <motion.div
         className="flip-card"
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
+        whileHover={{ scale: 1.04 }}
       >
         <div className="flip-card-inner">
           {/* Front */}
           <div className="flip-card-front">
-            <div className="icon-row">
+            <motion.div className="icon-row" initial="hidden" animate="visible" variants={{
+              visible: {
+                transition: { staggerChildren: 0.1 }
+              }
+            }}>
               {techIcons.map((src, idx) => (
-                <img key={idx} src={src} alt="tech-icon" className="tech-icon" />
+                <motion.img
+                  key={idx}
+                  src={src}
+                  alt="tech-icon"
+                  className="tech-icon"
+                  variants={{
+                    hidden: { opacity: 0, y: -10 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
               ))}
-            </div>
+            </motion.div>
             <h3>{t(project.titleKey)}</h3>
             <div className="subtitle">MERN Stack Project</div>
           </div>
@@ -70,17 +85,18 @@ const ProjectCard = ({ project }) => {
   );
 };
 
+export default ProjectCard;
+
 const StyledWrapper = styled.div`
   perspective: 1500px;
 
   .flip-card {
     width: 100%;
-    height: 330px;
-    border-radius: 16px;
+    height: 340px;
     transform-style: preserve-3d;
-    position: relative;
     transition: transform 0.8s ease;
     cursor: pointer;
+    border-radius: 20px;
   }
 
   .flip-card-inner {
@@ -89,7 +105,7 @@ const StyledWrapper = styled.div`
     height: 100%;
     transition: transform 1s;
     transform-style: preserve-3d;
-    border-radius: 16px;
+    border-radius: 20px;
   }
 
   .flip-card:hover .flip-card-inner {
@@ -101,21 +117,29 @@ const StyledWrapper = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 16px;
+    border-radius: 20px;
     backface-visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
 
   .flip-card-front {
-    background: linear-gradient(135deg, #eef2ff, #dbeafe);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
     color: #1f2937;
     gap: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .flip-card-back {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    color: #ffffff;
+    transform: rotateY(180deg);
   }
 
   .icon-row {
@@ -128,22 +152,21 @@ const StyledWrapper = styled.div`
   }
 
   .tech-icon {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
+    transition: transform 0.3s;
+  }
+
+  .tech-icon:hover {
+    transform: scale(1.2);
   }
 
   .subtitle {
     font-size: 0.9rem;
     font-weight: 400;
     color: #374151;
-    opacity: 0.9;
-  }
-
-  .flip-card-back {
-    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-    color: #ffffff;
-    transform: rotateY(180deg);
+    opacity: 0.8;
   }
 
   .flip-card-back p {
@@ -160,17 +183,19 @@ const StyledWrapper = styled.div`
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
   }
 
   .view-link:hover {
     background-color: #c7d2fe;
+    transform: scale(1.05);
   }
 
   @media (prefers-color-scheme: dark) {
     .flip-card-front {
-      background: linear-gradient(135deg, #1f2937, #111827);
+      background: rgba(31, 41, 55, 0.3);
       color: #f3f4f6;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .flip-card-back {
@@ -191,5 +216,3 @@ const StyledWrapper = styled.div`
     }
   }
 `;
-
-export default ProjectCard;
