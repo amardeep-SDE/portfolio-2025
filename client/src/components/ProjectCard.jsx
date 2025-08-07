@@ -3,13 +3,12 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-// 🎯 Return MERN icon image URLs for a project
 const getProjectIcons = (titleKey) => {
   const icons = {
     react: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     node: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
     mongo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    express: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+    express: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
   };
 
   const lower = titleKey.toLowerCase();
@@ -31,188 +30,124 @@ const ProjectCard = ({ project }) => {
   const techIcons = getProjectIcons(project.titleKey);
 
   return (
-    <StyledWrapper>
+    <CardWrapper>
       <motion.div
-        className="flip-card"
-        initial={{ opacity: 0, y: 30 }}
+        className="card"
+        initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        whileHover={{ scale: 1.04 }}
+        whileHover={{ scale: 1.03, rotateX: 2, rotateY: 2 }}
       >
-        <div className="flip-card-inner">
-          {/* Front */}
-          <div className="flip-card-front">
-            <motion.div className="icon-row" initial="hidden" animate="visible" variants={{
-              visible: {
-                transition: { staggerChildren: 0.1 }
-              }
-            }}>
-              {techIcons.map((src, idx) => (
-                <motion.img
-                  key={idx}
-                  src={src}
-                  alt="tech-icon"
-                  className="tech-icon"
-                  variants={{
-                    hidden: { opacity: 0, y: -10 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-              ))}
-            </motion.div>
-            <h3>{t(project.titleKey)}</h3>
-            <div className="subtitle">MERN Stack Project</div>
+        <div className="content">
+          <div className="icon-row">
+            {techIcons.map((src, idx) => (
+              <motion.img
+                key={idx}
+                src={src}
+                alt="tech-icon"
+                className="tech-icon"
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: 0.2 }}
+              />
+            ))}
           </div>
+          <h3 className="title">{t(project.titleKey)}</h3>
+          <p className="desc">{t(project.descriptionKey)}</p>
 
-          {/* Back */}
-          <div className="flip-card-back">
-            <h3>{t(project.titleKey)}</h3>
-            <p>{t(project.descriptionKey)}</p>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noreferrer"
-              className="view-link"
-            >
-              {t("projects.viewProject")}
-            </a>
-          </div>
+          <a href={project.link} target="_blank" rel="noreferrer" className="button">
+            {t("projects.viewProject")}
+          </a>
         </div>
       </motion.div>
-    </StyledWrapper>
+    </CardWrapper>
   );
 };
 
 export default ProjectCard;
 
-const StyledWrapper = styled.div`
-  perspective: 1500px;
-
-  .flip-card {
-    width: 100%;
-    height: 340px;
-    transform-style: preserve-3d;
-    transition: transform 0.8s ease;
-    cursor: pointer;
+const CardWrapper = styled.div`
+  .card {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
-  }
-
-  .flip-card-inner {
-    position: relative;
+    padding: 2rem;
     width: 100%;
     height: 100%;
-    transition: transform 1s;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
     transform-style: preserve-3d;
-    border-radius: 20px;
+    text-align: center;
+    color: #f9fafb;
   }
 
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-
-  .flip-card-front,
-  .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    backface-visibility: hidden;
+  .content {
     display: flex;
     flex-direction: column;
+    gap: 1.2rem;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-
-  .flip-card-front {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(12px);
-    color: #1f2937;
-    gap: 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .flip-card-back {
-    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-    color: #ffffff;
-    transform: rotateY(180deg);
+    height: 100%;
   }
 
   .icon-row {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.8rem;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-bottom: 0.5rem;
-    flex-wrap: wrap;
   }
 
   .tech-icon {
     width: 36px;
     height: 36px;
-    object-fit: contain;
-    transition: transform 0.3s;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+    transition: all 0.2s ease-in-out;
   }
 
-  .tech-icon:hover {
-    transform: scale(1.2);
+  .title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #ffffff;
   }
 
-  .subtitle {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #374151;
-    opacity: 0.8;
-  }
-
-  .flip-card-back p {
+  .desc {
     font-size: 0.95rem;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-    padding: 0 10px;
+    line-height: 1.6;
+    color: #d1d5db;
+    max-width: 80%;
   }
 
-  .view-link {
-    background-color: #ffffff;
-    color: #1e3a8a;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
+  .button {
+    margin-top: 0.8rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 12px;
+    background: linear-gradient(to right, #60a5fa, #3b82f6);
+    color: #fff;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .view-link:hover {
-    background-color: #c7d2fe;
-    transform: scale(1.05);
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.45);
   }
 
-  @media (prefers-color-scheme: dark) {
-    .flip-card-front {
-      background: rgba(31, 41, 55, 0.3);
-      color: #f3f4f6;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+  @media (prefers-color-scheme: light) {
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      color: #1f2937;
     }
-
-    .flip-card-back {
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    .title {
+      color: #111827;
     }
-
-    .subtitle {
-      color: #9ca3af;
-    }
-
-    .view-link {
-      background-color: #f3f4f6;
-      color: #1e40af;
-    }
-
-    .view-link:hover {
-      background-color: #dbeafe;
+    .desc {
+      color: #4b5563;
     }
   }
 `;
