@@ -37,27 +37,35 @@ const ProjectCard = ({ project }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        whileHover={{ scale: 1.03, rotateX: 2, rotateY: 2 }}
+        whileHover={{ scale: 1.05, rotateX: 3, rotateY: 3 }}
       >
         <div className="content">
           <div className="icon-row">
             {techIcons.map((src, idx) => (
-              <motion.img
+              <motion.div
                 key={idx}
-                src={src}
-                alt="tech-icon"
-                className="tech-icon"
-                whileHover={{ scale: 1.2 }}
+                whileHover={{ scale: 1.15 }}
                 transition={{ duration: 0.2 }}
-              />
+                className="icon-wrapper"
+              >
+                <img src={src} alt="tech-icon" className="tech-icon" />
+              </motion.div>
             ))}
           </div>
+
           <h3 className="title">{t(project.titleKey)}</h3>
           <p className="desc">{t(project.descriptionKey)}</p>
 
-          <a href={project.link} target="_blank" rel="noreferrer" className="button">
+          <motion.a
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="button"
+            whileHover={{ scale: 1.07 }}
+            whileTap={{ scale: 0.95 }}
+          >
             {t("projects.viewProject")}
-          </a>
+          </motion.a>
         </div>
       </motion.div>
     </CardWrapper>
@@ -68,21 +76,54 @@ export default ProjectCard;
 
 const CardWrapper = styled.div`
   .card {
-    background: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
+    border-radius: 24px;
     padding: 2rem;
     width: 100%;
     height: 100%;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease-in-out;
     transform-style: preserve-3d;
     text-align: center;
     color: #f9fafb;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Glow effect */
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      from 0deg,
+      #60a5fa,
+      #3b82f6,
+      #8b5cf6,
+      #ec4899,
+      #f43f5e,
+      #f97316,
+      #60a5fa
+    );
+    animation: spin 8s linear infinite;
+    z-index: 0;
+    opacity: 0.2;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   .content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
@@ -93,54 +134,61 @@ const CardWrapper = styled.div`
 
   .icon-row {
     display: flex;
-    gap: 0.8rem;
+    gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
 
+  .icon-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+
   .tech-icon {
-    width: 36px;
-    height: 36px;
-    opacity: 0.9;
-    filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
-    transition: all 0.2s ease-in-out;
+    width: 38px;
+    height: 38px;
+    opacity: 0.95;
+    transition: transform 0.2s ease-in-out;
   }
 
   .title {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 800;
     letter-spacing: -0.5px;
     color: #ffffff;
   }
 
   .desc {
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: #d1d5db;
-    max-width: 80%;
+    max-width: 85%;
   }
 
   .button {
-    margin-top: 0.8rem;
-    padding: 0.6rem 1.4rem;
-    border-radius: 12px;
-    background: linear-gradient(to right, #60a5fa, #3b82f6);
+    margin-top: 1rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
     color: #fff;
     font-weight: 600;
     text-decoration: none;
-    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 18px rgba(59, 130, 246, 0.35);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
   }
 
   .button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.45);
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
   }
 
   @media (prefers-color-scheme: light) {
     .card {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       color: #1f2937;
     }
     .title {
