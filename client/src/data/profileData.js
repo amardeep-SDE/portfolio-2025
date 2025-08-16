@@ -151,21 +151,33 @@ const profileData = {
     //   gradient: "bg-gradient-to-br from-purple-500 to-pink-400"
     // }
   ],
-    experience: [
-    {
-      companyKey: "experience.0.company",
-      roleKey: "experience.0.role",
-      locationKey: "experience.0.location",
-      duration: "April 2023 – June 2025",
-      descriptionKey: "experience.0.description",
-      skills: [
-        "JavaScript", "TypeScript", "React", "Redux Toolkit", "Tailwind CSS",
-        "Material UI", "shadcn/ui", "Socket.IO", "Zod", "MongoDB",
-        "Firebase", "Multer", "Mailtrap", "Express.js", "Node.js", "GitHub",
-        "Jira", "Docker", "Swagger", "Payment Gateways"
-      ]
-    }
-  ],
+ experience: [
+  
+  {
+    companyKey: "experience.1.company",
+    roleKey: "experience.1.role",
+    locationKey: "experience.1.location",
+    duration: "July 2025 – Present",
+    descriptionKey: "experience.1.description",
+    skills: [
+      "JavaScript", "React.js", "Bootstrap", "REST API", "GitHub"
+    ]
+  },
+  {
+    companyKey: "experience.0.company",
+    roleKey: "experience.0.role",
+    locationKey: "experience.0.location",
+    duration: "April 2023 – June 2025",
+    descriptionKey: "experience.0.description",
+    skills: [
+      "JavaScript", "TypeScript", "React", "Redux Toolkit", "Tailwind CSS",
+      "Material UI", "shadcn/ui", "Socket.IO", "Zod", "MongoDB",
+      "Firebase", "Multer", "Mailtrap", "Express.js", "Node.js", "GitHub",
+      "Jira", "Docker", "Swagger", "Payment Gateways"
+    ]
+  },
+],
+
     contact: {
     email: "amardeep@example.com",
     phone: "+91-8964051727",

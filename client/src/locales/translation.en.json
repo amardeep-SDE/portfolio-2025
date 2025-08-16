@@ -65,16 +65,22 @@
     "Auth Services": "Auth Services"
   },
 
-
- "experience": {
-    "heading": "Experience",
-    "0": {
-      "company": "Encanto Technologies",
-      "role": "Associate Software Developer",
-      "location": "Indore, M.P.",
-      "description": "Software Developer with 2+ years of experience in React and MERN stack development. Skilled in building scalable, high-performance web apps with clean, maintainable code and seamless backend integration. Proficient in REST APIs, SQL/NoSQL databases, and optimizing performance using code-splitting, memoization, debounced search, and state management with caching. Strong in debugging, troubleshooting, and implementing secure authentication flows. Also experienced with AI tools and project management platforms."
-    }
+"experience": {
+  "heading": "Experience",
+  "0": {
+    "company": "Encanto Technologies",
+    "role": "Junior Software Developer",
+    "location": "Indore, M.P.",
+    "description": "Software Developer with 2+ years of experience in React and MERN stack development. Skilled in building scalable, high-performance web apps..."
   },
+  "1": {
+    "company": "Codeverse IT Private Limited",
+    "role": "Junior Software Developer",
+    "location": "Indore, M.P.",
+    "description": "Worked on frontend development using React.js and Bootstrap. Built responsive UI, integrated REST APIs, and collaborated with senior developers."
+  }
+}
+,
 
 "contact": {
   "heading": "Contact Me",
