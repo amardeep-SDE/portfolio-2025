@@ -50,7 +50,7 @@ const profileData = {
       name: "HTML",
       experience: "2+ yrs",
       level: "Advanced",
-      projects: "25+",
+      projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
       gradient: "bg-gradient-to-br from-orange-500 to-yellow-400"
     },
@@ -58,7 +58,7 @@ const profileData = {
       name: "CSS",
       experience: "2+ yrs",
       level: "Advanced",
-      projects: "25+",
+      projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
       gradient: "bg-gradient-to-br from-blue-500 to-indigo-500"
     },
@@ -66,7 +66,7 @@ const profileData = {
       name: "JavaScript",
       experience: "2+ yrs",
       level: "Advanced",
-      projects: "20+",
+      projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
       gradient: "bg-gradient-to-br from-yellow-400 to-yellow-200"
     },
@@ -74,7 +74,7 @@ const profileData = {
       name: "React.js",
       experience: "2+ yrs",
       level: "Advanced",
-      projects: "12",
+      projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
       gradient: "bg-gradient-to-br from-sky-500 to-blue-400"
     },
@@ -82,7 +82,7 @@ const profileData = {
       name: "Redux Toolkit",
       experience: "2 yrs",
       level: "Advanced",
-      projects: "6",
+      projects: "3",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
       gradient: "bg-gradient-to-br from-purple-500 to-purple-300"
     },
@@ -90,7 +90,7 @@ const profileData = {
       name: "Tailwind CSS",
       experience: "2 yrs",
       level: "Advanced",
-      projects: "15",
+      projects: "3",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
       gradient: "bg-gradient-to-br from-cyan-500 to-blue-300"
     },
@@ -98,7 +98,7 @@ const profileData = {
       name: "Node.js",
       experience: "1 yrs",
       level: "Intermediate",
-      projects: "10",
+      projects: "2",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
       gradient: "bg-gradient-to-br from-green-600 to-green-300"
     },
@@ -106,7 +106,7 @@ const profileData = {
       name: "Express.js",
       experience: "1 yrs",
       level: "Intermediate",
-      projects: "10",
+      projects: "2",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
       gradient: "bg-gradient-to-br from-gray-800 to-gray-600"
     },
@@ -114,7 +114,7 @@ const profileData = {
       name: "MongoDB",
       experience: "1 yrs",
       level: "Advanced",
-      projects: "8",
+      projects: "2",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
       gradient: "bg-gradient-to-br from-green-800 to-green-500"
     },
