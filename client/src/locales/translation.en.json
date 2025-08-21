@@ -1,18 +1,16 @@
 {
   "nav": {
     "name": "Amardeep Dwivedi",
-    "home": "Home",
+    "skills": "Skills",
     "about": "About Me",
     "projects": "Projects",
     "experience": "Experience",
     "contact": "Contact"
   },
-  
- 
+
   "hero": {
     "greeting": "Hi, I'm Amardeep",
     "role": "Full-Stack MERN Developer"
-   
   },
   "about": {
     "heading": "Hi, I'm",
@@ -24,29 +22,28 @@
     "description": "I am a MERN stack developer with over 2 years of experience building scalable, performant full-stack web applications. I specialize in React.js, Node.js, MongoDB, and Express. I enjoy building modern UIs, integrating APIs, and optimizing performance.I am a MERN stack developer with over 2 years of experience building scalable, performant full-stack web applications. I specialize in React.js, Node.js, MongoDB, and Express. I enjoy building modern UIs, integrating APIs, and optimizing performance"
   },
   "projects": {
-  "heading": "My Projects",
-  "viewProject": "View Project",
-  "0": {
-    "title": "Doctor Appointment System",
-    "description": "MERN app with patient/doctor modules, OTP, payments, and chat."
+    "heading": "My Projects",
+    "viewProject": "View Project",
+    "0": {
+      "title": "Doctor Appointment System",
+      "description": "MERN app with patient/doctor modules, OTP, payments, and chat."
+    },
+    "1": {
+      "title": "Portfolio Website",
+      "description": "React + Tailwind portfolio with bilingual support and animations."
+    },
+    "2": {
+      "title": "E-Commerce App",
+      "description": "A full-stack e-commerce MERN app with cart, payment gateway, and admin dashboard."
+    },
+    "3": {
+      "title": "Blog Application",
+      "description": "Blog platform built with MERN stack and rich-text editor with JWT auth."
+    }
   },
-  "1": {
-    "title": "Portfolio Website",
-    "description": "React + Tailwind portfolio with bilingual support and animations."
-  },
-  "2": {
-    "title": "E-Commerce App",
-    "description": "A full-stack e-commerce MERN app with cart, payment gateway, and admin dashboard."
-  },
-  "3": {
-    "title": "Blog Application",
-    "description": "Blog platform built with MERN stack and rich-text editor with JWT auth."
-  }
-},
 
- 
   "skills": {
-      "heading": "My Skills",
+    "heading": "My Skills",
     "experience": "Experience",
     "level": "Proficiency",
     "projects": "Projects",
@@ -65,46 +62,36 @@
     "Auth Services": "Auth Services"
   },
 
-"experience": {
-  "heading": "Experience",
-  "0": {
-    "company": "Encanto Technologies",
-    "role": "Junior Software Developer",
-    "location": "Indore, M.P.",
-    "description": "Software Developer with 2+ years of experience in React and MERN stack development. Skilled in building scalable, high-performance web apps..."
+  "experience": {
+    "heading": "Experience",
+    "0": {
+      "company": "Encanto Technologies",
+      "role": "Junior Software Developer",
+      "location": "Indore, M.P.",
+      "description": "Software Developer with 2+ years of experience in React and MERN stack development. Skilled in building scalable, high-performance web apps..."
+    },
+    "1": {
+      "company": "Codeverse IT Private Limited",
+      "role": "Junior Software Developer",
+      "location": "Indore, M.P.",
+      "description": "Worked on frontend development using React.js and Bootstrap. Built responsive UI, integrated REST APIs, and collaborated with senior developers."
+    }
   },
-  "1": {
-    "company": "Codeverse IT Private Limited",
-    "role": "Junior Software Developer",
-    "location": "Indore, M.P.",
-    "description": "Worked on frontend development using React.js and Bootstrap. Built responsive UI, integrated REST APIs, and collaborated with senior developers."
+  "contact": {
+    "heading": "Contact Me",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "locationLabel": "Location",
+    "location": "Indore, Madhya Pradesh, India",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Your Email",
+    "messagePlaceholder": "Your Message",
+    "send": "Send Message"
+  },
+  "footer": {
+    "contact": "Contact Info",
+    "quickLinks": "Quick Links",
+    "social": "Social Profiles",
+    "rights": "All rights reserved."
   }
 }
-,
-
-"contact": {
-  "heading": "Contact Me",
-  "emailLabel": "Email",
-  "phoneLabel": "Phone",
-  "locationLabel": "Location",
-  "location": "Indore, Madhya Pradesh, India",
-  "namePlaceholder": "Your Name",
-  "emailPlaceholder": "Your Email",
-  "messagePlaceholder": "Your Message",
-  "send": "Send Message"
-},
-"footer": {
-  "contact": "Contact Info",
-  "quickLinks": "Quick Links",
-  "social": "Social Profiles",
-  "rights": "All rights reserved."
-}
-
-
-
-}
-
-
-
-
-

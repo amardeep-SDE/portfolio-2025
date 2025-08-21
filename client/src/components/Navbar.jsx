@@ -46,7 +46,7 @@ const Navbar = () => {
     >
       <header className="flex items-center justify-between px-6 sm:px-10 py-6 max-w-7xl mx-auto w-full">
         <ScrollLink
-          to="home"
+          to="about"
           smooth
           offset={-40}
           duration={500}
@@ -63,8 +63,8 @@ const Navbar = () => {
         </ScrollLink>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-bold text-xl text-gray-900 dark:text-white">
-          {["home", "about", "projects", "experience", "contact"].map(
+        <nav className="hidden md:flex items-center gap-8 font-bold text-xl text-gray-900 dark:text-white">
+          {["about", "skills", "projects", "experience", "contact"].map(
             (section) => (
               <ScrollLink
                 key={section}
@@ -116,7 +116,7 @@ const Navbar = () => {
             <AiOutlineClose size={28} />
           </button>
 
-          {["home", "about", "projects", "experience", "contact"].map(
+          {["about", "skills", "projects", "experience", "contact"].map(
             (section) => (
               <ScrollLink
                 key={section}
