@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import profileData from "../data/profileData";
 import { Typewriter } from "react-simple-typewriter";
-import { FaUserTie, FaMapMarkerAlt } from "react-icons/fa"; // 👈 Icons
+import { FaUserTie, FaMapMarkerAlt, FaEye, FaDownload } from "react-icons/fa"; // 👈 Icons
 
 const About = () => {
   const { t } = useTranslation();
@@ -11,7 +11,9 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center px-6 py-16 bg-gradient-to-b from-[#F5F7FF] via-[#fffbee] to-[#E6EFFF] dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#0f172a] transition-colors duration-300"
+      className="min-h-screen flex items-center justify-center px-6 py-16 
+                 bg-gradient-to-b from-[#F5F7FF] via-[#fffbee] to-[#E6EFFF] 
+                 dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#0f172a] transition-colors duration-300"
     >
       <div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12 ">
         {/* Left Side: Text */}
@@ -47,30 +49,60 @@ const About = () => {
           </p>
 
           {/* Description */}
-         <p className="text-base sm:text-lg text-justify leading-relaxed tracking-wide text-gray-800 dark:text-gray-300 max-w-3xl">
-  {t("about.description")}
-</p>
+          <p className="text-base sm:text-lg text-justify leading-relaxed tracking-wide text-gray-800 dark:text-gray-300 max-w-3xl mb-6">
+            {t("about.description")}
+          </p>
 
+          {/* Resume Section */}
+          {/* Resume Section */}
+          <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-6">
+            {/* View Resume */}
+            <a
+              href={profileData.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-3 rounded-xl 
+               bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium 
+               shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            >
+              <FaEye /> View Resume
+            </a>
+
+            {/* Download Resume */}
+            <a
+              href={profileData.resume}
+              download="Amardeep_Resume.pdf"
+              className="flex items-center gap-2 px-6 py-3 rounded-xl 
+               bg-gradient-to-r from-pink-500 to-red-500 text-white font-medium 
+               shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            >
+              <FaDownload /> Download Resume
+            </a>
+          </div>
         </motion.div>
 
         {/* Right Side: Image */}
-      <motion.div
-  initial={{ x: 50, opacity: 0 }}
-  animate={{ x: 0, opacity: 1 }}
-  whileHover={{ scale: 1.05, rotate: 1 }} // 👈 hover animation
-  transition={{ duration: 0.6, ease: "easeOut" }}
-  className="flex-1 flex justify-center"
->
-  <div className="relative group">
-    <img
-      src={profileData.image}
-      alt={t("about.name")}
-      className="w-56 h-56 md:w-72 md:h-72 object-cover rounded-full shadow-xl transition-transform duration-500 ease-in-out group-hover:scale-105"
-    />
-    <div className="absolute -inset-1 rounded-full blur-xl opacity-20 group-hover:opacity-30 transition-all duration-500 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 z-[-1]"></div>
-  </div>
-</motion.div>
-
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          whileHover={{ scale: 1.05, rotate: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex-1 flex justify-center"
+        >
+          <div className="relative group">
+            <img
+              src={profileData.image}
+              alt={t("about.name")}
+              className="w-56 h-56 md:w-72 md:h-72 object-cover rounded-full shadow-xl 
+                         transition-transform duration-500 ease-in-out group-hover:scale-105"
+            />
+            <div
+              className="absolute -inset-1 rounded-full blur-xl opacity-20 
+                            group-hover:opacity-30 transition-all duration-500 
+                            bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 z-[-1]"
+            ></div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

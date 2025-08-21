@@ -1,58 +1,59 @@
 import profileImage from "../assets/profile_image.jpg";
 const profileData = {
   image: profileImage,
+  resume: "/resume/Amardeep_Resume.pdf",
   projects: [
     {
       id: 1,
       titleKey: "projects.0.title",
       descriptionKey: "projects.0.description",
       image: "https://via.placeholder.com/400x250?text=Doctor+App",
-      link: "https://your-doctor-app-link.com"
+      link: "https://your-doctor-app-link.com",
     },
     {
       id: 2,
       titleKey: "projects.1.title",
       descriptionKey: "projects.1.description",
       image: "https://via.placeholder.com/400x250?text=Portfolio",
-      link: "https://your-portfolio-link.com"
+      link: "https://your-portfolio-link.com",
     },
     {
       id: 3,
       titleKey: "projects.2.title",
       descriptionKey: "projects.2.description",
       image: "https://via.placeholder.com/400x250?text=E-Commerce",
-      link: "https://your-ecommerce-link.com"
+      link: "https://your-ecommerce-link.com",
     },
     {
       id: 4,
       titleKey: "projects.3.title",
       descriptionKey: "projects.3.description",
       image: "https://via.placeholder.com/400x250?text=Blog+App",
-      link: "https://your-blog-app-link.com"
+      link: "https://your-blog-app-link.com",
     },
     {
       id: 5,
       titleKey: "projects.0.title",
       descriptionKey: "projects.0.description",
       image: "https://via.placeholder.com/400x250?text=Doctor+App",
-      link: "https://your-doctor-app-link.com"
+      link: "https://your-doctor-app-link.com",
     },
     {
       id: 6,
       titleKey: "projects.1.title",
       descriptionKey: "projects.1.description",
       image: "https://via.placeholder.com/400x250?text=Portfolio",
-      link: "https://your-portfolio-link.com"
-    }
+      link: "https://your-portfolio-link.com",
+    },
   ],
-   skills: [
+  skills: [
     {
       name: "HTML",
       experience: "2+ yrs",
       level: "Advanced",
       projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-      gradient: "bg-gradient-to-br from-orange-500 to-yellow-400"
+      gradient: "bg-gradient-to-br from-orange-500 to-yellow-400",
     },
     {
       name: "CSS",
@@ -60,7 +61,7 @@ const profileData = {
       level: "Advanced",
       projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-      gradient: "bg-gradient-to-br from-blue-500 to-indigo-500"
+      gradient: "bg-gradient-to-br from-blue-500 to-indigo-500",
     },
     {
       name: "JavaScript",
@@ -68,7 +69,7 @@ const profileData = {
       level: "Advanced",
       projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-      gradient: "bg-gradient-to-br from-yellow-400 to-yellow-200"
+      gradient: "bg-gradient-to-br from-yellow-400 to-yellow-200",
     },
     {
       name: "React.js",
@@ -76,7 +77,7 @@ const profileData = {
       level: "Advanced",
       projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-      gradient: "bg-gradient-to-br from-sky-500 to-blue-400"
+      gradient: "bg-gradient-to-br from-sky-500 to-blue-400",
     },
     {
       name: "Redux Toolkit",
@@ -84,7 +85,7 @@ const profileData = {
       level: "Advanced",
       projects: "3",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
-      gradient: "bg-gradient-to-br from-purple-500 to-purple-300"
+      gradient: "bg-gradient-to-br from-purple-500 to-purple-300",
     },
     {
       name: "Tailwind CSS",
@@ -92,7 +93,7 @@ const profileData = {
       level: "Advanced",
       projects: "3",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
-      gradient: "bg-gradient-to-br from-cyan-500 to-blue-300"
+      gradient: "bg-gradient-to-br from-cyan-500 to-blue-300",
     },
     {
       name: "Node.js",
@@ -100,7 +101,7 @@ const profileData = {
       level: "Intermediate",
       projects: "2",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-      gradient: "bg-gradient-to-br from-green-600 to-green-300"
+      gradient: "bg-gradient-to-br from-green-600 to-green-300",
     },
     {
       name: "Express.js",
@@ -108,7 +109,7 @@ const profileData = {
       level: "Intermediate",
       projects: "2",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-      gradient: "bg-gradient-to-br from-gray-800 to-gray-600"
+      gradient: "bg-gradient-to-br from-gray-800 to-gray-600",
     },
     {
       name: "MongoDB",
@@ -116,7 +117,7 @@ const profileData = {
       level: "Advanced",
       projects: "2",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-      gradient: "bg-gradient-to-br from-green-800 to-green-500"
+      gradient: "bg-gradient-to-br from-green-800 to-green-500",
     },
     {
       name: "Git & GitHub",
@@ -124,7 +125,7 @@ const profileData = {
       level: "Intermediate",
       projects: "All",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-      gradient: "bg-gradient-to-br from-zinc-800 to-zinc-500"
+      gradient: "bg-gradient-to-br from-zinc-800 to-zinc-500",
     },
     // {
     //   name: "Razorpay",
@@ -151,46 +152,58 @@ const profileData = {
     //   gradient: "bg-gradient-to-br from-purple-500 to-pink-400"
     // }
   ],
- experience: [
-  
-  {
-    companyKey: "experience.1.company",
-    roleKey: "experience.1.role",
-    locationKey: "experience.1.location",
-    duration: "July 2025 – Present",
-    descriptionKey: "experience.1.description",
-    skills: [
-      "JavaScript", "React.js", "Bootstrap", "REST API", "GitHub"
-    ]
-  },
-  {
-    companyKey: "experience.0.company",
-    roleKey: "experience.0.role",
-    locationKey: "experience.0.location",
-    duration: "April 2023 – June 2025",
-    descriptionKey: "experience.0.description",
-    skills: [
-      "JavaScript", "TypeScript", "React", "Redux Toolkit", "Tailwind CSS",
-      "Material UI", "shadcn/ui", "Socket.IO", "Zod", "MongoDB",
-      "Firebase", "Multer", "Mailtrap", "Express.js", "Node.js", "GitHub",
-      "Jira", "Docker", "Swagger", "Payment Gateways"
-    ]
-  },
-],
+  experience: [
+    {
+      companyKey: "experience.1.company",
+      roleKey: "experience.1.role",
+      locationKey: "experience.1.location",
+      duration: "July 2025 – Present",
+      descriptionKey: "experience.1.description",
+      skills: ["JavaScript", "React.js", "Bootstrap", "REST API", "GitHub"],
+    },
+    {
+      companyKey: "experience.0.company",
+      roleKey: "experience.0.role",
+      locationKey: "experience.0.location",
+      duration: "April 2023 – June 2025",
+      descriptionKey: "experience.0.description",
+      skills: [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Redux Toolkit",
+        "Tailwind CSS",
+        "Material UI",
+        "shadcn/ui",
+        "Socket.IO",
+        "Zod",
+        "MongoDB",
+        "Firebase",
+        "Multer",
+        "Mailtrap",
+        "Express.js",
+        "Node.js",
+        "GitHub",
+        "Jira",
+        "Docker",
+        "Swagger",
+        "Payment Gateways",
+      ],
+    },
+  ],
 
-    contact: {
+  contact: {
     email: "amardeep@example.com",
     phone: "+91-8964051727",
   },
   contactInfo: {
-  email: "yourmail@example.com",
-  phone: "+91-8964051727",
-  social: {
-    github: "https://github.com/amardeep1016",
-    linkedin: "https://linkedin.com/in/amardeep-dwivedi",
-  }
-}
-
+    email: "yourmail@example.com",
+    phone: "+91-8964051727",
+    social: {
+      github: "https://github.com/amardeep1016",
+      linkedin: "https://linkedin.com/in/amardeep-dwivedi",
+    },
+  },
 };
 
 export default profileData;
