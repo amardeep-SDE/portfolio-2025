@@ -200,8 +200,8 @@ const profileData = {
     email: "yourmail@example.com",
     phone: "+91-8964051727",
     social: {
-      github: "https://github.com/amardeep1016",
-      linkedin: "https://linkedin.com/in/amardeep-dwivedi",
+      github: "https://github.com/amardeep-SDE",
+      linkedin: "https://www.linkedin.com/in/amardeepdwivedi/",
     },
   },
 };
