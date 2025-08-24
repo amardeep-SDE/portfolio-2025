@@ -1,6 +1,6 @@
 import React from "react";
 import { FiMail, FiPhone, FiGithub, FiLinkedin } from "react-icons/fi";
-import { FaFacebookF, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import profileData from "../data/profileData";
 
@@ -41,9 +41,9 @@ const Footer = () => {
               hover: "hover:bg-[#6e5494]",
             },
             {
-              url: social.twitter,
-              icon: <FaTwitter />,
-              hover: "hover:bg-[#1DA1F2]",
+              url: social.instagram, // 👈 yahan insta ka link dena h
+              icon: <FaInstagram />, // 👈 insta ka icon
+              hover: "hover:bg-[#E4405F]", // 👈 insta ka pinkish red color
             },
             {
               url: social.facebook,
