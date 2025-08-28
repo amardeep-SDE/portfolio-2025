@@ -41,15 +41,11 @@ const Footer = () => {
               hover: "hover:bg-[#6e5494]",
             },
             {
-              url: social.instagram, // 👈 yahan insta ka link dena h
-              icon: <FaInstagram />, // 👈 insta ka icon
-              hover: "hover:bg-[#E4405F]", // 👈 insta ka pinkish red color
+              url: social.instagram, 
+              icon: <FaInstagram />, 
+              hover: "hover:bg-[#E4405F]", 
             },
-            {
-              url: social.facebook,
-              icon: <FaFacebookF />,
-              hover: "hover:bg-[#1877F2]",
-            },
+           
           ].map((item, i) => (
             <a
               key={i}
