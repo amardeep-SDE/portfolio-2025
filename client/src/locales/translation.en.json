@@ -62,21 +62,22 @@
     "Auth Services": "Auth Services"
   },
 
-  "experience": {
-    "heading": "Experience",
-    "0": {
-      "company": "Encanto Technologies",
-      "role": "Junior Software Developer",
-      "location": "Indore, M.P.",
-      "description": "Software Developer with 2+ years of experience in React and MERN stack development. Skilled in building scalable, high-performance web apps..."
-    },
-    "1": {
-      "company": "Codeverse IT Private Limited",
-      "role": "Junior Software Developer",
-      "location": "Indore, M.P.",
-      "description": "Worked on frontend development using React.js and Bootstrap. Built responsive UI, integrated REST APIs, and collaborated with senior developers."
-    }
+"experience": {
+  "heading": "Experience",
+  "0": {
+    "company": "Encanto Technologies",
+    "role": "Junior Software Developer",
+    "location": "Indore, M.P.",
+    "description": "Contributed to the development of scalable and high-performance web applications using React.js and the MERN stack. Implemented reusable components, optimized frontend performance, and integrated REST APIs. Collaborated with cross-functional teams to deliver client projects on time with a focus on clean code and responsive design."
   },
+  "1": {
+    "company": "Codeverse IT Private Limited",
+    "role": "Junior Software Developer",
+    "location": "Indore, M.P.",
+    "description": "Focused on frontend development with React.js and Bootstrap to build interactive and responsive user interfaces. Worked on API integration, debugging, and performance improvements. Gained hands-on experience in Agile workflows and enhanced collaboration with senior developers to ensure smooth project execution."
+  }
+}
+,
   "contact": {
     "heading": "Contact Me",
     "emailLabel": "Email",
