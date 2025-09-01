@@ -25,20 +25,24 @@
     "heading": "My Projects",
     "viewProject": "View Project",
     "0": {
-      "title": "Doctor Appointment System",
-      "description": "MERN app with patient/doctor modules, OTP, payments, and chat."
+      "title": "KYK Bearings",
+      "description": "Mechanical & Industrial Solutions Platform "
     },
     "1": {
-      "title": "Portfolio Website",
-      "description": "React + Tailwind portfolio with bilingual support and animations."
+      "title": "Accompanied",
+      "description": "Smart Social Networking Platform "
     },
     "2": {
-      "title": "E-Commerce App",
-      "description": "A full-stack e-commerce MERN app with cart, payment gateway, and admin dashboard."
+      "title": "Rich143",
+      "description": "Fantasy Sports & Betting Platform"
     },
     "3": {
-      "title": "Blog Application",
-      "description": "Blog platform built with MERN stack and rich-text editor with JWT auth."
+      "title": "Food Delivery App",
+      "description": "Food delivery platform built with MERN stack."
+    },
+    "4": {
+      "title": "Chat Application",
+      "description": "Real-time chat application built with MERN stack."
     }
   },
 
