@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import profileData from "../data/profileData";
 import { Typewriter } from "react-simple-typewriter";
 import { FaUserTie, FaMapMarkerAlt, FaEye, FaDownload } from "react-icons/fa";
-import AnimatedBackground from "../components/AnimatedBackground";
 
 const About = () => {
   const { t } = useTranslation();
@@ -13,14 +12,13 @@ const About = () => {
     <section
       id="about"
       className="relative min-h-screen flex items-center justify-center px-6 py-16 
-                 overflow-hidden bg-gradient-to-b from-[#F5F7FF] via-[#fffbee] to-[#E6EFFF] 
+                 overflow-hidden bg-gradient-to-br from-[#eef2ff] via-[#fdfdfd] to-[#e0f2fe] 
                  dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#0f172a] transition-colors duration-300"
     >
-    {/* <AnimatedBackground /> */}
       {/* 🌟 Animated Background Blobs */}
-      <div className="absolute top-10 left-10 w-72 h-72 bg-indigo-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-      <div className="absolute top-40 right-10 w-72 h-72 bg-pink-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-10 left-1/2 w-72 h-72 bg-yellow-300/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+      <div className="absolute top-10 left-10 w-72 h-72 bg-indigo-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div className="absolute top-40 right-10 w-72 h-72 bg-pink-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-10 left-1/2 w-72 h-72 bg-cyan-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
 
       <div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12 relative z-10">
         {/* Left Side: Text */}
@@ -89,22 +87,20 @@ const About = () => {
         <motion.div
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          whileHover={{ scale: 1.05, rotate: 1 }}
+          whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex-1 flex justify-center"
         >
           <div className="relative group">
+            {/* Gradient Border Ring */}
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-spin-slow opacity-30 group-hover:opacity-50 transition-all"></div>
+
             <img
               src={profileData.image}
               alt={t("about.name")}
-              className="w-56 h-56 md:w-72 md:h-72 object-cover rounded-full shadow-xl 
+              className="relative w-56 h-56 md:w-72 md:h-72 object-cover rounded-full shadow-2xl border-4 border-white dark:border-gray-800 
                          transition-transform duration-500 ease-in-out group-hover:scale-105"
             />
-            <div
-              className="absolute -inset-1 rounded-full blur-xl opacity-20 
-                          group-hover:opacity-30 transition-all duration-500 
-                          bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 z-[-1]"
-            ></div>
           </div>
         </motion.div>
       </div>
