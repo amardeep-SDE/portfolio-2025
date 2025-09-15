@@ -28,3 +28,24 @@ html {
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 20px!important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e0a6a6;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
