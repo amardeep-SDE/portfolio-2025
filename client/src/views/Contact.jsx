@@ -21,15 +21,24 @@ const Contact = () => {
   });
 
   return (
-    <section id="contact" className="py-16 px-6 bg-white dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto space-y-14">
+    <section
+      id="contact"
+      className="relative py-20 px-6 bg-gradient-to-br from-indigo-50 via-white to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+    >
+      {/* Background Glow */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-20 left-1/3 w-96 h-96 bg-indigo-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-pink-400/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto space-y-16">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-bold text-center text-gray-900 dark:text-white"
+          className="text-4xl sm:text-5xl font-extrabold text-center bg-gradient-to-r from-indigo-600 to-pink-500 bg-clip-text text-transparent"
         >
           {t("contact.heading")}
         </motion.h2>
@@ -73,7 +82,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg space-y-5"
+            className="backdrop-blur-lg bg-white/70 dark:bg-gray-800/60 p-8 rounded-2xl shadow-2xl space-y-6 border border-white/30"
           >
             <FloatingInput
               icon={<FiUser />}
@@ -101,27 +110,29 @@ const Contact = () => {
               setFocused={setFocused}
             />
 
-            <button
+            <motion.button
               type="submit"
-              className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 shadow-md"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full py-3 bg-gradient-to-r from-indigo-600 to-pink-500 hover:from-indigo-700 hover:to-pink-600 text-white font-bold rounded-xl shadow-lg transition-all duration-300"
             >
               {t("contact.send")}
-            </button>
+            </motion.button>
           </motion.form>
         </div>
 
-        {/* Map Row */}
+        {/* Map */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="rounded-lg overflow-hidden shadow-lg"
+          className="rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700"
         >
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14738.320234519448!2d75.85772755!3d22.71956845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fdad0372f36f%3A0x6c196b881f1b3c65!2sIndore%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1621234567890"
             width="100%"
-            height="300"
+            height="350"
             style={{ border: 0 }}
             allowFullScreen=""
             loading="lazy"
@@ -134,14 +145,19 @@ const Contact = () => {
 };
 
 const ContactItem = ({ icon, label, value, href }) => (
-  <div className="flex items-start gap-4">
-    <div className="text-indigo-600 dark:text-indigo-400 mt-1 text-2xl">{icon}</div>
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    className="flex items-start gap-4 p-4 rounded-xl bg-white/70 dark:bg-gray-800/60 shadow-md border border-gray-200 dark:border-gray-700 transition"
+  >
+    <div className="text-indigo-600 dark:text-indigo-400 text-2xl">{icon}</div>
     <div>
-      <p className="text-lg font-semibold text-gray-900 dark:text-white">{label}</p>
+      <p className="text-lg font-semibold text-gray-900 dark:text-white">
+        {label}
+      </p>
       {href ? (
         <a
           href={href}
-          className="text-gray-700 dark:text-gray-300 hover:underline"
+          className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
         >
           {value}
         </a>
@@ -149,7 +165,7 @@ const ContactItem = ({ icon, label, value, href }) => (
         <p className="text-gray-700 dark:text-gray-300">{value}</p>
       )}
     </div>
-  </div>
+  </motion.div>
 );
 
 const FloatingInput = ({ icon, type, field, placeholder, focused, setFocused }) => (
@@ -159,10 +175,8 @@ const FloatingInput = ({ icon, type, field, placeholder, focused, setFocused }) 
       type={type}
       name={field}
       onFocus={() => setFocused({ ...focused, [field]: true })}
-      onBlur={(e) =>
-        setFocused({ ...focused, [field]: !!e.target.value })
-      }
-      className="w-full pl-10 p-3 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+      onBlur={(e) => setFocused({ ...focused, [field]: !!e.target.value })}
+      className="w-full pl-10 p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/60 dark:bg-gray-700/60 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
     />
     <label
       className={`absolute left-10 top-3 transition-all duration-300 text-gray-400 pointer-events-none ${
@@ -181,10 +195,8 @@ const FloatingTextarea = ({ icon, field, placeholder, focused, setFocused }) => 
       name={field}
       rows="4"
       onFocus={() => setFocused({ ...focused, [field]: true })}
-      onBlur={(e) =>
-        setFocused({ ...focused, [field]: !!e.target.value })
-      }
-      className="w-full pl-10 p-3 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+      onBlur={(e) => setFocused({ ...focused, [field]: !!e.target.value })}
+      className="w-full pl-10 p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/60 dark:bg-gray-700/60 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
     />
     <label
       className={`absolute left-10 top-3 transition-all duration-300 text-gray-400 pointer-events-none ${
