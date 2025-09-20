@@ -183,10 +183,10 @@ const FloatingInput = ({ icon, type, field, placeholder, focused, setFocused }) 
         focused[field] ? "opacity-0" : "opacity-100"
       }`}
     >
-      {placeholder}
+      {placeholder} <span className="text-red-500">*</span>
     </label>
   </div>
-);
+); 
 
 const FloatingTextarea = ({ icon, field, placeholder, focused, setFocused }) => (
   <div className="relative">
