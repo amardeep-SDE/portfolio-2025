@@ -3,31 +3,28 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-const getProjectIcons = (titleKey) => {
+const getProjectIcons = (titleKey, isMern = false) => {
   const icons = {
     react: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     node: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
     mongo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    express: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    express: "https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg", // Fixed Express
+    tailwind: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
   };
 
-  const lower = titleKey.toLowerCase();
-  const stack = [];
+  const stack = [icons.react, icons.tailwind]; // sabme common React + Tailwind
 
-  if (lower.includes("doctor") || lower.includes("blog") || lower.includes("ecommerce")) {
-    stack.push(icons.react, icons.node, icons.mongo, icons.express);
-  } else if (lower.includes("portfolio")) {
-    stack.push(icons.react);
-  } else {
-    stack.push(icons.react, icons.node, icons.mongo);
+  if (isMern) {
+    stack.push(icons.node, icons.express, icons.mongo); // MERN ke liye extra
   }
 
   return stack;
 };
 
+
 const ProjectCard = ({ project }) => {
   const { t } = useTranslation();
-  const techIcons = getProjectIcons(project.titleKey);
+  const techIcons = getProjectIcons(project.titleKey, project.isMern);
   const cardRef = useRef(null);
 
   const handleMouseMove = (e) => {

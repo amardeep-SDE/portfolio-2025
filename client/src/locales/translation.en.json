@@ -19,33 +19,42 @@
     "role2": "Frontend Developer",
     "role3": "Backend Developer",
     "location": "Indore, M.P.",
-    "description": "I am a MERN stack developer with over 2 years of experience building scalable, performant full-stack web applications. I specialize in React.js, Node.js, MongoDB, and Express. I enjoy building modern UIs, integrating APIs, and optimizing performance.I am a MERN stack developer with over 2 years of experience building scalable, performant full-stack web applications. I specialize in React.js, Node.js, MongoDB, and Express. I enjoy building modern UIs, integrating APIs, and optimizing performance"
+    "description": "Software Developer with 2+ years of React & MERN experience, proficient in building scalable, high-performance web apps. Skilled in NoSQL databases, REST APIs and performance optimisations with code-splitting, debounced, indexes, and caching. Strong in JavaScript fundamentals, browser storage & internals, debugging and secure authentication. Collaborated in Agile teams using Jira and GitHub. Proficient in full-stack development, from API development in Node.js to UI implementation in React"
   },
   "projects": {
     "heading": "My Projects",
     "viewProject": "View Project",
     "0": {
       "title": "KYK Bearings",
-      "description": "Mechanical & Industrial Solutions Platform "
+      "description": "A responsive company website built with React showcasing mechanical & industrial solutions.",
+      "isMern": false
     },
     "1": {
       "title": "Accompanied",
-      "description": "Smart Social Networking Platform "
+      "description": "A MERN-based smart social networking platform enabling real-time connections and user engagement.",
+      "isMern": true
     },
     "2": {
       "title": "Rich143",
-      "description": "Fantasy Sports & Betting Platform"
+      "description": "A React-based fantasy sports and betting platform with interactive UI and live score integration.",
+      "isMern": false
     },
     "3": {
-      "title": "Food Delivery App",
-      "description": "Food delivery platform built with MERN stack."
+      "title": "Dawabazar",
+      "description": "A React-based e-commerce web application for medicines with product search, cart, and secure checkout.",
+      "isMern": false
     },
     "4": {
+      "title": "Food Delivery App",
+      "description": "A MERN-based food delivery platform with features like restaurant listings, menu browsing, cart, order tracking, and secure payments.",
+      "isMern": true
+    },
+    "5": {
       "title": "Chat Application",
-      "description": "Real-time chat application built with MERN stack."
+      "description": "A React-based real-time chat application with WebSocket support, typing indicators, and message history.",
+      "isMern": false
     }
   },
-
   "skills": {
     "heading": "My Skills",
     "experience": "Experience",
@@ -66,22 +75,21 @@
     "Auth Services": "Auth Services"
   },
 
-"experience": {
-  "heading": "Experience",
-  "0": {
-    "company": "Encanto Technologies",
-    "role": "Junior Software Developer",
-    "location": "Indore, M.P.",
-    "description": "Contributed to the development of scalable and high-performance web applications using React.js and the MERN stack. Implemented reusable components, optimized frontend performance, and integrated REST APIs. Collaborated with cross-functional teams to deliver client projects on time with a focus on clean code and responsive design."
+  "experience": {
+    "heading": "Experience",
+    "0": {
+      "company": "Encanto Technologies",
+      "role": "Junior Software Developer",
+      "location": "Indore, M.P.",
+      "description": "Contributed to the development of scalable and high-performance web applications using React.js and the MERN stack. Implemented reusable components, optimized frontend performance, and integrated REST APIs. Collaborated with cross-functional teams to deliver client projects on time with a focus on clean code and responsive design."
+    },
+    "1": {
+      "company": "Codeverse IT Private Limited",
+      "role": "Junior Software Developer",
+      "location": "Indore, M.P.",
+      "description": "Focused on frontend development with React.js and Bootstrap to build interactive and responsive user interfaces. Worked on API integration, debugging, and performance improvements. Gained hands-on experience in Agile workflows and enhanced collaboration with senior developers to ensure smooth project execution."
+    }
   },
-  "1": {
-    "company": "Codeverse IT Private Limited",
-    "role": "Junior Software Developer",
-    "location": "Indore, M.P.",
-    "description": "Focused on frontend development with React.js and Bootstrap to build interactive and responsive user interfaces. Worked on API integration, debugging, and performance improvements. Gained hands-on experience in Agile workflows and enhanced collaboration with senior developers to ensure smooth project execution."
-  }
-}
-,
   "contact": {
     "heading": "Contact Me",
     "emailLabel": "Email",

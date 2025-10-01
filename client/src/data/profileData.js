@@ -29,21 +29,22 @@ const profileData = {
       titleKey: "projects.3.title",
       descriptionKey: "projects.3.description",
       image: "https://via.placeholder.com/400x250?text=Blog+App",
-      link: "https://restaurant-website-mern-live.onrender.com/login",
+      // link: "https://restaurant-website-mern-live.onrender.com/login",
     },
     {
       id: 5,
-      titleKey: "projects.0.title",
-      descriptionKey: "projects.0.description",
+      titleKey: "projects.4.title",
+      descriptionKey: "projects.4.description",
       image: "https://via.placeholder.com/400x250?text=Doctor+App",
-      link: "https://chat-application-mern-7xfi.onrender.com/login",
+      link: "https://restaurant-website-mern-live.onrender.com/login",
+      
     },
     {
       id: 6,
-      titleKey: "projects.1.title",
-      descriptionKey: "projects.1.description",
+      titleKey: "projects.5.title",
+      descriptionKey: "projects.5.description",
       image: "https://via.placeholder.com/400x250?text=Portfolio",
-      link: "https://your-portfolio-link.com",
+      link: "https://chat-application-mern-7xfi.onrender.com/login",
     },
   ],
   skills: [
@@ -114,7 +115,7 @@ const profileData = {
     {
       name: "MongoDB",
       experience: "1 yrs",
-      level: "Advanced",
+      level: "Intermediate",
       projects: "2",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
       gradient: "bg-gradient-to-br from-green-800 to-green-500",
@@ -122,7 +123,7 @@ const profileData = {
     {
       name: "Git & GitHub",
       experience: "2 yrs",
-      level: "Intermediate",
+      level: "Advanced",
       projects: "All",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
       gradient: "bg-gradient-to-br from-zinc-800 to-zinc-500",
@@ -204,15 +205,16 @@ const profileData = {
   ],
 
   contact: {
-    email: "amardeep@example.com",
+    email: "amardeepdwivedi1494@gmail.com",
     phone: "+91-8964051727",
   },
   contactInfo: {
-    email: "yourmail@example.com",
+    email: "amardeepdwivedi1494@gmail.com",
     phone: "+91-8964051727",
     social: {
       github: "https://github.com/amardeep-SDE",
       linkedin: "https://www.linkedin.com/in/amardeepdwivedi/",
+      instagram: "https://www.instagram.com/10_amardeep_16/",
     },
   },
 };

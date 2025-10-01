@@ -16,15 +16,15 @@ const Skills = () => {
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <motion.h2
-          initial={{ opacity: 0, y: -40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-4xl sm:text-5xl font-extrabold text-center 
-                     text-gray-900 dark:text-white mb-16 tracking-wide relative inline-block"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl sm:text-4xl font-extrabold text-center mb-16 tracking-tight"
         >
-          {t("skills.heading")}
-          {/* underline highlight */}
-          <span className="absolute left-1/2 -bottom-2 w-20 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full -translate-x-1/2"></span>
+          <span className="bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+            {t("skills.heading")}
+          </span>
         </motion.h2>
 
         {/* Skills Grid */}
