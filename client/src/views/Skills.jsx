@@ -40,7 +40,7 @@ const Skills = () => {
               transition: { staggerChildren: 0.15, duration: 0.6 },
             },
           }}
-          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
                      lg:grid-cols-4 xl:grid-cols-5 gap-8"
         >
           {profileData.skills.map((skill, index) => (
