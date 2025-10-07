@@ -7,46 +7,47 @@ const profileData = {
       id: 1,
       titleKey: "projects.0.title",
       descriptionKey: "projects.0.description",
-      image: "https://via.placeholder.com/400x250?text=Doctor+App",
+      image: "https://images.pexels.com/photos/19911421/pexels-photo-19911421.jpeg", // 🏥 DawaBazar - Medical (kept as is)
       link: "https://kykbrg.in",
     },
     {
       id: 2,
       titleKey: "projects.1.title",
       descriptionKey: "projects.1.description",
-      image: "https://via.placeholder.com/400x250?text=Portfolio",
-      link: "https://accompanied.ca",
+      image: "https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg", // ⚙️ KYK Bearings - Mechanical / Bearing related image
+      link: "https://accompanied.ca/",
     },
     {
       id: 3,
       titleKey: "projects.2.title",
       descriptionKey: "projects.2.description",
-      image: "https://via.placeholder.com/400x250?text=E-Commerce",
+      image: "https://images.pexels.com/photos/187333/pexels-photo-187333.jpeg", // 🕹️ Rich143 - Gaming / Money game related image
       link: "https://rich143.com",
     },
     {
       id: 4,
       titleKey: "projects.3.title",
       descriptionKey: "projects.3.description",
-      image: "https://via.placeholder.com/400x250?text=Blog+App",
+      image: "https://images.pexels.com/photos/1424538/pexels-photo-1424538.jpeg", // 🧾 Blog App (kept as is)
       // link: "https://restaurant-website-mern-live.onrender.com/login",
     },
     {
       id: 5,
       titleKey: "projects.4.title",
       descriptionKey: "projects.4.description",
-      image: "https://via.placeholder.com/400x250?text=Doctor+App",
+      image: "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800", // 🍽️ Restaurant App (kept as is)
       link: "https://restaurant-website-mern-live.onrender.com/login",
-      
     },
     {
       id: 6,
       titleKey: "projects.5.title",
       descriptionKey: "projects.5.description",
-      image: "https://via.placeholder.com/400x250?text=Portfolio",
+      image: "https://images.pexels.com/photos/7343000/pexels-photo-7343000.jpeg", // 💬 Chat App (kept as is)
       link: "https://chat-application-mern-7xfi.onrender.com/login",
     },
-  ],
+  ]
+  ,
+
   skills: [
     {
       name: "HTML",
