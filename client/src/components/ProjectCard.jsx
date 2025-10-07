@@ -1,210 +1,89 @@
-import React, { useRef } from "react";
-import { useTranslation } from "react-i18next";
+import React from "react";
 import { motion } from "framer-motion";
-import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
-const getProjectIcons = (titleKey, isMern = false) => {
+const getProjectIcons = (isMern = true) => {
   const icons = {
     react: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     node: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
     mongo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    express: "https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg", // Fixed Express
+    express: "https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg",
     tailwind: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
   };
 
-  const stack = [icons.react, icons.tailwind]; // sabme common React + Tailwind
-
-  if (isMern) {
-    stack.push(icons.node, icons.express, icons.mongo); // MERN ke liye extra
-  }
-
+  const stack = [icons.react, icons.tailwind];
+  if (isMern) stack.push(icons.node, icons.express, icons.mongo);
   return stack;
 };
 
-
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, reverse }) => {
   const { t } = useTranslation();
-  const techIcons = getProjectIcons(project.titleKey, project.isMern);
-  const cardRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    const card = cardRef.current;
-    const { left, top, width, height } = card.getBoundingClientRect();
-    const x = (e.clientX - left) / width - 0.5;
-    const y = (e.clientY - top) / height - 0.5;
-    card.style.transform = `rotateY(${x * 20}deg) rotateX(${y * -20}deg) scale(1.02)`;
-  };
-
-  const handleMouseLeave = () => {
-    cardRef.current.style.transform = `rotateY(0deg) rotateX(0deg) scale(1)`;
-  };
+  const techIcons = getProjectIcons(true);
 
   return (
-    <CardWrapper>
+    <motion.div
+      initial={{ opacity: 0, x: reverse ? 120 : -120 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className={`flex flex-col md:flex-row items-center gap-12 ${
+        reverse ? "md:flex-row-reverse" : ""
+      }`}
+    >
+      {/* Project Image */}
       <motion.div
-        className="card"
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        initial={{ opacity: 0, y: 60, scale: 0.9 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 200 }}
+        className="relative w-full md:w-1/2 rounded-2xl overflow-hidden shadow-xl group"
       >
-        <div className="glow-border" />
-        <div className="content">
-          <motion.div className="icon-row">
-            {techIcons.map((src, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ scale: 1.25, rotate: 8 }}
-                transition={{ type: "spring", stiffness: 200 }}
-                className="icon-wrapper"
-              >
-                <img src={src} alt="tech-icon" className="tech-icon" />
-              </motion.div>
-            ))}
-          </motion.div>
+        <img
+          src={project.image}
+          alt={t(project.titleKey)}
+          className="w-full h-72 object-cover rounded-2xl"
+        />
 
-          <motion.h3
-            className="title"
-            whileHover={{ textShadow: "0px 0px 15px rgba(96,165,250,0.9)" }}
-          >
-            {t(project.titleKey)}
-          </motion.h3>
-          <p className="desc">{t(project.descriptionKey)}</p>
+        {/* Glass Glow Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-400/10 to-purple-500/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+      </motion.div>
 
+      {/* Text Content */}
+      <div className="w-full md:w-1/2 text-center md:text-left space-y-4">
+        <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+          {t(project.titleKey)}
+        </h3>
+
+        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+          {t(project.descriptionKey)}
+        </p>
+
+        <div className="flex justify-center md:justify-start flex-wrap gap-4 mt-3">
+          {techIcons.map((src, i) => (
+            <motion.img
+              key={i}
+              src={src}
+              alt="tech"
+              className="w-10 h-10 bg-white dark:bg-gray-800 p-2 rounded-full shadow-md"
+              whileHover={{ scale: 1.2, rotate: 8 }}
+              transition={{ type: "spring", stiffness: 200 }}
+            />
+          ))}
+        </div>
+
+        {project.link && (
           <motion.a
             href={project.link}
             target="_blank"
             rel="noreferrer"
-            className="button"
             whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.92 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block mt-5 px-6 py-3 rounded-lg text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 shadow-md hover:shadow-xl transition"
           >
             {t("projects.viewProject")}
           </motion.a>
-        </div>
-      </motion.div>
-    </CardWrapper>
+        )}
+      </div>
+    </motion.div>
   );
 };
 
 export default ProjectCard;
-
-const CardWrapper = styled.div`
-  perspective: 1200px;
-
-  .card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px) saturate(160%);
-    border-radius: 20px;
-    padding: 2rem;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    transform-style: preserve-3d;
-    text-align: center;
-    color: #1f2937;
-    overflow: hidden;
-  }
-
-  .glow-border {
-    position: absolute;
-    inset: 0;
-    padding: 2px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #93c5fd, #c4b5fd, #f9a8d4);
-    background-size: 250% 250%;
-    animation: borderGlow 10s ease infinite;
-    z-index: 0;
-    opacity: 0.6;
-  }
-
-  .content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-
-  @keyframes borderGlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  .icon-row {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .icon-wrapper {
-    background: rgba(255, 255, 255, 0.6);
-    padding: 0.6rem;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.08);
-    transition: all 0.25s ease;
-  }
-
-  .icon-wrapper:hover {
-    box-shadow: 0 0 14px rgba(147, 197, 253, 0.6);
-  }
-
-  .tech-icon {
-    width: 36px;
-    height: 36px;
-    opacity: 0.9;
-  }
-
-  .title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #111827;
-  }
-
-  .desc {
-    font-size: 0.95rem;
-    color: #4b5563;
-    max-width: 85%;
-    line-height: 1.5;
-  }
-
-  .button {
-    margin-top: 1rem;
-    padding: 0.7rem 1.4rem;
-    border-radius: 12px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    background: linear-gradient(90deg, #3b82f6, #93c5fd);
-    color: #fff;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
-  }
-
-  .button:hover {
-    background: linear-gradient(90deg, #60a5fa, #3b82f6);
-    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .card {
-      background: rgba(30, 41, 59, 0.85);
-      color: #f9fafb;
-    }
-    .title { color: #f3f4f6; }
-    .desc { color: #d1d5db; }
-  }
-`;
-
