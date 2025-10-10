@@ -95,6 +95,7 @@
   "contact": {
     "heading": "संपर्क करें",
     "emailLabel": "ईमेल",
+    "altEmailLabel": "वैकल्पिक ईमेल",
     "phoneLabel": "फोन",
     "locationLabel": "स्थान",
     "location": "इंदौर, मध्य प्रदेश, भारत",

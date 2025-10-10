@@ -56,14 +56,14 @@ const Contact = () => {
   return (
     <section className="relative py-20 px-6 bg-gradient-to-br from-indigo-50 via-white to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Toaster position="top-right" reverseOrder={false} />
-      
+
       <div className="max-w-6xl mx-auto space-y-16">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-extrabold text-center bg-gradient-to-r from-indigo-600 to-pink-500 bg-clip-text text-transparent"
+          className="text-3xl sm:text-4xl font-extrabold text-center bg-gradient-to-r from-indigo-600 to-pink-500 bg-clip-text text-transparent"
         >
           {t("contact.heading")}
         </motion.h2>
@@ -82,6 +82,13 @@ const Contact = () => {
               label={t("contact.emailLabel")}
               value={contact.email}
               href={`mailto:${contact.email}`}
+
+            />
+            <ContactItem
+              icon={<FiMail />}
+              label={t("contact.altEmailLabel")}   // translation key for second label
+              value={contact.alternateEmail}       // new email field
+              href={`mailto:${contact.alternateEmail}`}
             />
             <ContactItem
               icon={<FiPhone />}
@@ -168,7 +175,9 @@ const ContactItem = ({ icon, label, value, href }) => (
       {href ? (
         <a
           href={href}
-          className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+          className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition block"
+          // target="_blank"
+          rel="noopener noreferrer"
         >
           {value}
         </a>
@@ -178,6 +187,7 @@ const ContactItem = ({ icon, label, value, href }) => (
     </div>
   </motion.div>
 );
+
 
 const FloatingInput = ({ icon, type, field, placeholder, focused, setFocused, value, onChange }) => (
   <div className="relative">
@@ -192,9 +202,8 @@ const FloatingInput = ({ icon, type, field, placeholder, focused, setFocused, va
       className="w-full pl-10 p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/60 dark:bg-gray-700/60 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
     />
     <label
-      className={`absolute left-10 top-3 transition-all duration-300 text-gray-400 pointer-events-none ${
-        focused[field] ? "opacity-0" : "opacity-100"
-      }`}
+      className={`absolute left-10 top-3 transition-all duration-300 text-gray-400 pointer-events-none ${focused[field] ? "opacity-0" : "opacity-100"
+        }`}
     >
       {placeholder} <span className="text-red-500">*</span>
     </label>
@@ -214,9 +223,8 @@ const FloatingTextarea = ({ icon, field, placeholder, focused, setFocused, value
       className="w-full pl-10 p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/60 dark:bg-gray-700/60 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
     />
     <label
-      className={`absolute left-10 top-3 transition-all duration-300 text-gray-400 pointer-events-none ${
-        focused[field] ? "opacity-0" : "opacity-100"
-      }`}
+      className={`absolute left-10 top-3 transition-all duration-300 text-gray-400 pointer-events-none ${focused[field] ? "opacity-0" : "opacity-100"
+        }`}
     >
       {placeholder}
     </label>

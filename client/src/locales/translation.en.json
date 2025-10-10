@@ -93,6 +93,7 @@
   "contact": {
     "heading": "Contact Me",
     "emailLabel": "Email",
+    "altEmailLabel": "Alternate Email",
     "phoneLabel": "Phone",
     "locationLabel": "Location",
     "location": "Indore, Madhya Pradesh, India",

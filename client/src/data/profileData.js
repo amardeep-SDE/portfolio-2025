@@ -207,10 +207,12 @@ const profileData = {
 
   contact: {
     email: "amardeepdwivedi1494@gmail.com",
+    alternateEmail: "amardeepdwivedi1494@zohomail.in", // 👈 new email
     phone: "+91-8964051727",
   },
   contactInfo: {
     email: "amardeepdwivedi1494@gmail.com",
+    alternateEmail: "amardeepdwivedi1494@zohomail.in", // 👈 new email
     phone: "+91-8964051727",
     social: {
       github: "https://github.com/amardeep-SDE",
@@ -218,6 +220,7 @@ const profileData = {
       instagram: "https://www.instagram.com/10_amardeep_16/",
     },
   },
+
 };
 
 export default profileData;
