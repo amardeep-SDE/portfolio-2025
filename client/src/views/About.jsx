@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import profileData from "../data/profileData";
 import { Typewriter } from "react-simple-typewriter";
-import { FaUserTie, FaMapMarkerAlt, FaEye, FaDownload } from "react-icons/fa";
+import { FaUserTie, FaMapMarkerAlt, FaEye, FaDownload, FaTimes  } from "react-icons/fa";
 
 const About = () => {
   const { t } = useTranslation();
-
+  const [resumeOpen, setResumeOpen] = useState(false);
   return (
     <section
       id="about"
@@ -60,16 +60,15 @@ const About = () => {
 
           {/* Resume Section */}
           <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-6">
-            <a
-              href={profileData.resume}
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* View Resume Modal Trigger */}
+            <button
+              onClick={() => setResumeOpen(true)}
               className="flex items-center gap-2 px-6 py-3 rounded-xl 
-               bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium 
-               shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                         bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium 
+                         shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
               <FaEye /> View Resume
-            </a>
+            </button>
 
             <a
               href={profileData.resume}
@@ -104,6 +103,26 @@ const About = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Resume Modal */}
+      {resumeOpen && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 p-4 overflow-auto">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl md:h-[90vh] h-[80vh] relative">
+            <button
+              onClick={() => setResumeOpen(false)}
+              className="absolute top-3 right-3 text-xl text-gray-600 hover:text-gray-900"
+            >
+              <FaTimes />
+            </button>
+            <iframe
+              src={profileData.resume}
+              title="Resume"
+              className="w-full h-full rounded-xl"
+              style={{ border: "none" }}
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
