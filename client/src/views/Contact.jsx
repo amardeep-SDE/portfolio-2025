@@ -54,7 +54,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-br from-indigo-50 via-white to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section id="contact" className="relative py-20 px-6 bg-gradient-to-br from-indigo-50 via-white to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Toaster position="top-right" reverseOrder={false} />
 
       <div className="max-w-6xl mx-auto space-y-16">
