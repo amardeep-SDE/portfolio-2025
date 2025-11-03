@@ -72,7 +72,7 @@ const About = () => {
 
             <a
               href={profileData.resume}
-              download="amardeep_resume_2YOE.pdf"
+              download="amardeep_dev_2YOE.pdf"
               className="flex items-center gap-2 px-6 py-3 rounded-xl 
                bg-gradient-to-r from-pink-500 to-red-500 text-white font-medium 
                shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
