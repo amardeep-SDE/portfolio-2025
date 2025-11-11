@@ -59,27 +59,64 @@ const About = () => {
           </p>
 
           {/* Resume Section */}
-          <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-6">
-            {/* View Resume Modal Trigger */}
-            <button
-              onClick={() => setResumeOpen(true)}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl 
-                         bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium 
-                         shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
-            >
-              <FaEye /> View Resume
-            </button>
+        <div className="flex flex-wrap gap-8 justify-center md:justify-start mt-10">
 
-            <a
-              href={profileData.resume}
-              download="amardeep_dev_resume_2+YOE.pdf"
-              className="flex items-center gap-2 px-6 py-3 rounded-xl 
-               bg-gradient-to-r from-pink-500 to-red-500 text-white font-medium 
-               shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
-            >
-              <FaDownload /> Download Resume
-            </a>
-          </div>
+  {/* View Resume */}
+  <button
+    onClick={() => setResumeOpen(true)}
+    className="group relative px-8 py-4 rounded-2xl font-semibold text-white
+               bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+               shadow-[0_0_25px_rgba(147,51,234,0.5)]
+               transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
+               transform hover:rotate-y-12 hover:-rotate-x-6 hover:scale-[1.08]
+               perspective-[800px] overflow-hidden"
+    style={{ transformStyle: "preserve-3d" }}
+  >
+    {/* Rotating Gradient Overlay */}
+    <span className="absolute inset-0 bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400
+                     animate-[gradientShift_5s_linear_infinite] opacity-40" />
+
+    {/* Reflection Line */}
+    <span className="absolute top-0 left-[-100%] w-[120%] h-full bg-white/20
+                     transform skew-x-[20deg] group-hover:left-[120%]
+                     transition-all duration-[1200ms] ease-in-out" />
+
+    {/* Content */}
+    <span className="relative z-10 flex items-center gap-2 text-lg">
+      <FaEye className="group-hover:rotate-12 group-hover:text-yellow-200 transition-all duration-500" />
+      View Resume
+    </span>
+  </button>
+
+  {/* Download Resume */}
+  <a
+    href={profileData.resume}
+    download="amardeep_dev_resume_2+YOE.pdf"
+    className="group relative px-8 py-4 rounded-2xl font-semibold text-white
+               bg-gradient-to-r from-red-500 via-pink-500 to-orange-500
+               shadow-[0_0_25px_rgba(244,63,94,0.6)]
+               transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
+               transform hover:rotate-y-12 hover:rotate-x-6 hover:scale-[1.08]
+               perspective-[800px] overflow-hidden"
+    style={{ transformStyle: "preserve-3d" }}
+  >
+    {/* Dynamic gradient animation */}
+    <span className="absolute inset-0 bg-gradient-to-r from-orange-400 via-pink-400 to-red-400
+                     animate-[gradientShift_5s_linear_infinite] opacity-40" />
+
+    {/* Moving reflection */}
+    <span className="absolute top-0 left-[-100%] w-[120%] h-full bg-white/20
+                     transform skew-x-[20deg] group-hover:left-[120%]
+                     transition-all duration-[1200ms] ease-in-out" />
+
+    {/* Button content */}
+    <span className="relative z-10 flex items-center gap-2 text-lg">
+      <FaDownload className="group-hover:-rotate-12 group-hover:text-yellow-200 transition-all duration-500" />
+      Download Resume
+    </span>
+  </a>
+</div>
+
         </motion.div>
 
         {/* Right Side: Image */}
