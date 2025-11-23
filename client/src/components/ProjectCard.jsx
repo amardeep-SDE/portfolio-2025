@@ -26,20 +26,20 @@ const ProjectCard = ({ project, reverse }) => {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
       viewport={{ once: true }}
-      className={`flex flex-col md:flex-row items-center gap-6 p-3 ${
+      className={`flex flex-col md:flex-row items-center gap-12 ${
         reverse ? "md:flex-row-reverse" : ""
-      } max-w-[850px] mx-auto`}
+      }`}
     >
       {/* Project Image */}
       <motion.div
-        whileHover={{ scale: 1.03 }}
-        transition={{ type: "spring", stiffness: 180 }}
-        className="relative w-full md:w-[45%] rounded-xl overflow-hidden shadow-lg group"
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 200 }}
+        className="relative w-full md:w-1/2 rounded-2xl overflow-hidden shadow-xl group"
       >
         <img
           src={project.image}
           alt={t(project.titleKey)}
-          className="w-full h-56 object-cover rounded-xl"
+          className="w-full h-72 object-cover rounded-2xl"
         />
 
         {/* Glass Glow Overlay */}
@@ -47,25 +47,24 @@ const ProjectCard = ({ project, reverse }) => {
       </motion.div>
 
       {/* Text Content */}
-      <div className="w-full md:w-[50%] text-center md:text-left space-y-3">
-        <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+      <div className="w-full md:w-1/2 text-center md:text-left space-y-4">
+        <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
           {t(project.titleKey)}
         </h3>
 
-        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
           {t(project.descriptionKey)}
         </p>
 
-        {/* Tech Icons */}
-        <div className="flex justify-center md:justify-start flex-wrap gap-3 mt-2">
+        <div className="flex justify-center md:justify-start flex-wrap gap-4 mt-3">
           {techIcons.map((src, i) => (
             <motion.img
               key={i}
               src={src}
               alt="tech"
-              className="w-8 h-8 bg-white dark:bg-gray-800 p-[6px] rounded-full shadow-md"
-              whileHover={{ scale: 1.15, rotate: 8 }}
-              transition={{ type: "spring", stiffness: 180 }}
+              className="w-10 h-10 bg-white dark:bg-gray-800 p-2 rounded-full shadow-md"
+              whileHover={{ scale: 1.2, rotate: 8 }}
+              transition={{ type: "spring", stiffness: 200 }}
             />
           ))}
         </div>
@@ -75,9 +74,9 @@ const ProjectCard = ({ project, reverse }) => {
             href={project.link}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block mt-4 px-4 py-2 text-sm rounded-lg text-white font-medium bg-gradient-to-r from-indigo-500 to-purple-600 shadow-md hover:shadow-xl transition"
+            className="inline-block mt-5 px-6 py-3 rounded-lg text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 shadow-md hover:shadow-xl transition"
           >
             {t("projects.viewProject")}
           </motion.a>
