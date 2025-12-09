@@ -11,14 +11,21 @@ const WhatsAppButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       className="
-        fixed bottom-5 right-5 
-        bg-green-500 text-white p-4 rounded-full shadow-lg 
-        hover:bg-green-600 
-        transition-all duration-300 z-50
-        animate-pulse hover:scale-110
+        fixed bottom-6 right-6 z-50
+        flex items-center justify-center
+        w-16 h-16
+        bg-gradient-to-br from-green-500 to-green-600
+        text-white rounded-full shadow-2xl
+        hover:from-green-600 hover:to-green-700
+        transition-all duration-300
+
+        ring-2 ring-green-300 ring-offset-2
+
+        hover:scale-110 hover:ring-4 hover:ring-green-400
+        animate-[pulse_2s_infinite]
       "
     >
-      <FaWhatsapp size={28} />
+      <FaWhatsapp size={32} />
     </a>
   );
 };
