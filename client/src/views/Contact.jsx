@@ -164,29 +164,65 @@ const Contact = () => {
 
 const ContactItem = ({ icon, label, value, href }) => (
   <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="flex items-start gap-4 p-4 rounded-xl bg-white/70 dark:bg-gray-800/60 shadow-md border border-gray-200 dark:border-gray-700 transition"
+    whileHover={{ y: -6, scale: 1.02 }}
+    transition={{ type: "spring", stiffness: 200, damping: 15 }}
+    className="
+      group relative overflow-hidden
+      flex items-center gap-5 p-5
+      rounded-2xl
+      bg-white/70 dark:bg-gray-800/70
+      backdrop-blur-xl
+      border border-white/30 dark:border-gray-700
+      shadow-lg hover:shadow-2xl
+    "
   >
-    <div className="text-indigo-600 dark:text-indigo-400 text-2xl">{icon}</div>
-    <div>
-      <p className="text-lg font-semibold text-gray-900 dark:text-white">
+    {/* Glow on hover */}
+    <span className="
+      absolute inset-0 opacity-0 group-hover:opacity-100
+      bg-gradient-to-r from-indigo-500/10 to-pink-500/10
+      transition
+    " />
+
+    {/* Icon badge */}
+    <div className="
+      relative z-10
+      w-12 h-12 flex items-center justify-center
+      rounded-xl
+      bg-gradient-to-br from-indigo-600 to-pink-500
+      text-white text-xl
+      shadow-md
+    ">
+      {icon}
+    </div>
+
+    {/* Text content */}
+    <div className="relative z-10">
+      <p className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400">
         {label}
       </p>
+
       {href ? (
         <a
           href={href}
-          className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition block"
-          // target="_blank"
+          className="
+            block text-lg font-semibold
+            text-gray-900 dark:text-white
+            hover:text-indigo-600 dark:hover:text-indigo-400
+            transition
+          "
           rel="noopener noreferrer"
         >
           {value}
         </a>
       ) : (
-        <p className="text-gray-700 dark:text-gray-300">{value}</p>
+        <p className="text-lg font-semibold text-gray-900 dark:text-white">
+          {value}
+        </p>
       )}
     </div>
   </motion.div>
 );
+
 
 
 const FloatingInput = ({ icon, type, field, placeholder, focused, setFocused, value, onChange }) => (
