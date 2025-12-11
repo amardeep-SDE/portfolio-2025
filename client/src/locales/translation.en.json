@@ -88,7 +88,14 @@
       "role": "Junior Software Developer",
       "location": "Indore, M.P.",
       "description": "Focused on frontend development with React.js and Bootstrap to build interactive and responsive user interfaces. Worked on API integration, debugging, and performance improvements. Gained hands-on experience in Agile workflows and enhanced collaboration with senior developers to ensure smooth project execution."
-    }
+    },
+    "2": {
+  "company": "Suffescom Solutions",
+  "role": "Junior Software Developer",
+  "location": "Mohali, Punjab",
+  "description": "Worked on building modern and user-friendly web interfaces using React.js and Tailwind CSS. Collaborated with backend teams to integrate REST APIs, improved UI performance, and contributed to reusable component development. Enhanced understanding of real-world project workflows and strengthened problem-solving skills through active participation in development tasks."
+}
+
   },
   "contact": {
     "heading": "Contact Me",
