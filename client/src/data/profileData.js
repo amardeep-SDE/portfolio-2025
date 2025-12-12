@@ -160,7 +160,7 @@ experience: [
     companyKey: "experience.2.company",
     roleKey: "experience.2.role",
     locationKey: "experience.2.location",
-    duration: "Dec 2022 – Present",
+    duration: "Dec 2025 – Present",
     descriptionKey: "experience.2.description",
     skills: [
       "HTML",
