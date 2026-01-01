@@ -156,23 +156,23 @@ const profileData = {
   ],
 experience: [
    // ⭐ NEW EXPERIENCE ADDED BELOW
-  {
-    companyKey: "experience.2.company",
-    roleKey: "experience.2.role",
-    locationKey: "experience.2.location",
-    duration: "Dec 2025 – Present",
-    descriptionKey: "experience.2.description",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React",
-      "Bootstrap",
-      "Git",
-      "REST APIs",
-      "Responsive Design"
-    ],
-  },
+  // {
+  //   companyKey: "experience.2.company",
+  //   roleKey: "experience.2.role",
+  //   locationKey: "experience.2.location",
+  //   duration: "Dec 2025 – Present",
+  //   descriptionKey: "experience.2.description",
+  //   skills: [
+  //     "HTML",
+  //     "CSS",
+  //     "JavaScript",
+  //     "React",
+  //     "Bootstrap",
+  //     "Git",
+  //     "REST APIs",
+  //     "Responsive Design"
+  //   ],
+  // },
   {
     companyKey: "experience.1.company",
     roleKey: "experience.1.role",
