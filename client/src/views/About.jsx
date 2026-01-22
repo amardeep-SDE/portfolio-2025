@@ -91,7 +91,7 @@ const About = () => {
   {/* Download Resume */}
   <a
     href={profileData.resume}
-    download="amardeep_dev_resume_2+YOE.pdf"
+    download="amardeep_MERN_2.5+YOE_26.pdf"
     className="group relative px-8 py-4 rounded-2xl font-semibold text-white
                bg-gradient-to-r from-red-500 via-pink-500 to-orange-500
                shadow-[0_0_25px_rgba(244,63,94,0.6)]
