@@ -109,7 +109,7 @@ const Navbar = () => {
       </section>
 
       {/* 🔥 Spacer so content doesn't hide under fixed header */}
-      <div className="h-[80px]" />
+      <div className="h-[10px]" />
 
       {/* Mobile Menu */}
       <AnimatePresence>
