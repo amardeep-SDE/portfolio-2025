@@ -51,7 +51,7 @@ const profileData = {
   skills: [
     {
       name: "HTML",
-      experience: "2+ yrs",
+      experience: "3 yrs",
       level: "Advanced",
       projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
@@ -59,7 +59,7 @@ const profileData = {
     },
     {
       name: "CSS",
-      experience: "2+ yrs",
+      experience: "3 yrs",
       level: "Advanced",
       projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
@@ -67,7 +67,7 @@ const profileData = {
     },
     {
       name: "JavaScript",
-      experience: "2+ yrs",
+      experience: "3 yrs",
       level: "Advanced",
       projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
@@ -75,7 +75,7 @@ const profileData = {
     },
     {
       name: "React.js",
-      experience: "2+ yrs",
+      experience: "3 yrs",
       level: "Advanced",
       projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -83,15 +83,15 @@ const profileData = {
     },
     {
       name: "Redux Toolkit",
-      experience: "2 yrs",
+      experience: "3 yrs",
       level: "Advanced",
-      projects: "3",
+      projects: "5",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
       gradient: "bg-gradient-to-br from-purple-500 to-purple-300",
     },
     {
       name: "Tailwind CSS",
-      experience: "2 yrs",
+      experience: "3 yrs",
       level: "Advanced",
       projects: "3",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
@@ -123,7 +123,7 @@ const profileData = {
     },
     {
       name: "Git & GitHub",
-      experience: "2 yrs",
+      experience: "3 yrs",
       level: "Advanced",
       projects: "All",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
