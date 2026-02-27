@@ -18,43 +18,39 @@
     "role": "MERN Developer",
     "role2": "Frontend Developer",
     "role3": "Backend Developer",
-    "location": "Indore, M.P.",
+   "location": "Chandigarh, India",
    "description": "Software Developer with 3 years of experience in Frontend and MERN Stack development, focused on delivering scalable and high-performance web applications. Strong in JavaScript fundamentals and browser internals, with expertise in performance optimization, secure authentication and authorization, debugging, and Agile collaboration. Proficient in full-stack development, from building REST APIs in Node.js to crafting responsive user interfaces in React."
   },
-  "projects": {
-    "heading": "My Projects",
-    "viewProject": "View Project",
-    "0": {
-      "title": "KYK Bearings",
-      "description": "A responsive company website built with React showcasing mechanical & industrial solutions.",
-      "isMern": false
-    },
-    "1": {
-      "title": "Accompanied",
-      "description": "A MERN-based smart social networking platform enabling real-time connections and user engagement.",
-      "isMern": true
-    },
-    "2": {
-      "title": "Rich143",
-      "description": "A React-based fantasy sports and betting platform with interactive UI and live score integration.",
-      "isMern": false
-    },
-    "3": {
-      "title": "Dawabazar",
-      "description": "A React-based e-commerce web application for medicines with product search, cart, and secure checkout.",
-      "isMern": false
-    },
-    "4": {
-      "title": "Food Delivery App",
-      "description": "A MERN-based food delivery platform with features like restaurant listings, menu browsing, cart, order tracking, and secure payments.",
-      "isMern": true
-    },
-    "5": {
-      "title": "Chat Application",
-      "description": "A React-based real-time chat application with WebSocket support, typing indicators, and message history.",
-      "isMern": false
-    }
+"projects": {
+  "heading": "My Projects",
+  "viewProject": "View Project",
+
+  "0": {
+    "title": "Notary Platform",
+    "description": "A digital notary system with Admin, B2B, and B2C modules, handling document workflows, role-based access, and secure user management.",
+    "isMern": true
   },
+  "1": {
+    "title": "Institute on Governance",
+    "description": "A government survey platform focused on stabilizing workflows, resolving frontend-backend issues, and improving overall system reliability.",
+    "isMern": true
+  },
+  "2": {
+    "title": "Edu Smart",
+    "description": "An LMS platform with enhanced dashboards and student modules, achieving ~20% performance improvement through caching and optimized queries.",
+    "isMern": true
+  },
+  "3": {
+    "title": "Accompanied",
+    "description": "A MERN-based social event platform with optimized frontend-backend integration and improved performance by ~25–30%.",
+    "isMern": true
+  },
+  "4": {
+    "title": "Dawa Bazar",
+    "description": "A B2B medical e-commerce admin panel built with React, improving workflow efficiency by ~30% through optimized rendering and state management.",
+    "isMern": false
+  }
+},
   "skills": {
     "heading": "My Skills",
     "experience": "Experience",
