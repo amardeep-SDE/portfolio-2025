@@ -75,29 +75,27 @@
     "Auth Services": "Auth Services"
   },
 
-  "experience": {
-    "heading": "Experience",
-    "0": {
-      "company": "Encanto Technologies",
-      "role": "Junior Software Developer",
-      "location": "Indore, M.P.",
-      "description": "Contributed to the development of scalable and high-performance web applications using React.js and the MERN stack. Implemented reusable components, optimized frontend performance, and integrated REST APIs. Collaborated with cross-functional teams to deliver client projects on time with a focus on clean code and responsive design."
-    },
-    "1": {
-      "company": "Codeverse IT Private Limited",
-      "role": "Junior Software Developer",
-      "location": "Indore, M.P.",
-      "description": "Focused on frontend development with React.js and Bootstrap to build interactive and responsive user interfaces. Worked on API integration, debugging, and performance improvements. Gained hands-on experience in Agile workflows and enhanced collaboration with senior developers to ensure smooth project execution."
-    },
-    "2": {
-  "company": "Suffescom Solutions",
-  "role": "Junior Software Developer",
-  "location": "Mohali, Punjab",
-  "description": "Working as a MERN Stack Developer, developing full-stack applications using React.js, Node.js, Express.js, and MongoDB. Building responsive UIs, creating REST APIs, integrating backend services, and optimizing application performance."
-
-}
-
+"experience": {
+  "heading": "Experience",
+  "0": {
+    "company": "Encanto Technologies",
+    "role": "Software Developer",
+    "location": "Indore, M.P.",
+    "description": "Contributed to the development of scalable and high-performance web applications using React.js and the MERN stack. Implemented reusable components, optimized frontend performance, and integrated REST APIs. Collaborated with cross-functional teams to deliver client projects on time with a focus on clean code and responsive design."
   },
+  "1": {
+    "company": "Codeverse IT Private Limited",
+    "role": "React Developer",
+    "location": "Indore, M.P.",
+    "description": "Focused on frontend development with React.js and Bootstrap to build interactive and responsive user interfaces. Worked on API integration, debugging, and performance improvements. Gained hands-on experience in Agile workflows and enhanced collaboration with senior developers to ensure smooth project execution."
+  },
+  "2": {
+    "company": "Suffescom Solutions",
+    "role": "MERN Stack Developer",
+    "location": "Mohali, Punjab",
+    "description": "Working as a MERN Stack Developer, developing full-stack applications using React.js, Node.js, Express.js, and MongoDB. Building responsive UIs, creating REST APIs, integrating backend services, and optimizing application performance."
+  }
+},
   "contact": {
     "heading": "Contact Me",
     "emailLabel": "Email",
