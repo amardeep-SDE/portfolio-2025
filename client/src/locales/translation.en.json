@@ -27,7 +27,7 @@
 
   "0": {
     "title": "Notary Platform",
-    "description": "A digital notary system with Admin, B2B, and B2C modules, handling document workflows, role-based access, and secure user management.",
+    "description": "A MERN-based digital notary platform with Admin, B2B, and B2C modules, handling document workflows, user management, and role-based access control. Implemented real-time video calling using Agora SDK and chat using Socket.IO for secure client–notary communication.",
     "isMern": true
   },
   "1": {
