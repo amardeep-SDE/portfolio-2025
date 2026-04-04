@@ -77,19 +77,19 @@
     "company": "Encanto Technologies",
     "role": "Software Developer",
     "location": "Indore, M.P.",
-    "description": "Contributed to the development of scalable and high-performance web applications using React.js and the MERN stack. Implemented reusable components, optimized frontend performance, and integrated REST APIs. Collaborated with cross-functional teams to deliver client projects on time with a focus on clean code and responsive design."
+    "description": "Worked on developing scalable web applications using React.js and the MERN stack. Built reusable UI components, improved application performance, and integrated RESTful APIs. Coordinated with designers and backend developers to deliver responsive and user-friendly applications on time."
   },
   "1": {
     "company": "Codeverse IT Private Limited",
     "role": "React Developer",
     "location": "Indore, M.P.",
-    "description": "Focused on frontend development with React.js and Bootstrap to build interactive and responsive user interfaces. Worked on API integration, debugging, and performance improvements. Gained hands-on experience in Agile workflows and enhanced collaboration with senior developers to ensure smooth project execution."
+    "description": "Developed responsive and interactive user interfaces using React.js and Bootstrap. Handled API integration, fixed UI bugs, and optimized frontend performance. Worked in an Agile environment and collaborated with the development team to complete project tasks efficiently."
   },
   "2": {
     "company": "Suffescom Solutions",
     "role": "MERN Stack Developer",
     "location": "Mohali, Punjab",
-    "description": "Working as a MERN Stack Developer, developing full-stack applications using React.js, Node.js, Express.js, and MongoDB. Building responsive UIs, creating REST APIs, integrating backend services, and optimizing application performance."
+    "description": "Currently working as a MERN Stack Developer, building full-stack web applications using React.js, Node.js, Express.js, and MongoDB. Developing REST APIs, integrating backend services, and ensuring application performance, scalability, and responsive design."
   }
 },
   "contact": {
