@@ -30,6 +30,7 @@ const ProjectCard = ({ project, index }) => {
         shadow-sm
         hover:shadow-2xl
         transition-all duration-300
+        cursor-pointer
       "
     >
       {/* IMAGE */}
@@ -101,6 +102,7 @@ const ProjectCard = ({ project, index }) => {
               text-white
               hover:opacity-90
               transition
+              cursor-pointer
             "
           >
             {t("projects.viewProject")} →
