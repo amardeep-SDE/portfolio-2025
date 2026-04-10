@@ -13,7 +13,7 @@ const WhatsAppButton = () => {
       className="
         fixed bottom-6 right-6 z-50
         flex items-center justify-center
-        w-16 h-16
+        w-12 h-12
         bg-gradient-to-br from-green-500 to-green-600
         text-white rounded-full shadow-2xl
         hover:from-green-600 hover:to-green-700
