@@ -37,7 +37,7 @@ const About = () => {
           <p className="text-xl sm:text-2xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400 flex items-center justify-center md:justify-start gap-2 mb-3">
             <FaUserTie className="text-indigo-500 dark:text-indigo-400" />
             <Typewriter
-              words={[t("about.role"), t("about.role2")]}
+              words={[t("about.role"), t("about.role2"), t("about.role3")]}
               loop={0}
               cursor
               cursorStyle="|"
