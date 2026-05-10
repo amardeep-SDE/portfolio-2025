@@ -92,7 +92,7 @@ const profileData = {
     },
     {
       name: "Node.js",
-      experience: "1 yrs",
+      experience: "1.5 yrs",
       level: "Intermediate",
       projects: "2",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
@@ -100,7 +100,7 @@ const profileData = {
     },
     {
       name: "Express.js",
-      experience: "1 yrs",
+      experience: "1.5 yrs",
       level: "Intermediate",
       projects: "2",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
@@ -108,7 +108,7 @@ const profileData = {
     },
     {
       name: "MongoDB",
-      experience: "1 yrs",
+      experience: "1.5 yrs",
       level: "Intermediate",
       projects: "2",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
