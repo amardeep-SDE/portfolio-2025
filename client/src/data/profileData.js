@@ -130,14 +130,14 @@ const profileData = {
     //   icon: "https://avatars.githubusercontent.com/u/25720743?s=200&v=4",
     //   gradient: "bg-gradient-to-br from-indigo-600 to-purple-500"
     // },
-    // {
-    //   name: "Socket.IO",
-    //   experience: "1 yr",
-    //   level: "Beginner",
-    //   projects: "1",
-    //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
-    //   gradient: "bg-gradient-to-br from-gray-700 to-black"
-    // },
+    {
+      name: "Socket.IO",
+      experience: "1 yr",
+      level: "Beginner",
+      projects: "1",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
+      gradient: "bg-gradient-to-br from-gray-700 to-black"
+    },
     // {
     //   name: "Auth Services",
     //   experience: "1 yr",
