@@ -122,14 +122,14 @@ const profileData = {
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
       gradient: "bg-gradient-to-br from-zinc-800 to-zinc-500",
     },
-    // {
-    //   name: "Razorpay",
-    //   experience: "1 yr",
-    //   level: "Intermediate",
-    //   projects: "2",
-    //   icon: "https://avatars.githubusercontent.com/u/25720743?s=200&v=4",
-    //   gradient: "bg-gradient-to-br from-indigo-600 to-purple-500"
-    // },
+    {
+      name: "Razorpay",
+      experience: "1 yr",
+      level: "Intermediate",
+      projects: "2",
+      icon: "https://avatars.githubusercontent.com/u/25720743?s=200&v=4",
+      gradient: "bg-gradient-to-br from-indigo-600 to-purple-500"
+    },
     {
       name: "Socket.IO",
       experience: "1 yr",
@@ -138,14 +138,14 @@ const profileData = {
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
       gradient: "bg-gradient-to-br from-gray-700 to-black"
     },
-    // {
-    //   name: "Auth Services",
-    //   experience: "1 yr",
-    //   level: "Beginner",
-    //   projects: "1",
-    //   icon: "https://cdn-icons-png.flaticon.com/512/2913/2913136.png", // common icon for auth
-    //   gradient: "bg-gradient-to-br from-purple-500 to-pink-400"
-    // }
+    {
+      name: "Auth Services",
+      experience: "1 yr",
+      level: "Beginner",
+      projects: "1",
+      icon: "https://cdn-icons-png.flaticon.com/512/2913/2913136.png", // common icon for auth
+      gradient: "bg-gradient-to-br from-purple-500 to-pink-400"
+    }
   ],
 experience: [
    // ⭐ NEW EXPERIENCE ADDED BELOW
