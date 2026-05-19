@@ -1,7 +1,7 @@
 import profileImage from "../assets/profile_image.jpg";
 const profileData = {
   image: profileImage,
-  resume: "/amardeep_MERN_3YOE.pdf",
+  resume: "/amardeep_React_Fullstack_Developer.pdf",
  projects: [
   {
     id: 1,
