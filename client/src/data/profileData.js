@@ -116,7 +116,7 @@ const profileData = {
     },
     {
       name: "Git & GitHub",
-      experience: "3 yrs",
+      experience: "3.5 yrs",
       level: "Advanced",
       projects: "All",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
@@ -140,7 +140,7 @@ const profileData = {
     },
     {
       name: "Auth Services",
-      experience: "1 yr",
+      experience: "3.5 yr",
       level: "Beginner",
       projects: "1",
       icon: "https://cdn-icons-png.flaticon.com/512/2913/2913136.png", // common icon for auth
