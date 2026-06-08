@@ -54,7 +54,7 @@ const profileData = {
       name: "CSS",
       experience: "3.5 yrs",
       level: "Advanced",
-      projects: "5",
+      projects: "5", 
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
       gradient: "bg-gradient-to-br from-blue-500 to-indigo-500",
     },
