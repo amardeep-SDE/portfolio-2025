@@ -299,6 +299,24 @@ const profileData = {
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cloudinary.svg",
       gradient: "bg-gradient-to-br from-blue-600 to-indigo-500",
     },
+    {
+      name: "MySQL",
+      category: "db_cloud",
+      experience: "1 yr",
+      level: "Intermediate",
+      projects: "1+",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      gradient: "bg-gradient-to-br from-blue-700 to-cyan-600",
+    },
+    {
+      name: "AWS",
+      category: "db_cloud",
+      experience: "1 yr",
+      level: "Intermediate",
+      projects: "1+",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg",
+      gradient: "bg-gradient-to-br from-orange-500 to-amber-400",
+    },
 
     // Tools
     {
@@ -310,15 +328,7 @@ const profileData = {
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
       gradient: "bg-gradient-to-br from-zinc-800 to-zinc-600",
     },
-    {
-      name: "Razorpay",
-      category: "tools",
-      experience: "2 yrs",
-      level: "Intermediate",
-      projects: "2+",
-      icon: "https://avatars.githubusercontent.com/u/25720743?s=200&v=4",
-      gradient: "bg-gradient-to-br from-blue-700 to-sky-500",
-    },
+
     {
       name: "Payment Gateway",
       category: "tools",
@@ -363,6 +373,44 @@ const profileData = {
       projects: "3+",
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vercel.svg",
       gradient: "bg-gradient-to-br from-slate-800 to-gray-600",
+    },
+
+    // AI Tools
+    {
+      name: "ChatGPT",
+      category: "ai_tools",
+      experience: "1+ yr",
+      level: "Intermediate",
+      projects: "All",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openai.svg",
+      gradient: "bg-gradient-to-br from-emerald-500 to-teal-400",
+    },
+    {
+      name: "GitHub Copilot",
+      category: "ai_tools",
+      experience: "1+ yr",
+      level: "Intermediate",
+      projects: "5+",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/githubcopilot.svg",
+      gradient: "bg-gradient-to-br from-gray-800 to-slate-600",
+    },
+    {
+      name: "Claude AI",
+      category: "ai_tools",
+      experience: "1 yr",
+      level: "Intermediate",
+      projects: "3+",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/anthropic.svg",
+      gradient: "bg-gradient-to-br from-orange-500 to-amber-400",
+    },
+    {
+      name: "Antigravity",
+      category: "ai_tools",
+      experience: "1+ yr",
+      level: "Advanced",
+      projects: "All",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg",
+      gradient: "bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500",
     },
   ],
 

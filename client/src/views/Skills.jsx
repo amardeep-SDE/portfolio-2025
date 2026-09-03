@@ -15,6 +15,7 @@ const Skills = () => {
     { id: "backend", label: t("skills.categories.backend", "Backend") },
     { id: "db_cloud", label: t("skills.categories.db_cloud", "DB & Clouds") },
     { id: "tools", label: t("skills.categories.tools", "Tools & APIs") },
+    { id: "ai_tools", label: "🤖 AI Tools" },
   ];
 
   const filteredSkills =
@@ -25,10 +26,16 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-24 px-4 sm:px-6 bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0]
-                 dark:from-[#090d16] dark:via-[#0f172a] dark:to-[#090d16] transition-colors duration-300"
+      className="relative py-24 px-4 sm:px-6 overflow-hidden
+                 bg-gradient-to-br from-[#f0fdf4] via-[#f8fafc] to-[#ecfeff]
+                 dark:from-[#04130f] dark:via-[#071f19] dark:to-[#041412]
+                 transition-colors duration-300"
     >
-      <div className="max-w-6xl mx-auto">
+      {/* Ambient Tech Mint Glows */}
+      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-emerald-500/10 dark:bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-teal-500/10 dark:bg-teal-500/15 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto z-10">
         {/* Section Heading */}
         <div className="text-center mb-10">
           <motion.h2

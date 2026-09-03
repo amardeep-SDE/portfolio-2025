@@ -64,11 +64,14 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative py-20 px-4 sm:px-6 bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#ffffff] dark:from-[#090d16] dark:via-[#0f172a] dark:to-[#090d16] text-gray-900 dark:text-white transition-colors duration-300 overflow-hidden"
+      className="relative py-20 px-4 sm:px-6 overflow-hidden
+                 bg-gradient-to-b from-[#fffdf7] via-[#fef8ee] to-[#fff5e6]
+                 dark:from-[#130f0a] dark:via-[#1c150c] dark:to-[#0f0b07]
+                 text-gray-900 dark:text-white transition-colors duration-300"
     >
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 -left-32 w-80 h-80 bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-purple-500/10 dark:bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient Warm Golden / Bronze Glows */}
+      <div className="absolute top-1/4 -left-32 w-80 h-80 bg-amber-500/10 dark:bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-orange-500/10 dark:bg-orange-500/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto z-10">
         {/* Section Heading */}

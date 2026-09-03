@@ -53,11 +53,18 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative py-20 px-4 sm:px-6 bg-gradient-to-br from-indigo-50/70 via-white to-indigo-100/60 dark:from-[#090d16] dark:via-[#0f172a] dark:to-[#090d16] transition-colors duration-300"
+      className="relative py-20 px-4 sm:px-6 overflow-hidden
+                 bg-gradient-to-br from-[#fff1f2] via-[#fdf2f8] to-[#ffe4e6]
+                 dark:from-[#180811] dark:via-[#220c19] dark:to-[#14060e]
+                 transition-colors duration-300"
     >
       <Toaster position="top-right" reverseOrder={false} />
 
-      <div className="max-w-6xl mx-auto space-y-12">
+      {/* Ambient Rose & Ruby Glows */}
+      <div className="absolute top-1/4 -left-28 w-96 h-96 bg-rose-500/10 dark:bg-rose-600/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-28 w-96 h-96 bg-pink-500/10 dark:bg-pink-600/15 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto space-y-12 z-10">
         {/* Section Header */}
         <div className="text-center">
           <motion.h2

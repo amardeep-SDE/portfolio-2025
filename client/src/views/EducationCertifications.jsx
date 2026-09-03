@@ -18,10 +18,16 @@ const EducationCertifications = () => {
   return (
     <section
       id="credentials"
-      className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0]
-                 dark:from-[#090d16] dark:via-[#0f172a] dark:to-[#090d16] transition-colors duration-300"
+      className="relative py-20 px-4 sm:px-6 overflow-hidden
+                 bg-gradient-to-br from-[#f0f9ff] via-[#f8fafc] to-[#e0f2fe]
+                 dark:from-[#051321] dark:via-[#091e33] dark:to-[#040f1a]
+                 transition-colors duration-300"
     >
-      <div className="max-w-6xl mx-auto space-y-14">
+      {/* Ambient Ice Blue & Cyan Glows */}
+      <div className="absolute top-1/3 -left-28 w-96 h-96 bg-sky-500/10 dark:bg-sky-500/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-28 w-96 h-96 bg-cyan-500/10 dark:bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto space-y-14 z-10">
         {/* Section Heading */}
         <div className="text-center">
           <motion.h2
