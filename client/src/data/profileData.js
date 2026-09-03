@@ -1,4 +1,4 @@
-import profileImage from "../assets/profile_image.jpg";
+import profileImage from "../assets/amardeep-profile.jpeg";
 
 const profileData = {
   name: "Amardeep Dwivedi",
@@ -178,6 +178,24 @@ const profileData = {
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
       gradient: "bg-gradient-to-br from-cyan-500 to-blue-300",
     },
+    {
+      name: "React Hook Form",
+      category: "frontend",
+      experience: "2+ yrs",
+      level: "Intermediate",
+      projects: "4+",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/reacthookform.svg",
+      gradient: "bg-gradient-to-br from-pink-500 to-rose-400",
+    },
+    {
+      name: "Material UI",
+      category: "frontend",
+      experience: "2+ yrs",
+      level: "Intermediate",
+      projects: "3+",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg",
+      gradient: "bg-gradient-to-br from-blue-500 to-sky-400",
+    },
 
     // Backend
     {
@@ -225,6 +243,24 @@ const profileData = {
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
       gradient: "bg-gradient-to-br from-gray-700 to-zinc-900",
     },
+    {
+      name: "JWT Auth",
+      category: "backend",
+      experience: "2+ yrs",
+      level: "Advanced",
+      projects: "4+",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/jsonwebtokens.svg",
+      gradient: "bg-gradient-to-br from-violet-600 to-purple-400",
+    },
+    {
+      name: "Agora SDK",
+      category: "backend",
+      experience: "1 yr",
+      level: "Intermediate",
+      projects: "1",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/agora.svg",
+      gradient: "bg-gradient-to-br from-blue-600 to-indigo-400",
+    },
 
     // DB & Clouds
     {
@@ -235,6 +271,15 @@ const profileData = {
       projects: "4+",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
       gradient: "bg-gradient-to-br from-green-700 to-green-500",
+    },
+    {
+      name: "Mongoose",
+      category: "db_cloud",
+      experience: "2+ yrs",
+      level: "Advanced",
+      projects: "4+",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mongoosedotws.svg",
+      gradient: "bg-gradient-to-br from-red-800 to-red-600",
     },
     {
       name: "Firebase",
@@ -268,13 +313,59 @@ const profileData = {
     {
       name: "Razorpay",
       category: "tools",
-      experience: "1.5 yrs",
+      experience: "2 yrs",
       level: "Intermediate",
       projects: "2+",
       icon: "https://avatars.githubusercontent.com/u/25720743?s=200&v=4",
       gradient: "bg-gradient-to-br from-blue-700 to-sky-500",
     },
+    {
+      name: "Payment Gateway",
+      category: "tools",
+      experience: "2 yrs",
+      level: "Intermediate",
+      projects: "2+",
+      icon: "https://www.svgrepo.com/show/521649/payment.svg",
+      gradient: "bg-gradient-to-br from-emerald-600 to-teal-500",
+    },
+    {
+      name: "Postman",
+      category: "tools",
+      experience: "3+ yrs",
+      level: "Advanced",
+      projects: "All",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postman.svg",
+      gradient: "bg-gradient-to-br from-orange-600 to-amber-500",
+    },
+    {
+      name: "Axios",
+      category: "tools",
+      experience: "3+ yrs",
+      level: "Advanced",
+      projects: "All",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/axios.svg",
+      gradient: "bg-gradient-to-br from-purple-500 to-indigo-400",
+    },
+    {
+      name: "Vite",
+      category: "tools",
+      experience: "2+ yrs",
+      level: "Advanced",
+      projects: "4+",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg",
+      gradient: "bg-gradient-to-br from-violet-500 to-fuchsia-400",
+    },
+    {
+      name: "Vercel / Render",
+      category: "tools",
+      experience: "2+ yrs",
+      level: "Intermediate",
+      projects: "3+",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vercel.svg",
+      gradient: "bg-gradient-to-br from-slate-800 to-gray-600",
+    },
   ],
+
 
   // Experience matching Resume exactly
   experience: [
