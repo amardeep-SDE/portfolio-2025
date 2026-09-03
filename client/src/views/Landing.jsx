@@ -1,19 +1,19 @@
+import React from "react";
 import About from "./About";
-import Contact from "./Contact";
-import Experience from "./Experience";
-import Home from "./Home";
-import Projects from "./Projects";
 import Skills from "./Skills";
-
+import Projects from "./Projects";
+import Experience from "./Experience";
+import EducationCertifications from "./EducationCertifications";
+import Contact from "./Contact";
 
 const Landing = () => {
   return (
     <>
-      {/* <Home /> */}
       <About />
-      <Skills/>
+      <Skills />
       <Projects />
       <Experience />
+      <EducationCertifications />
       <Contact />
     </>
   );

@@ -3,158 +3,254 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import profileData from "../data/profileData";
 import { Typewriter } from "react-simple-typewriter";
-import { FaUserTie, FaMapMarkerAlt, FaEye, FaDownload, FaTimes  } from "react-icons/fa";
+import {
+  FaUserTie,
+  FaMapMarkerAlt,
+  FaEye,
+  FaDownload,
+  FaTimes,
+  FaClock,
+  FaBriefcase,
+  FaAward,
+  FaCheckCircle,
+  FaCode,
+} from "react-icons/fa";
 
 const About = () => {
   const { t } = useTranslation();
   const [resumeOpen, setResumeOpen] = useState(false);
+
+  const stats = [
+    {
+      value: "3+",
+      label: "Years Experience",
+      subtext: "Full Stack & Frontend",
+      icon: <FaBriefcase className="text-indigo-500 text-sm" />,
+    },
+    {
+      value: "1",
+      unit: "Mo",
+      label: "Notice Period",
+      subtext: "Available for Hire",
+      icon: <FaClock className="text-emerald-500 text-sm" />,
+      highlight: true,
+    },
+    {
+      value: "3x",
+      label: "NamasteDev",
+      subtext: "Verified Certifications",
+      icon: <FaAward className="text-amber-500 text-sm" />,
+    },
+    {
+      value: "7+",
+      label: "Web Projects",
+      subtext: "Production Deployed",
+      icon: <FaCheckCircle className="text-sky-500 text-sm" />,
+    },
+  ];
+
   return (
     <section
       id="about"
-      className="relative min-h-screen flex items-center justify-center px-6 py-16 
-                 overflow-hidden bg-gradient-to-br from-[#eef2ff] via-[#fdfdfd] to-[#e0f2fe] 
-                 dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#0f172a] transition-colors duration-300"
+      className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 py-16 sm:py-20 
+                 overflow-hidden bg-gradient-to-br from-[#f0f4ff] via-[#fafafa] to-[#e6f2ff] 
+                 dark:from-[#090d16] dark:via-[#0f172a] dark:to-[#090d16] transition-colors duration-300"
     >
-      {/* 🌟 Animated Background Blobs */}
-      <div className="absolute top-10 left-10 w-72 h-72 bg-indigo-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-      <div className="absolute top-40 right-10 w-72 h-72 bg-pink-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-10 left-1/2 w-72 h-72 bg-cyan-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+      {/* 🌟 Background Ambient Glows */}
+      <div className="absolute top-10 left-10 w-80 h-80 bg-indigo-400/20 dark:bg-indigo-600/10 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl animate-blob pointer-events-none" />
+      <div className="absolute top-40 right-10 w-80 h-80 bg-pink-400/20 dark:bg-pink-600/10 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl animate-blob animation-delay-2000 pointer-events-none" />
+      <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-cyan-300/20 dark:bg-cyan-600/10 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl animate-blob animation-delay-4000 pointer-events-none" />
 
-      <div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12 relative z-10">
-        {/* Left Side: Text */}
+      <div className="max-w-6xl w-full flex flex-col lg:flex-row items-center gap-10 lg:gap-14 relative z-10">
+        {/* Left Side: Content */}
         <motion.div
-          initial={{ x: -50, opacity: 0 }}
+          initial={{ x: -40, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="flex-1 text-center md:text-left"
+          transition={{ duration: 0.55 }}
+          className="flex-1 text-center lg:text-left"
         >
+          {/* Availability Beacon Pill */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold 
+                          bg-emerald-50 text-emerald-700 border border-emerald-300/70 
+                          dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-700/60 shadow-xs mb-3.5 backdrop-blur-md">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            <span>{t("about.noticePeriod", "Notice Period: 1 Month")} • Available Immediately</span>
+          </div>
+
           {/* Name */}
-          <p className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3">
-            {t("about.name")}
-          </p>
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-2">
+            {t("about.name", "Amardeep Dwivedi")}
+          </h1>
 
-          {/* Role with typewriter */}
-          <p className="text-xl sm:text-2xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400 flex items-center justify-center md:justify-start gap-2 mb-3">
-            <FaUserTie className="text-indigo-500 dark:text-indigo-400" />
-            <Typewriter
-              words={[t("about.role"), t("about.role2")]}
-              loop={0}
-              cursor
-              cursorStyle="|"
-              typeSpeed={60}
-              deleteSpeed={40}
-              delaySpeed={2000}
-            />
-          </p>
+          {/* Typewriter Role with Gradient */}
+          <div className="text-lg sm:text-2xl font-bold flex items-center justify-center lg:justify-start gap-2 mb-3">
+            <span className="text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+              <FaCode className="text-base" />
+            </span>
+            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+              <Typewriter
+                words={[
+                  "React Developer",
+                  "MERN Stack Developer",
+                  "Frontend Specialist",
+                  "Full Stack Engineer",
+                ]}
+                loop={0}
+                cursor
+                cursorStyle="|"
+                typeSpeed={70}
+                deleteSpeed={40}
+                delaySpeed={1800}
+              />
+            </span>
+          </div>
 
-          {/* Location */}
-          <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-400 flex items-center justify-center md:justify-start gap-2 mb-4">
-            <FaMapMarkerAlt className="text-red-500" />
-            {t("about.location")}
-          </p>
+          {/* Location & YOE Badges */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-5 text-xs sm:text-sm">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 font-medium border border-gray-200/60 dark:border-gray-700/60 shadow-2xs">
+              <FaMapMarkerAlt className="text-red-500 text-xs" />
+              {t("about.location", "Chandigarh, India")}
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-50/80 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-100 dark:border-indigo-900/40 shadow-2xs">
+              <FaBriefcase className="text-indigo-500 text-xs" />
+              {t("about.yoe", "3+ Years of Experience")}
+            </span>
+          </div>
 
-          {/* Description */}
-          <p className="text-base sm:text-lg text-justify leading-relaxed tracking-wide text-gray-800 dark:text-gray-300 max-w-3xl mb-6">
+          {/* Professional Summary Description */}
+          <p className="text-xs sm:text-sm text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-2xl mb-6">
             {t("about.description")}
           </p>
 
-          {/* Resume Section */}
-        <div className="flex flex-wrap gap-8 justify-center md:justify-start mt-10">
+          {/* Modern Metrics / Stats Bar - No Truncation, Bold Impact Numbers */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 my-5">
+            {stats.map((stat, i) => (
+              <div
+                key={i}
+                className={`p-3 rounded-xl border backdrop-blur-md transition-all duration-300
+                  ${
+                    stat.highlight
+                      ? "bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-300/80 dark:border-emerald-700/50 shadow-xs"
+                      : "bg-white/80 dark:bg-gray-800/60 border-gray-200/80 dark:border-gray-700/60 shadow-2xs"
+                  }
+                  hover:-translate-y-0.5 hover:shadow-md`}
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs">{stat.icon}</span>
+                  <span className="text-base sm:text-lg font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    {stat.value}
+                    {stat.unit && <span className="text-[10px] font-bold text-gray-500 ml-0.5">{stat.unit}</span>}
+                  </span>
+                </div>
+                <div className="text-[11px] font-bold text-gray-800 dark:text-gray-200 leading-tight">
+                  {stat.label}
+                </div>
+                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5 truncate">
+                  {stat.subtext}
+                </div>
+              </div>
+            ))}
+          </div>
 
-  {/* View Resume */}
-  <button
-    onClick={() => setResumeOpen(true)}
-    className="group relative px-8 py-4 rounded-2xl font-semibold text-white
-               bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
-               shadow-[0_0_25px_rgba(147,51,234,0.5)]
-               transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
-               transform hover:rotate-y-12 hover:-rotate-x-6 hover:scale-[1.08]
-               perspective-[800px] overflow-hidden"
-    style={{ transformStyle: "preserve-3d" }}
-  >
-    {/* Rotating Gradient Overlay */}
-    <span className="absolute inset-0 bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400
-                     animate-[gradientShift_5s_linear_infinite] opacity-40" />
+          {/* Resume Action Buttons */}
+          <div className="flex flex-wrap gap-3 justify-center lg:justify-start mt-6">
+            {/* View Resume */}
+            <button
+              onClick={() => setResumeOpen(true)}
+              className="group relative px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white
+                         bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600
+                         shadow-md shadow-indigo-500/20 hover:shadow-lg hover:shadow-indigo-500/30
+                         transition-all duration-300 hover:scale-102 active:scale-98 cursor-pointer flex items-center gap-2"
+            >
+              <FaEye className="group-hover:rotate-12 transition-transform duration-300" />
+              <span>View Resume</span>
+            </button>
 
-    {/* Reflection Line */}
-    <span className="absolute top-0 left-[-100%] w-[120%] h-full bg-white/20
-                     transform skew-x-[20deg] group-hover:left-[120%]
-                     transition-all duration-[1200ms] ease-in-out" />
-
-    {/* Content */}
-    <span className="relative z-10 flex items-center gap-2 text-lg">
-      <FaEye className="group-hover:rotate-12 group-hover:text-yellow-200 transition-all duration-500" />
-      View Resume
-    </span>
-  </button>
-
-  {/* Download Resume */}
-  <a
-    href={profileData.resume}
-    download="/amardeep_React_Fullstack.pdf"
-    className="group relative px-8 py-4 rounded-2xl font-semibold text-white
-               bg-gradient-to-r from-red-500 via-pink-500 to-orange-500
-               shadow-[0_0_25px_rgba(244,63,94,0.6)]
-               transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
-               transform hover:rotate-y-12 hover:rotate-x-6 hover:scale-[1.08]
-               perspective-[800px] overflow-hidden"
-    style={{ transformStyle: "preserve-3d" }}
-  >
-    {/* Dynamic gradient animation */}
-    <span className="absolute inset-0 bg-gradient-to-r from-orange-400 via-pink-400 to-red-400
-                     animate-[gradientShift_5s_linear_infinite] opacity-40" />
-
-    {/* Moving reflection */}
-    <span className="absolute top-0 left-[-100%] w-[120%] h-full bg-white/20
-                     transform skew-x-[20deg] group-hover:left-[120%]
-                     transition-all duration-[1200ms] ease-in-out" />
-
-    {/* Button content */}
-    <span className="relative z-10 flex items-center gap-2 text-lg">
-      <FaDownload className="group-hover:-rotate-12 group-hover:text-yellow-200 transition-all duration-500" />
-      Download Resume
-    </span>
-  </a>
-</div>
-
+            {/* Download Resume */}
+            <a
+              href={profileData.resume}
+              download="Amardeep_Dwivedi_Resume.pdf"
+              className="group relative px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white
+                         bg-gradient-to-r from-pink-600 via-rose-600 to-orange-500
+                         shadow-md shadow-rose-500/20 hover:shadow-lg hover:shadow-rose-500/30
+                         transition-all duration-300 hover:scale-102 active:scale-98 cursor-pointer flex items-center gap-2"
+            >
+              <FaDownload className="group-hover:-translate-y-0.5 transition-transform duration-300" />
+              <span>Download Resume</span>
+            </a>
+          </div>
         </motion.div>
 
-        {/* Right Side: Image */}
+        {/* Right Side: Profile Photo with Floating Badge */}
         <motion.div
-          initial={{ x: 50, opacity: 0 }}
+          initial={{ x: 40, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex-1 flex justify-center"
+          transition={{ duration: 0.55 }}
+          className="flex-1 flex justify-center relative"
         >
           <div className="relative group">
-            {/* Gradient Border Ring */}
-            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-spin-slow opacity-30 group-hover:opacity-50 transition-all"></div>
+            {/* Ambient Pulsing Glow */}
+            <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-40 blur-xl group-hover:opacity-65 transition-all duration-500 animate-pulse" />
 
-            <img
-              src={profileData.image}
-              alt={t("about.name")}
-              className="relative w-56 h-56 md:w-72 md:h-72 object-cover rounded-full shadow-2xl border-4 border-white dark:border-gray-800 
-                         transition-transform duration-500 ease-in-out group-hover:scale-105"
-            />
+            {/* Gradient Outer Border */}
+            <div className="relative rounded-full p-1.5 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-xl">
+              <img
+                src={profileData.image}
+                alt={t("about.name")}
+                className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 object-cover rounded-full shadow-2xl border-4 border-white dark:border-gray-900 
+                           transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+              />
+            </div>
+
+            {/* Floating Tech Pill Badge */}
+            <motion.div
+              initial={{ y: 15, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full 
+                         bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border border-gray-200/90 dark:border-gray-700 
+                         shadow-lg flex items-center gap-2 whitespace-nowrap z-20"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping inline-block" />
+              <span className="text-[11px] sm:text-xs font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+                React • MERN Stack Specialist
+              </span>
+            </motion.div>
           </div>
         </motion.div>
       </div>
 
       {/* Resume Modal */}
       {resumeOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 p-4 overflow-auto">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl md:h-[90vh] h-[80vh] relative">
-            <button
-              onClick={() => setResumeOpen(false)}
-              className="absolute top-3 right-3 text-xl text-gray-600 hover:text-gray-900"
-            >
-              <FaTimes />
-            </button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-4xl h-[85vh] relative flex flex-col border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800">
+              <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+                Amardeep Dwivedi – Resume
+              </h3>
+              <div className="flex items-center gap-3">
+                <a
+                  href={profileData.resume}
+                  download="Amardeep_Dwivedi_Resume.pdf"
+                  className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 flex items-center gap-1.5 transition"
+                >
+                  <FaDownload /> Download
+                </a>
+                <button
+                  onClick={() => setResumeOpen(false)}
+                  className="p-1.5 rounded-lg text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition cursor-pointer"
+                >
+                  <FaTimes size={18} />
+                </button>
+              </div>
+            </div>
             <iframe
               src={profileData.resume}
-              title="Resume"
-              className="w-full h-full rounded-xl"
+              title="Resume Preview"
+              className="w-full flex-1"
               style={{ border: "none" }}
             />
           </div>

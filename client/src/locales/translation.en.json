@@ -5,104 +5,207 @@
     "about": "About Me",
     "projects": "Projects",
     "experience": "Experience",
+    "credentials": "Education & Certs",
     "contact": "Contact"
   },
 
   "hero": {
     "greeting": "Hi, I'm Amardeep",
-    "role": "Full-Stack MERN Developer"
+    "role": "React Developer | MERN Stack Developer",
+    "noticeBadge": "Notice Period: 1 Month",
+    "expBadge": "3+ Years Experience",
+    "locationBadge": "Chandigarh, India"
   },
+
   "about": {
     "heading": "Hi, I'm",
     "name": "Amardeep Dwivedi",
-    "role": "MERN Developer",
-    "role2": "Frontend Developer",
-   "location": "Chandigarh, India",
- "description": "Software Development Engineer with 3+ years of experience in Frontend & Full Stack development, focused on end-toend delivery of scalable, high-performance web applications. Strong in JS fundamentals, browser internals & storage, with expertise in performance optimization, secure authentication & authorization, debugging, and Agile-based delivery."
-},
-"projects": {
-  "heading": "My Projects",
-  "viewProject": "View Project",
+    "role": "React Developer",
+    "role2": "MERN Stack Developer",
+    "location": "Chandigarh, India",
+    "noticePeriod": "Notice Period: 1 Month",
+    "yoe": "3+ Years of Experience",
+    "description": "Software Development Engineer with 3+ years of experience in Frontend & Full Stack development, focused on end-to-end delivery of scalable, high-performance web applications. Strong in JS fundamentals, browser internals & storage, with expertise in performance optimization, secure authentication & authorization, debugging, and Agile-based delivery."
+  },
 
-  "0": {
-    "title": "Notary Platform",
-    "description": "A MERN-based digital notary platform with Admin, B2B, and B2C modules for managing document workflows, secure user authentication, and role-based access control. Implemented real-time video calling using Agora SDK and chat functionality using Socket.IO to enable secure communication between clients and notaries. The platform also supports document uploads, workflow tracking, and user management.",
-    "isMern": true
+  "projects": {
+    "heading": "Featured Projects",
+    "viewProject": "View Project",
+    "filterAll": "All Projects",
+    "0": {
+      "title": "Notary Platform",
+      "subtitle": "Digital Notary System",
+      "company": "Suffescom Solutions Inc",
+      "description": "A MERN-based digital notary system across Admin, B2B, and B2C modules, handling document workflows, user management & role-based access. Integrated frontend–backend flows and improved performance through optimized state management and modular code. Features real-time video calling and secure chat."
+    },
+    "1": {
+      "title": "PayTrack-360",
+      "subtitle": "Business Management Platform",
+      "company": "Suffescom Solutions Inc",
+      "description": "A comprehensive business management platform built with Admin, Organization, Management, and Employee modules. Developed dedicated automated workflows for organizational operations, financial tracking, and employee lifecycle management."
+    },
+    "2": {
+      "title": "Institute on Governance",
+      "subtitle": "Government Survey Platform",
+      "company": "Suffescom Solutions Inc",
+      "description": "A mission-critical government survey platform. Resolved frontend and backend issues to stabilize government survey workflows, improve overall system reliability, and delivered major UI fixes and performance bug resolutions."
+    },
+    "3": {
+      "title": "Gaming Platform",
+      "subtitle": "Gaming Management System",
+      "company": "Codeverse IT Pvt. Ltd.",
+      "description": "Contributed to React-based gaming applications, focusing on intuitive UI development, real-time feature enhancements, interactive gamer dashboards, and responsive game management interfaces."
+    },
+    "4": {
+      "title": "Dawa Bazar",
+      "subtitle": "B2B Medical E-Commerce",
+      "company": "Encanto Technologies LLP",
+      "description": "Built and maintained the admin panel frontend for order, vendor, and product management using React. Strengthened admin workflow efficiency by ~30% through efficient UI rendering and optimized state management."
+    },
+    "5": {
+      "title": "Edu Smart",
+      "subtitle": "LMS Platform",
+      "company": "Encanto Technologies LLP",
+      "description": "Enhanced LMS dashboards and student modules across frontend and backend layers. Achieved ~20% performance improvement using caching, streamlined queries, and modular code-splitting."
+    },
+    "6": {
+      "title": "Accompanied",
+      "subtitle": "Social Event Website",
+      "company": "Encanto Technologies LLP",
+      "description": "Implemented and enhanced frontend and backend modules for a social event platform using the MERN stack. Improved application performance by ~25–30% through caching, indexed queries, and modular code-splitting."
+    }
   },
-  "1": {
-    "title": "Institute on Governance",
-    "description": "A government survey platform focused on stabilizing workflows, resolving frontend–backend integration issues, fixing bugs, and improving overall system reliability and performance.",
-    "isMern": true
-  },
-  "2": {
-    "title": "Edu Smart",
-    "description": "A Learning Management System (LMS) platform with enhanced dashboards and student modules. Achieved around 20% performance improvement through caching, optimized database queries, and code-splitting.",
-    "isMern": true
-  },
-  "3": {
-    "title": "Accompanied",
-    "description": "A MERN-based social event platform with user management, event creation, and optimized frontend–backend integration. Improved overall application performance by approximately 25–30%.",
-    "isMern": true
-  },
-  "4": {
-    "title": "Dawa Bazar",
-    "description": "A React-based B2B medical e-commerce admin panel with modules for order management, product management, and vendor management. Improved workflow efficiency by around 30% through optimized rendering and state management.",
-    "isMern": false
-  }
-},
+
   "skills": {
-    "heading": "My Skills",
+    "heading": "Technical Skills",
+    "subheading": "Core competencies & technologies used in production",
+    "categories": {
+      "all": "All Skills",
+      "languages": "Languages",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "db_cloud": "DB & Clouds",
+      "tools": "Tools & APIs"
+    },
     "experience": "Experience",
     "level": "Proficiency",
     "projects": "Projects",
-    "HTML": "HTML",
-    "CSS": "CSS",
     "JavaScript": "JavaScript",
+    "TypeScript": "TypeScript",
+    "Core Java": "Core Java",
+    "HTML5": "HTML5",
+    "CSS3": "CSS3",
     "React.js": "React.js",
+    "Next.js": "Next.js",
     "Redux Toolkit": "Redux Toolkit",
+    "TanStack Query": "TanStack Query",
     "Tailwind CSS": "Tailwind CSS",
     "Node.js": "Node.js",
     "Express.js": "Express.js",
-    "MongoDB": "MongoDB",
-    "Git & GitHub": "Git & GitHub",
-    "Razorpay": "Razorpay",
+    "REST APIs": "REST APIs",
+    "GraphQL": "GraphQL",
     "Socket.IO": "Socket.IO",
-    "Auth Services": "Auth Services"
+    "MongoDB": "MongoDB",
+    "Firebase": "Firebase",
+    "Cloudinary": "Cloudinary",
+    "Git & GitHub": "Git & GitHub",
+    "Razorpay": "Razorpay"
   },
 
-"experience": {
-  "heading": "Experience",
-  "0": {
-    "company": "Encanto Technologies",
-    "role": "Software Developer",
-    "location": "Indore, M.P.",
-    "description": "Worked on developing scalable web applications using React.js and the MERN stack. Built reusable UI components, improved application performance, and integrated RESTful APIs. Coordinated with designers and backend developers to deliver responsive and user-friendly applications on time."
+  "experience": {
+    "heading": "Work Experience",
+    "subheading": "Professional journey & project highlights",
+    "0": {
+      "company": "Suffescom Solutions Inc",
+      "role": "MERN Stack Developer",
+      "location": "Mohali, PB",
+      "duration": "Dec. 2025 – Present",
+      "description": "Working as MERN Stack Developer on scalable enterprise platforms including digital notary systems, business management platforms, and government survey applications.",
+      "bullets": [
+        "Worked across Admin, B2B, and B2C modules on Notary Platform, handling document workflows, user management & role-based access.",
+        "Integrated frontend–backend flows and improved performance through optimized state management and modular code.",
+        "Built PayTrack-360 business management platform with dedicated Admin, Organization, Management, and Employee workflows.",
+        "Resolved frontend and backend issues on Institute on Governance platform to stabilize government survey workflows and improve reliability."
+      ]
+    },
+    "1": {
+      "company": "Codeverse IT Pvt. Ltd.",
+      "role": "Junior React Developer",
+      "location": "Indore, MP",
+      "duration": "July 2025 – Nov. 2025",
+      "description": "Contributed to React-based gaming applications, focusing on UI development and feature enhancements.",
+      "bullets": [
+        "Contributed to React-based gaming applications, focusing on UI development and feature enhancements.",
+        "Collaborated in Agile sprints to implement responsive interfaces and optimize user interactions."
+      ]
+    },
+    "2": {
+      "company": "Encanto Technologies LLP",
+      "role": "Associate Software Developer",
+      "location": "Indore, MP",
+      "duration": "April 2023 – June 2025",
+      "description": "Developed full-stack web applications, e-commerce admin panels, LMS platforms, and social event websites using the MERN stack.",
+      "bullets": [
+        "Built and maintained the admin panel frontend for order, vendor, and product management on Dawa Bazar using React, boosting efficiency by ~30%.",
+        "Enhanced LMS dashboards and student modules on Edu Smart, achieving ~20% performance improvement using caching, streamlined queries, and code-splitting.",
+        "Implemented and enhanced frontend and backend modules on Accompanied social event platform, improving performance by ~25–30%."
+      ]
+    }
   },
-  "1": {
-    "company": "Codeverse IT Private Limited",
-    "role": "React Developer",
-    "location": "Indore, M.P.",
-    "description": "Developed responsive and interactive user interfaces using React.js and Bootstrap. Handled API integration, fixed UI bugs, and optimized frontend performance. Worked in an Agile environment and collaborated with the development team to complete project tasks efficiently."
+
+  "credentials": {
+    "heading": "Education & Certifications",
+    "educationTitle": "Education",
+    "certificationsTitle": "Certifications",
+    "authorizedBy": "Authorized by NamasteDev.com",
+    "viewCert": "View Certificate",
+    "degree": "Bachelor of Engineering (B.E.)",
+    "major": "Mechanical Engineering",
+    "institution": "RGPV University",
+    "institutionFull": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+    "location": "Bhopal, Madhya Pradesh",
+    "grade": "CGPA: 7.3 / 10",
+    "gradeLabel": "Academic Score",
+    "gradeStatus": "Degree Completed",
+    "foundationTitle": "Engineering & Analytical Foundation",
+    "foundationDesc": "Strong background in mathematical logic and analytical problem-solving, directly applied to full-stack web architecture, state management, and algorithmic optimizations.",
+    "verifiedBadge": "Verified Credential",
+    "instructor": "Instructor: Akshay Saini",
+    "certifications": {
+      "js": {
+        "name": "Namaste JS",
+        "instructor": "Akshay Saini",
+        "description": "Deep-dive mastery into JavaScript internals, call stack, execution context, closures, event loop, prototypes, hoisting, and modern ES6+."
+      },
+      "react": {
+        "name": "Namaste React",
+        "instructor": "Akshay Saini",
+        "description": "Production-grade React architecture, Fiber reconciliation, custom hooks, Redux Toolkit state management, and high-performance frontend optimization."
+      },
+      "node": {
+        "name": "Namaste Node.js",
+        "instructor": "Akshay Saini",
+        "description": "Enterprise backend architecture with Node.js, libuv, event loop, streams, buffers, Express.js microservices, MongoDB, and secure authentication."
+      }
+    }
   },
-  "2": {
-    "company": "Suffescom Solutions",
-    "role": "MERN Stack Developer",
-    "location": "Mohali, Punjab",
-    "description": "Currently working as a MERN Stack Developer, building full-stack web applications using React.js, Node.js, Express.js, and MongoDB. Developing REST APIs, integrating backend services, and ensuring application performance, scalability, and responsive design."
-  }
-},
+
   "contact": {
-    "heading": "Contact Me",
+    "heading": "Get In Touch",
+    "subheading": "Looking for a dedicated MERN / React Developer? Let's connect!",
     "emailLabel": "Email",
     "altEmailLabel": "Alternate Email",
     "phoneLabel": "Phone",
     "locationLabel": "Location",
     "location": "Chandigarh, India",
+    "noticeLabel": "Availability",
+    "noticeValue": "1 Month Notice Period",
     "namePlaceholder": "Your Name",
     "emailPlaceholder": "Your Email",
     "messagePlaceholder": "Your Message",
     "send": "Send Message"
   },
+
   "footer": {
     "contact": "Contact Info",
     "quickLinks": "Quick Links",

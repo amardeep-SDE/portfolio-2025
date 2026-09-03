@@ -1,230 +1,431 @@
 import profileImage from "../assets/profile_image.jpg";
+
 const profileData = {
+  name: "Amardeep Dwivedi",
+  title: "React Developer | MERN Stack Developer",
+  experienceYears: "3+ YOE",
+  noticePeriod: "1 Month",
+  location: "Chandigarh, India",
   image: profileImage,
   resume: "/amardeep_React_Fullstack.pdf",
- projects: [
-  {
-    id: 1,
-    titleKey: "projects.0.title", // Notary Platform
-    descriptionKey: "projects.0.description",
-    image: "https://images.pexels.com/photos/4427616/pexels-photo-4427616.jpeg", // 📄 Legal / Documents / Notary vibe
-    link: "#",
-  },
-  {
-    id: 2,
-    titleKey: "projects.1.title", // Institute on Governance
-    descriptionKey: "projects.1.description",
-    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg", // 🏛️ Government / Meeting / Survey vibe
-    link: "#",
-  },
-  {
-    id: 3,
-    titleKey: "projects.2.title", // Edu Smart (LMS)
-    descriptionKey: "projects.2.description",
-    image: "https://images.pexels.com/photos/4145195/pexels-photo-4145195.jpeg", // 🎓 Online Learning / LMS vibe
-    link: "#",
-  },
-  {
-    id: 4,
-    titleKey: "projects.3.title", // Accompanied
-    descriptionKey: "projects.3.description",
-    image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg", // 🎉 Social / Event platform vibe
-    link: "https://accompanied.ca/",
-  },
-  {
-    id: 5,
-    titleKey: "projects.4.title", // Dawa Bazar
-    descriptionKey: "projects.4.description",
-    image: "https://images.pexels.com/photos/3683098/pexels-photo-3683098.jpeg", // 💊 Medical / Pharmacy vibe
-    link: "#",
-  },
-]
-  ,
 
-  skills: [
+  // 7 Projects from Resume
+  projects: [
     {
-      name: "HTML",
-      experience: "3.5 yrs",
+      id: 1,
+      titleKey: "projects.0.title", // Notary Platform – Digital Notary System
+      companyKey: "projects.0.company",
+      company: "Suffescom Solutions Inc",
+      descriptionKey: "projects.0.description",
+      image: "https://images.pexels.com/photos/4427616/pexels-photo-4427616.jpeg", // Legal / Documents / Notary vibe
+      tags: ["React", "Node.js", "Express.js", "MongoDB", "Socket.IO", "Agora SDK"],
+      link: "#",
+    },
+    {
+      id: 2,
+      titleKey: "projects.1.title", // PayTrack-360 – Business Management Platform
+      companyKey: "projects.1.company",
+      company: "Suffescom Solutions Inc",
+      descriptionKey: "projects.1.description",
+      image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg", // Business dashboard / Analytics / Management vibe
+      tags: ["React", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+      link: "#",
+    },
+    {
+      id: 3,
+      titleKey: "projects.2.title", // Institute on Governance – Government Survey Platform
+      companyKey: "projects.2.company",
+      company: "Suffescom Solutions Inc",
+      descriptionKey: "projects.2.description",
+      image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg", // Government / Survey vibe
+      tags: ["React", "Redux Toolkit", "REST APIs", "Tailwind CSS", "Node.js"],
+      link: "#",
+    },
+    {
+      id: 4,
+      titleKey: "projects.3.title", // Gaming Platform – Gaming Management System
+      companyKey: "projects.3.company",
+      company: "Codeverse IT Pvt. Ltd.",
+      descriptionKey: "projects.3.description",
+      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80", // Gaming / Esports Management vibe
+      tags: ["React", "Redux Toolkit", "Tailwind CSS", "REST APIs", "JavaScript"],
+      link: "#",
+    },
+    {
+      id: 5,
+      titleKey: "projects.4.title", // Dawa Bazar – B2B Medical E-Commerce
+      companyKey: "projects.4.company",
+      company: "Encanto Technologies LLP",
+      descriptionKey: "projects.4.description",
+      image: "https://images.pexels.com/photos/3683098/pexels-photo-3683098.jpeg", // Pharmacy / Medical vibe
+      tags: ["React", "Redux Toolkit", "REST APIs", "Tailwind CSS", "Admin Panel"],
+      link: "#",
+    },
+    {
+      id: 6,
+      titleKey: "projects.5.title", // Edu Smart – LMS Platform
+      companyKey: "projects.5.company",
+      company: "Encanto Technologies LLP",
+      descriptionKey: "projects.5.description",
+      image: "https://images.pexels.com/photos/4145195/pexels-photo-4145195.jpeg", // Online Learning / LMS vibe
+      tags: ["React", "Node.js", "Express.js", "MongoDB", "Caching", "Code-Splitting"],
+      link: "#",
+    },
+    {
+      id: 7,
+      titleKey: "projects.6.title", // Accompanied – Social Event Website
+      companyKey: "projects.6.company",
+      company: "Encanto Technologies LLP",
+      descriptionKey: "projects.6.description",
+      image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg", // Social / Event platform vibe
+      tags: ["MERN Stack", "React", "Node.js", "MongoDB", "Performance Tuning"],
+      link: "https://accompanied.ca/",
+    },
+  ],
+
+  // Technical Skills categorized according to Resume
+  skills: [
+    // Languages
+    {
+      name: "JavaScript",
+      category: "languages",
+      experience: "3+ yrs",
       level: "Advanced",
-      projects: "5",
+      projects: "All",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      gradient: "bg-gradient-to-br from-yellow-500 to-amber-300",
+    },
+    {
+      name: "TypeScript",
+      category: "languages",
+      experience: "2+ yrs",
+      level: "Intermediate",
+      projects: "3+",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      gradient: "bg-gradient-to-br from-blue-600 to-sky-400",
+    },
+    {
+      name: "Core Java",
+      category: "languages",
+      experience: "1+ yr",
+      level: "Intermediate",
+      projects: "2",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      gradient: "bg-gradient-to-br from-red-600 to-orange-500",
+    },
+    {
+      name: "HTML5",
+      category: "languages",
+      experience: "3+ yrs",
+      level: "Advanced",
+      projects: "All",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
       gradient: "bg-gradient-to-br from-orange-500 to-yellow-400",
     },
     {
-      name: "CSS",
-      experience: "3.5 yrs",
+      name: "CSS3",
+      category: "languages",
+      experience: "3+ yrs",
       level: "Advanced",
-      projects: "5", 
+      projects: "All",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
       gradient: "bg-gradient-to-br from-blue-500 to-indigo-500",
     },
-    {
-      name: "JavaScript",
-      experience: "3.5 yrs",
-      level: "Advanced",
-      projects: "5",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-      gradient: "bg-gradient-to-br from-yellow-400 to-yellow-200",
-    },
+
+    // Frontend
     {
       name: "React.js",
-      experience: "3.5 yrs",
+      category: "frontend",
+      experience: "3+ yrs",
       level: "Advanced",
-      projects: "5",
+      projects: "All",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
       gradient: "bg-gradient-to-br from-sky-500 to-blue-400",
     },
     {
-      name: "Redux Toolkit",
-      experience: "3.5 yrs",
+      name: "Next.js",
+      category: "frontend",
+      experience: "2+ yrs",
       level: "Advanced",
-      projects: "5",
+      projects: "3+",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+      gradient: "bg-gradient-to-br from-slate-900 to-gray-700",
+    },
+    {
+      name: "Redux Toolkit",
+      category: "frontend",
+      experience: "3+ yrs",
+      level: "Advanced",
+      projects: "5+",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
-      gradient: "bg-gradient-to-br from-purple-500 to-purple-300",
+      gradient: "bg-gradient-to-br from-purple-600 to-purple-400",
+    },
+    {
+      name: "TanStack Query",
+      category: "frontend",
+      experience: "2+ yrs",
+      level: "Advanced",
+      projects: "3+",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/reactquery.svg",
+      gradient: "bg-gradient-to-br from-rose-500 to-red-400",
     },
     {
       name: "Tailwind CSS",
-      experience: "3.5 yrs",
+      category: "frontend",
+      experience: "3+ yrs",
       level: "Advanced",
-      projects: "3",
+      projects: "5+",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
       gradient: "bg-gradient-to-br from-cyan-500 to-blue-300",
     },
+
+    // Backend
     {
       name: "Node.js",
-      experience: "1.5 yrs",
-      level: "Intermediate",
-      projects: "2",
+      category: "backend",
+      experience: "2+ yrs",
+      level: "Advanced",
+      projects: "4+",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-      gradient: "bg-gradient-to-br from-green-600 to-green-300",
+      gradient: "bg-gradient-to-br from-green-600 to-emerald-400",
     },
     {
       name: "Express.js",
-      experience: "1.5 yrs",
-      level: "Intermediate",
-      projects: "2",
+      category: "backend",
+      experience: "2+ yrs",
+      level: "Advanced",
+      projects: "4+",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-      gradient: "bg-gradient-to-br from-gray-800 to-gray-600",
+      gradient: "bg-gradient-to-br from-gray-800 to-slate-600",
     },
     {
-      name: "MongoDB",
-      experience: "1.5 yrs",
-      level: "Intermediate",
-      projects: "2",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-      gradient: "bg-gradient-to-br from-green-800 to-green-500",
-    },
-    {
-      name: "Git & GitHub",
-      experience: "3.5 yrs",
+      name: "REST APIs",
+      category: "backend",
+      experience: "3+ yrs",
       level: "Advanced",
       projects: "All",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-      gradient: "bg-gradient-to-br from-zinc-800 to-zinc-500",
+      icon: "https://www.svgrepo.com/show/375531/api.svg",
+      gradient: "bg-gradient-to-br from-teal-500 to-cyan-400",
     },
     {
-      name: "Razorpay",
-      experience: "1 yr",
+      name: "GraphQL",
+      category: "backend",
+      experience: "1.5 yrs",
       level: "Intermediate",
-      projects: "2",
-      icon: "https://avatars.githubusercontent.com/u/25720743?s=200&v=4",
-      gradient: "bg-gradient-to-br from-indigo-600 to-purple-500"
+      projects: "2+",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
+      gradient: "bg-gradient-to-br from-pink-600 to-rose-400",
     },
     {
       name: "Socket.IO",
-      experience: "1 yr",
-      level: "Beginner",
-      projects: "1",
+      category: "backend",
+      experience: "2+ yrs",
+      level: "Intermediate",
+      projects: "3+",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
-      gradient: "bg-gradient-to-br from-gray-700 to-black"
+      gradient: "bg-gradient-to-br from-gray-700 to-zinc-900",
+    },
+
+    // DB & Clouds
+    {
+      name: "MongoDB",
+      category: "db_cloud",
+      experience: "2+ yrs",
+      level: "Advanced",
+      projects: "4+",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+      gradient: "bg-gradient-to-br from-green-700 to-green-500",
     },
     {
-      name: "Auth Services",
-      experience: "3.5 yr",
-      level: "Beginner",
-      projects: "1",
-      icon: "https://cdn-icons-png.flaticon.com/512/2913/2913136.png", // common icon for auth
-      gradient: "bg-gradient-to-br from-purple-500 to-pink-400"
-    }
+      name: "Firebase",
+      category: "db_cloud",
+      experience: "1.5 yrs",
+      level: "Intermediate",
+      projects: "2+",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+      gradient: "bg-gradient-to-br from-amber-500 to-orange-400",
+    },
+    {
+      name: "Cloudinary",
+      category: "db_cloud",
+      experience: "2+ yrs",
+      level: "Advanced",
+      projects: "3+",
+      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cloudinary.svg",
+      gradient: "bg-gradient-to-br from-blue-600 to-indigo-500",
+    },
+
+    // Tools
+    {
+      name: "Git & GitHub",
+      category: "tools",
+      experience: "3+ yrs",
+      level: "Advanced",
+      projects: "All",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+      gradient: "bg-gradient-to-br from-zinc-800 to-zinc-600",
+    },
+    {
+      name: "Razorpay",
+      category: "tools",
+      experience: "1.5 yrs",
+      level: "Intermediate",
+      projects: "2+",
+      icon: "https://avatars.githubusercontent.com/u/25720743?s=200&v=4",
+      gradient: "bg-gradient-to-br from-blue-700 to-sky-500",
+    },
   ],
-experience: [
-   // ⭐ NEW EXPERIENCE ADDED BELOW
-  {
-    companyKey: "experience.2.company",
-    roleKey: "experience.2.role",
-    locationKey: "experience.2.location",
-    duration: "Dec 2025 – Present",
-    descriptionKey: "experience.2.description",
-    skills: [
-      "React",
-      "Redux Toolkit",
-      "Next.js",
-      "GraphQL",
-      "Tailwind CSS",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "MySQL",
-    ],
-  },
-  {
-    companyKey: "experience.1.company",
-    roleKey: "experience.1.role",
-    locationKey: "experience.1.location",
-    duration: "July 2025 – Nov 2025",
-    descriptionKey: "experience.1.description",
-    skills: [
-      "React",
-      "Redux Toolkit",
-      "Tailwind CSS",
-      "Zod",
-      "MongoDB",
-      "GitHub",
-      "Jira",
-      "Swagger",
-      "Payment Gateways",
-    ],
-  },
 
-  {
-    companyKey: "experience.0.company",
-    roleKey: "experience.0.role",
-    locationKey: "experience.0.location",
-    duration: "April 2023 – June 2025",
-    descriptionKey: "experience.0.description",
-    skills: [
-      "React",
-      "Redux Toolkit",
-      "Material UI",
-      "Socket.IO",
-      "Zod",
-      "MongoDB",
-      "Express.js",
-      "Node.js",
-      "Swagger",
-    ],
-  },
+  // Experience matching Resume exactly
+  experience: [
+    {
+      company: "Suffescom Solutions Inc",
+      companyKey: "experience.0.company",
+      role: "MERN Stack Developer",
+      roleKey: "experience.0.role",
+      location: "Mohali, PB",
+      locationKey: "experience.0.location",
+      duration: "Dec. 2025 – Present",
+      descriptionKey: "experience.0.description",
+      bulletsKey: "experience.0.bullets",
+      projectsAssociated: [
+        "Notary Platform – Digital Notary System",
+        "PayTrack-360 – Business Management Platform",
+        "Institute on Governance – Government Survey Platform",
+      ],
+      skills: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Redux Toolkit",
+        "GraphQL",
+        "Socket.IO",
+        "Tailwind CSS",
+        "REST APIs",
+      ],
+    },
+    {
+      company: "Codeverse IT Pvt. Ltd.",
+      companyKey: "experience.1.company",
+      role: "Junior React Developer",
+      roleKey: "experience.1.role",
+      location: "Indore, MP",
+      locationKey: "experience.1.location",
+      duration: "July 2025 – Nov. 2025",
+      descriptionKey: "experience.1.description",
+      bulletsKey: "experience.1.bullets",
+      projectsAssociated: ["Gaming Platform – Gaming Management System"],
+      skills: [
+        "React",
+        "Redux Toolkit",
+        "Tailwind CSS",
+        "JavaScript",
+        "REST APIs",
+        "Git & GitHub",
+      ],
+    },
+    {
+      company: "Encanto Technologies LLP",
+      companyKey: "experience.2.company",
+      role: "Associate Software Developer",
+      roleKey: "experience.2.role",
+      location: "Indore, MP",
+      locationKey: "experience.2.location",
+      duration: "April 2023 – June 2025",
+      descriptionKey: "experience.2.description",
+      bulletsKey: "experience.2.bullets",
+      projectsAssociated: [
+        "Dawa Bazar – B2B Medical E-Commerce",
+        "Edu Smart – LMS Platform",
+        "Accompanied – Social Event Website",
+      ],
+      skills: [
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Redux Toolkit",
+        "Socket.IO",
+        "REST APIs",
+        "Code-Splitting",
+      ],
+    },
+  ],
 
- 
-],
+  // Education from Resume
+  education: [
+    {
+      degree: "Bachelor of Engineering (B.E.)",
+      major: "Mechanical Engineering",
+      institution: "RGPV University",
+      institutionFullName: "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+      location: "Bhopal, Madhya Pradesh",
+      grade: "CGPA: 7.3 / 10",
+      status: "Degree Completed",
+      highlights: [
+        "Analytical Problem Solving",
+        "Engineering Mathematics",
+        "Systems & Logic Design",
+        "Algorithmic Thinking",
+      ],
+    },
+  ],
 
+  // Certifications from Resume (Authorized by NamasteDev.com)
+  certifications: [
+    {
+      id: "namaste-js",
+      name: "Namaste JavaScript",
+      nameKey: "certifications.js.name",
+      instructor: "Akshay Saini",
+      issuer: "NamasteDev.com",
+      url: "https://namastedev.com",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      gradient: "from-yellow-400 to-amber-500",
+      skills: ["Execution Context", "Event Loop", "Closures", "Prototypes", "Async/Await"],
+    },
+    {
+      id: "namaste-react",
+      name: "Namaste React",
+      nameKey: "certifications.react.name",
+      instructor: "Akshay Saini",
+      issuer: "NamasteDev.com",
+      url: "https://namastedev.com",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      gradient: "from-sky-400 to-blue-600",
+      skills: ["Reconciliation", "Virtual DOM", "Custom Hooks", "Redux Toolkit", "Optimization"],
+    },
+    {
+      id: "namaste-node",
+      name: "Namaste Node.js",
+      nameKey: "certifications.node.name",
+      instructor: "Akshay Saini",
+      issuer: "NamasteDev.com",
+      url: "https://namastedev.com",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      gradient: "from-emerald-500 to-green-700",
+      skills: ["libuv & Event Loop", "Streams & Buffers", "RESTful Architecture", "Express & MongoDB", "Auth & Security"],
+    },
+  ],
 
   contact: {
     email: "amardeepdwivedi1494@gmail.com",
-    alternateEmail: "amardeepdwivedi1494@zohomail.in", // 👈 new email
-    phone: "+91-8964051727",
+    alternateEmail: "amardeepdwivedi1494@zohomail.in",
+    phone: "+91 8964051727",
   },
   contactInfo: {
     email: "amardeepdwivedi1494@gmail.com",
-    alternateEmail: "amardeepdwivedi1494@zohomail.in", // 👈 new email
-    phone: "+91-8964051727",
+    alternateEmail: "amardeepdwivedi1494@zohomail.in",
+    phone: "+91 8964051727",
+    location: "Chandigarh, India",
     social: {
       github: "https://github.com/amardeep-SDE",
       linkedin: "https://www.linkedin.com/in/amardeepdwivedi/",
       instagram: "https://www.instagram.com/10_amardeep_16/",
     },
   },
-
 };
 
 export default profileData;

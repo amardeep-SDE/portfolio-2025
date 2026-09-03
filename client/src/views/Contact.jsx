@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { FiMail, FiPhone, FiMapPin, FiUser, FiMessageCircle } from "react-icons/fi";
+import { FiMail, FiPhone, FiMapPin, FiUser, FiMessageCircle, FiClock, FiSend } from "react-icons/fi";
 import toast, { Toaster } from "react-hot-toast";
 import profileData from "../data/profileData";
 
@@ -45,78 +45,95 @@ const Contact = () => {
       return;
     }
 
-    // Agar sab valid hai
     toast.success("Message sent successfully!");
     setFormData({ name: "", email: "", message: "" });
     setFocused({ name: false, email: false, message: false });
-
-    // Yahan API call ya email sending logic add kar sakte ho
   };
 
   return (
-    <section id="contact" className="relative py-20 px-6 bg-gradient-to-br from-indigo-50 via-white to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section
+      id="contact"
+      className="relative py-20 px-4 sm:px-6 bg-gradient-to-br from-indigo-50/70 via-white to-indigo-100/60 dark:from-[#090d16] dark:via-[#0f172a] dark:to-[#090d16] transition-colors duration-300"
+    >
       <Toaster position="top-right" reverseOrder={false} />
 
-      <div className="max-w-6xl mx-auto space-y-16">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-extrabold text-center bg-gradient-to-r from-indigo-600 to-pink-500 bg-clip-text text-transparent"
-        >
-          {t("contact.heading")}
-        </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+      <div className="max-w-6xl mx-auto space-y-12">
+        {/* Section Header */}
+        <div className="text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent tracking-tight"
+          >
+            {t("contact.heading", "Contact Me")}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.15, duration: 0.4 }}
+            viewport={{ once: true }}
+            className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-2 max-w-xl mx-auto text-center"
+          >
+            {t("contact.subheading", "Let's connect and discuss opportunities")}
+          </motion.p>
+        </div>
+
+        {/* 2-Column Compact Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Left: Contact Info Items */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.45 }}
+            viewport={{ once: true }}
+            className="space-y-3"
           >
             <ContactItem
               icon={<FiMail />}
-              label={t("contact.emailLabel")}
+              label={t("contact.emailLabel", "Email")}
               value={contact.email}
               href={`mailto:${contact.email}`}
-
             />
             <ContactItem
               icon={<FiMail />}
-              label={t("contact.altEmailLabel")}   // translation key for second label
-              value={contact.alternateEmail}       // new email field
+              label={t("contact.altEmailLabel", "Alternate Email")}
+              value={contact.alternateEmail}
               href={`mailto:${contact.alternateEmail}`}
             />
             <ContactItem
               icon={<FiPhone />}
-              label={t("contact.phoneLabel")}
+              label={t("contact.phoneLabel", "Phone")}
               value={contact.phone}
               href={`tel:${contact.phone}`}
             />
             <ContactItem
+              icon={<FiClock />}
+              label={t("contact.noticeLabel", "Availability")}
+              value={t("contact.noticeValue", "1 Month Notice Period")}
+            />
+            <ContactItem
               icon={<FiMapPin />}
-              label={t("contact.locationLabel")}
-              value={t("contact.location")}
+              label={t("contact.locationLabel", "Location")}
+              value={t("contact.location", "Chandigarh, India")}
             />
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Right: Compact Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.45 }}
             viewport={{ once: true }}
-            className="backdrop-blur-lg bg-white/70 dark:bg-gray-800/60 p-8 rounded-2xl shadow-2xl space-y-6 border border-white/30"
+            className="backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 p-5 sm:p-6 rounded-2xl shadow-lg border border-white/40 dark:border-gray-800 space-y-4"
           >
             <FloatingInput
               icon={<FiUser />}
               type="text"
               field="name"
-              placeholder={t("contact.namePlaceholder")}
+              placeholder={t("contact.namePlaceholder", "Your Name")}
               focused={focused}
               setFocused={setFocused}
               value={formData.name}
@@ -127,7 +144,7 @@ const Contact = () => {
               icon={<FiMail />}
               type="email"
               field="email"
-              placeholder={t("contact.emailPlaceholder")}
+              placeholder={t("contact.emailPlaceholder", "Your Email")}
               focused={focused}
               setFocused={setFocused}
               value={formData.email}
@@ -137,7 +154,7 @@ const Contact = () => {
             <FloatingTextarea
               icon={<FiMessageCircle />}
               field="message"
-              placeholder={t("contact.messagePlaceholder")}
+              placeholder={t("contact.messagePlaceholder", "Your Message")}
               focused={focused}
               setFocused={setFocused}
               value={formData.message}
@@ -146,11 +163,12 @@ const Contact = () => {
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full py-3 bg-gradient-to-r from-indigo-600 to-pink-500 hover:from-indigo-700 hover:to-pink-600 text-white font-bold rounded-xl shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full py-2.5 bg-gradient-to-r from-indigo-600 to-pink-500 hover:from-indigo-700 hover:to-pink-600 text-white font-semibold text-sm rounded-xl shadow-md transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
-              {t("contact.send")}
+              <FiSend className="text-sm" />
+              <span>{t("contact.send", "Send Message")}</span>
             </motion.button>
           </motion.form>
         </div>
@@ -159,45 +177,46 @@ const Contact = () => {
   );
 };
 
-// ContactItem, FloatingInput, FloatingTextarea components same as before
-
-
 const ContactItem = ({ icon, label, value, href }) => (
   <motion.div
-    whileHover={{ y: -6, scale: 1.02 }}
-    transition={{ type: "spring", stiffness: 200, damping: 15 }}
+    whileHover={{ y: -3, scale: 1.01 }}
+    transition={{ type: "spring", stiffness: 220, damping: 18 }}
     className="
       group relative overflow-hidden
-      flex items-center gap-5 p-5
-      rounded-2xl
-      bg-white/70 dark:bg-gray-800/70
-      backdrop-blur-xl
-      border border-white/30 dark:border-gray-700
-      shadow-lg hover:shadow-2xl
+      flex items-center gap-3.5 p-3.5
+      rounded-xl
+      bg-white/80 dark:bg-gray-800/80
+      backdrop-blur-lg
+      border border-gray-200/70 dark:border-gray-700/60
+      shadow-xs hover:shadow-md transition-all duration-300
     "
   >
-    {/* Glow on hover */}
-    <span className="
+    {/* Subtle Glow on hover */}
+    <span
+      className="
       absolute inset-0 opacity-0 group-hover:opacity-100
-      bg-gradient-to-r from-indigo-500/10 to-pink-500/10
-      transition
-    " />
+      bg-gradient-to-r from-indigo-500/5 to-pink-500/5
+      transition duration-300
+    "
+    />
 
-    {/* Icon badge */}
-    <div className="
+    {/* Compact Icon badge */}
+    <div
+      className="
       relative z-10
-      w-12 h-12 flex items-center justify-center
-      rounded-xl
+      w-10 h-10 flex items-center justify-center
+      rounded-lg
       bg-gradient-to-br from-indigo-600 to-pink-500
-      text-white text-xl
-      shadow-md
-    ">
+      text-white text-base
+      shadow-xs shrink-0
+    "
+    >
       {icon}
     </div>
 
     {/* Text content */}
-    <div className="relative z-10">
-      <p className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400">
+    <div className="relative z-10 min-w-0 flex-1">
+      <p className="text-[11px] uppercase tracking-wider text-gray-400 dark:text-gray-400 font-semibold">
         {label}
       </p>
 
@@ -205,17 +224,17 @@ const ContactItem = ({ icon, label, value, href }) => (
         <a
           href={href}
           className="
-            block text-lg font-semibold
+            block text-xs sm:text-sm font-semibold
             text-gray-900 dark:text-white
             hover:text-indigo-600 dark:hover:text-indigo-400
-            transition
+            transition truncate
           "
           rel="noopener noreferrer"
         >
           {value}
         </a>
       ) : (
-        <p className="text-lg font-semibold text-gray-900 dark:text-white">
+        <p className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white truncate">
           {value}
         </p>
       )}
@@ -223,44 +242,61 @@ const ContactItem = ({ icon, label, value, href }) => (
   </motion.div>
 );
 
-
-
-const FloatingInput = ({ icon, type, field, placeholder, focused, setFocused, value, onChange }) => (
+const FloatingInput = ({
+  icon,
+  type,
+  field,
+  placeholder,
+  focused,
+  setFocused,
+  value,
+  onChange,
+}) => (
   <div className="relative">
-    <div className="absolute top-4 left-3 text-gray-400">{icon}</div>
+    <div className="absolute top-3 left-3 text-gray-400 text-sm">{icon}</div>
     <input
       type={type}
       name={field}
-      value={value}              // <-- controlled
-      onChange={onChange}        // <-- controlled
+      value={value}
+      onChange={onChange}
       onFocus={() => setFocused({ ...focused, [field]: true })}
       onBlur={(e) => setFocused({ ...focused, [field]: !!e.target.value })}
-      className="w-full pl-10 p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/60 dark:bg-gray-700/60 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+      className="w-full pl-9 pr-3 py-2.5 rounded-xl text-sm border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition"
     />
     <label
-      className={`absolute left-10 top-3 transition-all duration-300 text-gray-400 pointer-events-none ${focused[field] ? "opacity-0" : "opacity-100"
-        }`}
+      className={`absolute left-9 top-2.5 text-xs sm:text-sm transition-all duration-300 text-gray-400 pointer-events-none ${
+        focused[field] || value ? "opacity-0" : "opacity-100"
+      }`}
     >
       {placeholder} <span className="text-red-500">*</span>
     </label>
   </div>
 );
 
-const FloatingTextarea = ({ icon, field, placeholder, focused, setFocused, value, onChange }) => (
+const FloatingTextarea = ({
+  icon,
+  field,
+  placeholder,
+  focused,
+  setFocused,
+  value,
+  onChange,
+}) => (
   <div className="relative">
-    <div className="absolute top-4 left-3 text-gray-400">{icon}</div>
+    <div className="absolute top-3 left-3 text-gray-400 text-sm">{icon}</div>
     <textarea
       name={field}
-      rows="4"
-      value={value}              // <-- controlled
-      onChange={onChange}        // <-- controlled
+      rows="3"
+      value={value}
+      onChange={onChange}
       onFocus={() => setFocused({ ...focused, [field]: true })}
       onBlur={(e) => setFocused({ ...focused, [field]: !!e.target.value })}
-      className="w-full pl-10 p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/60 dark:bg-gray-700/60 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+      className="w-full pl-9 pr-3 py-2.5 rounded-xl text-sm border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition resize-none"
     />
     <label
-      className={`absolute left-10 top-3 transition-all duration-300 text-gray-400 pointer-events-none ${focused[field] ? "opacity-0" : "opacity-100"
-        }`}
+      className={`absolute left-9 top-2.5 text-xs sm:text-sm transition-all duration-300 text-gray-400 pointer-events-none ${
+        focused[field] || value ? "opacity-0" : "opacity-100"
+      }`}
     >
       {placeholder}
     </label>
