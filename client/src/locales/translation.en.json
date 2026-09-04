@@ -73,6 +73,18 @@
       "subtitle": "Social Event Website",
       "company": "Encanto Technologies LLP",
       "description": "Implemented and enhanced frontend and backend modules for a social event platform using the MERN stack. Improved application performance by ~25–30% through caching, indexed queries, and modular code-splitting."
+    },
+    "7": {
+      "title": "KYK Bearings",
+      "subtitle": "Industrial B2B Product Platform",
+      "company": "Encanto Technologies LLP",
+      "description": "Engineered the official commercial web portal and digital product catalog for KYK Bearings India. Implemented responsive product filtering, dynamic technical spec search, and optimized multi-device browsing."
+    },
+    "8": {
+      "title": "Cardio",
+      "subtitle": "Healthcare & Patient Care Platform",
+      "company": "Suffescom Solutions Inc",
+      "description": "Contributed to the development of Cardio, a healthcare and patient management platform. Worked on intuitive patient dashboards, secure medical data handling, responsive frontend workflows, and RESTful API integrations."
     }
   },
 

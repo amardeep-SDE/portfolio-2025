@@ -81,6 +81,26 @@ const profileData = {
       tags: ["MERN Stack", "React", "Node.js", "MongoDB", "Performance Tuning"],
       link: "https://accompanied.ca/",
     },
+    {
+      id: 8,
+      titleKey: "projects.7.title", // KYK Bearings – Industrial Product Platform
+      companyKey: "projects.7.company",
+      company: "Encanto Technologies LLP",
+      descriptionKey: "projects.7.description",
+      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80", // Industrial engineering / precision bearings vibe
+      tags: ["React", "JavaScript", "Tailwind CSS", "REST APIs", "Product Catalog"],
+      link: "https://kykbrg.in/",
+    },
+    {
+      id: 9,
+      titleKey: "projects.8.title", // Cardio – Healthcare Platform
+      companyKey: "projects.8.company",
+      company: "Suffescom Solutions Inc",
+      descriptionKey: "projects.8.description",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80", // Healthcare / Cardio monitoring vibe
+      tags: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "REST APIs"],
+      link: "#",
+    },
   ],
 
   // Technical Skills categorized according to Resume
@@ -431,6 +451,7 @@ const profileData = {
         "Notary Platform – Digital Notary System",
         "PayTrack-360 – Business Management Platform",
         "Institute on Governance – Government Survey Platform",
+        "Cardio – Healthcare Platform",
       ],
       skills: [
         "React",
@@ -479,6 +500,7 @@ const profileData = {
         "Dawa Bazar – B2B Medical E-Commerce",
         "Edu Smart – LMS Platform",
         "Accompanied – Social Event Website",
+        "KYK Bearings – Industrial Product Platform",
       ],
       skills: [
         "React",

@@ -7,65 +7,52 @@ const SkillCard = ({ skill }) => {
 
   return (
     <motion.div
-      className="group w-full max-w-[200px] rounded-2xl bg-gradient-to-b from-white/90 to-gray-50/90 dark:from-gray-800/90 dark:to-gray-900/90 p-3 border border-gray-200/80 dark:border-gray-700/60 shadow-md hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{
-        y: -6,
-        scale: 1.03,
-      }}
-      transition={{ type: "spring", stiffness: 220, damping: 16 }}
+      initial={{ opacity: 0, y: 15, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
+      whileHover={{ y: -3, scale: 1.015 }}
+      transition={{ type: "spring", stiffness: 240, damping: 18 }}
+      className="group relative flex items-center justify-between gap-3 w-full p-2.5 sm:p-3 rounded-xl 
+                 bg-white/90 dark:bg-gray-800/85 backdrop-blur-md 
+                 border border-gray-200/80 dark:border-gray-700/70 
+                 shadow-2xs hover:shadow-lg hover:border-indigo-400/50 dark:hover:border-indigo-500/50 
+                 transition-all duration-300 overflow-hidden cursor-default"
     >
-      {/* Top Banner / Icon Container */}
-      <div
-        className={`h-24 sm:h-28 rounded-xl ${skill.gradient} relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition-transform duration-300`}
-      >
-        {/* Subtle overlay shine */}
-        <div className="absolute inset-0 bg-white/10 dark:bg-black/10 backdrop-blur-[1px]" />
-        
-        {/* Decorative corner accent */}
-        <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-black/25 text-[10px] font-semibold text-white/95 uppercase tracking-wider backdrop-blur-sm">
-          {skill.level}
+      {/* 🌟 Shimmer Light Sweep on Hover */}
+      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 dark:via-white/10 to-transparent pointer-events-none" />
+
+      {/* Left: Brand Icon + Info */}
+      <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 relative z-10">
+        {/* Brand Icon in Squircle */}
+        <div
+          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl ${skill.gradient} p-[1.5px] shrink-0 shadow-2xs group-hover:scale-108 group-hover:rotate-6 transition-all duration-300`}
+        >
+          <div className="w-full h-full rounded-[10px] bg-white dark:bg-gray-900 flex items-center justify-center p-1.5">
+            <img
+              src={skill.icon}
+              alt={skill.name}
+              className="w-full h-full object-contain filter drop-shadow-2xs"
+              loading="lazy"
+            />
+          </div>
         </div>
 
-        {/* Tech Icon */}
-        <div className="relative z-10 w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/90 dark:bg-gray-900/90 p-2.5 shadow-lg flex items-center justify-center group-hover:rotate-6 group-hover:scale-110 transition-all duration-300">
-          <img
-            src={skill.icon}
-            alt={skill.name}
-            className="w-full h-full object-contain filter drop-shadow-sm"
-            loading="lazy"
-          />
+        {/* Skill Name & Level */}
+        <div className="min-w-0">
+          <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+            {t(`skills.${skill.name}`, skill.name)}
+          </h4>
+          <span className="text-[10px] text-gray-400 dark:text-gray-500 font-medium block">
+            {skill.level}
+          </span>
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className="mt-3 text-center">
-        <h4 className="text-sm sm:text-base font-bold text-gray-900 dark:text-white tracking-wide truncate">
-          {t(`skills.${skill.name}`, skill.name)}
-        </h4>
-
-        {/* Meta Stats: Experience & Projects */}
-        <div className="grid grid-cols-2 gap-1 mt-2.5 pt-2 border-t border-gray-100 dark:border-gray-700/60 text-[11px]">
-          <div className="text-center px-1">
-            <span className="block font-bold text-indigo-600 dark:text-indigo-400">
-              {skill.experience}
-            </span>
-            <span className="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-              {t("skills.experience", "Exp")}
-            </span>
-          </div>
-
-          <div className="text-center px-1 border-l border-gray-200 dark:border-gray-700">
-            <span className="block font-bold text-purple-600 dark:text-purple-400">
-              {skill.projects}
-            </span>
-            <span className="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-              {t("skills.projects", "Projects")}
-            </span>
-          </div>
-        </div>
+      {/* Right: Experience Badge */}
+      <div className="shrink-0 relative z-10">
+        <span className="inline-block text-[10.5px] font-bold px-2 py-0.5 rounded-full bg-indigo-50/90 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/70 dark:border-indigo-800/60 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 transition-colors">
+          {skill.experience}
+        </span>
       </div>
     </motion.div>
   );
