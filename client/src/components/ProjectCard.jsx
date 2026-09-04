@@ -13,16 +13,16 @@ const ProjectCard = ({ project, index, onOpenModal }) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 30, scale: 0.96 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true }}
+      initial={{ opacity: 0, scale: 0.8, rotateY: -15, perspective: 1000 }}
+      whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{
         type: "spring",
-        stiffness: 220,
-        damping: 18,
-        delay: (index % 3) * 0.08,
+        stiffness: 260,
+        damping: 20,
+        delay: (index % 3) * 0.1,
       }}
-      whileHover={{ y: -6, scale: 1.015 }}
+      whileHover={{ y: -8, scale: 1.03, rotateY: 2 }}
       onClick={() => onOpenModal && onOpenModal(project)}
       className="group relative flex flex-col h-full w-full rounded-2xl overflow-hidden
                  border border-gray-200/90 dark:border-gray-800
@@ -33,7 +33,7 @@ const ProjectCard = ({ project, index, onOpenModal }) => {
       <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 dark:via-white/10 to-transparent pointer-events-none z-20" />
 
       {/* Compact Thumbnail Image Header */}
-      <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
+      <div className="relative h-28 sm:h-32 w-full overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
         <img
           src={imgError ? fallbackImage : project.image}
           alt={t(project.titleKey)}
@@ -70,7 +70,7 @@ const ProjectCard = ({ project, index, onOpenModal }) => {
       </div>
 
       {/* Card Body */}
-      <div className="p-4 sm:p-4.5 flex-1 flex flex-col justify-between">
+      <div className="p-3 sm:p-3.5 flex-1 flex flex-col justify-between">
         <div>
           {/* Description */}
           <p className="text-[11.5px] sm:text-xs leading-relaxed text-gray-700 dark:text-gray-300">

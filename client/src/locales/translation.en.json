@@ -136,8 +136,7 @@
       "bullets": [
         "Worked across Admin, B2B, and B2C modules on Notary Platform, handling document workflows, user management & role-based access.",
         "Integrated frontend–backend flows and improved performance through optimized state management and modular code.",
-        "Built PayTrack-360 business management platform with dedicated Admin, Organization, Management, and Employee workflows.",
-        "Resolved frontend and backend issues on Institute on Governance platform to stabilize government survey workflows and improve reliability."
+        "Built PayTrack-360 business management platform with dedicated Admin, Organization, Management, and Employee workflows."
       ]
     },
     "1": {
@@ -198,6 +197,11 @@
         "name": "Namaste Node.js",
         "instructor": "Akshay Saini",
         "description": "Enterprise backend architecture with Node.js, libuv, event loop, streams, buffers, Express.js microservices, MongoDB, and secure authentication."
+      },
+      "ds": {
+        "name": "Namaste DSA",
+        "instructor": "Akshay Saini",
+        "description": "In-depth curriculum covering essential data structures, algorithms, and problem-solving techniques for technical interviews."
       }
     }
   },

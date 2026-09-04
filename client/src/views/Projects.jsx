@@ -301,10 +301,9 @@ const Projects = () => {
               key={tab.id}
               onClick={() => setSelectedCompany(tab.id)}
               className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer
-                ${
-                  selectedCompany === tab.id
-                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/25 scale-105"
-                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+                ${selectedCompany === tab.id
+                  ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/25 scale-105"
+                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
                 }`}
             >
               {tab.label}

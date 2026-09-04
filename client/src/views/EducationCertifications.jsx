@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import profileData from "../data/profileData";
+import CelebrationConfetti from "../components/CelebrationConfetti";
 import {
   FaGraduationCap,
   FaCertificate,
@@ -14,15 +15,53 @@ import {
 const EducationCertifications = () => {
   const { t } = useTranslation();
   const edu = profileData.education[0];
+  const sectionRef = useRef(null);
+  const lastCelebrationTime = useRef(0);
+  const [celebrateTrigger, setCelebrateTrigger] = useState(0);
+
+  const triggerCelebration = () => {
+    setCelebrateTrigger((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const now = Date.now();
+            // Trigger celebration on scroll entry (4.5 second cooldown between entries)
+            if (now - lastCelebrationTime.current > 4500) {
+              lastCelebrationTime.current = now;
+              triggerCelebration();
+            }
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <section
       id="credentials"
+      ref={sectionRef}
       className="relative py-20 px-4 sm:px-6 overflow-hidden
                  bg-gradient-to-br from-[#f0f9ff] via-[#f8fafc] to-[#e0f2fe]
                  dark:from-[#051321] dark:via-[#091e33] dark:to-[#040f1a]
                  transition-colors duration-300"
     >
+      {/* Celebration Confetti Cannon Overlay */}
+      <CelebrationConfetti trigger={celebrateTrigger} />
+
       {/* Ambient Ice Blue & Cyan Glows */}
       <div className="absolute top-1/3 -left-28 w-96 h-96 bg-sky-500/10 dark:bg-sky-500/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-28 w-96 h-96 bg-cyan-500/10 dark:bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
@@ -30,6 +69,27 @@ const EducationCertifications = () => {
       <div className="relative max-w-6xl mx-auto space-y-14 z-10">
         {/* Section Heading */}
         <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 mb-3.5 rounded-full bg-gradient-to-r from-fuchsia-500/10 via-purple-500/10 to-cyan-500/10 dark:from-fuchsia-500/20 dark:via-purple-500/20 dark:to-cyan-500/20 border border-fuchsia-300/40 dark:border-fuchsia-700/40 backdrop-blur-xs shadow-xs"
+          >
+            <span className="text-base animate-bounce">🎉</span>
+            <span className="text-xs font-bold bg-gradient-to-r from-fuchsia-600 to-indigo-600 dark:from-fuchsia-400 dark:to-indigo-400 bg-clip-text text-transparent">
+              Academic & Specialized Milestones
+            </span>
+            <button
+              onClick={triggerCelebration}
+              type="button"
+              title="Click to celebrate again!"
+              className="ml-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-fuchsia-600 to-indigo-600 text-white hover:opacity-90 active:scale-95 transition-transform cursor-pointer shadow-xs"
+            >
+              Celebrate ✨
+            </button>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +97,7 @@ const EducationCertifications = () => {
             viewport={{ once: true }}
             className="text-3xl sm:text-4xl font-extrabold tracking-tight"
           >
-            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-fuchsia-500 via-violet-600 to-cyan-500 bg-clip-text text-transparent">
               {t("credentials.heading", "Education & Certifications")}
             </span>
           </motion.h2>
@@ -52,115 +112,7 @@ const EducationCertifications = () => {
           </motion.p>
         </div>
 
-        {/* 1. CERTIFICATIONS SECTION */}
-        <div>
-          <div className="flex items-center justify-between mb-6 pb-2.5 border-b border-gray-200 dark:border-gray-800">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 text-white flex items-center justify-center shadow-xs">
-                <FaCertificate className="text-sm" />
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
-                  {t("credentials.certificationsTitle", "Certifications")}
-                </h3>
-                <p className="text-[11px] sm:text-xs text-indigo-600 dark:text-indigo-400 font-semibold">
-                  {t("credentials.authorizedBy", "Authorized by NamasteDev.com")}
-                </p>
-              </div>
-            </div>
-
-            <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700">
-              <FaCheckCircle className="text-[10px]" /> {t("credentials.verifiedBadge", "Verified Credentials")}
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-            {profileData.certifications.map((cert, index) => {
-              const certId = cert.id.replace("namaste-", "");
-              const certDetails = t(`credentials.certifications.${certId}`, {
-                returnObjects: true,
-                defaultValue: {},
-              });
-
-              return (
-                <motion.div
-                  key={cert.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.08 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -4 }}
-                  className="group relative rounded-xl p-5 bg-white dark:bg-gray-900/90 border border-gray-200/90 dark:border-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden"
-                >
-                  <div
-                    className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${cert.gradient}`}
-                  />
-
-                  <div>
-                    {/* Header: Icon & Tag */}
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="w-9 h-9 rounded-lg p-2 bg-gray-50 dark:bg-gray-800 shadow-2xs border border-gray-100 dark:border-gray-700 flex items-center justify-center group-hover:scale-105 transition-transform">
-                        <img
-                          src={cert.icon}
-                          alt={cert.name}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-                        {cert.issuer}
-                      </span>
-                    </div>
-
-                    {/* Certificate Name */}
-                    <h4 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                      {certDetails.name || cert.name}
-                    </h4>
-
-                    {/* Instructor */}
-                    <p className="text-[11px] font-medium text-gray-500 dark:text-gray-400 mt-0.5">
-                      Instructor: <span className="text-gray-800 dark:text-gray-200 font-semibold">{cert.instructor}</span>
-                    </p>
-
-                    {/* Description */}
-                    <p className="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
-                      {certDetails.description}
-                    </p>
-
-                    {/* Key Topics */}
-                    <div className="mt-3 flex flex-wrap gap-1">
-                      {cert.skills.map((skill, sIdx) => (
-                        <span
-                          key={sIdx}
-                          className="text-[10px] px-1.5 py-0.5 rounded font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Verification Link */}
-                  <div className="mt-4 pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
-                    <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
-                      <FaCheckCircle className="text-[10px]" /> Verified
-                    </span>
-                    <a
-                      href={cert.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
-                    >
-                      <span>{t("credentials.viewCert", "View Certificate")}</span>
-                      <FaExternalLinkAlt className="text-[9px]" />
-                    </a>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* 2. EDUCATION SECTION (Compact, refined, and proportional) */}
+        {/* 1. EDUCATION SECTION (Moved up) */}
         <div className="w-full">
           <div className="flex items-center justify-between mb-6 pb-2.5 border-b border-gray-200 dark:border-gray-800">
             <div className="flex items-center gap-2.5">
@@ -283,6 +235,115 @@ const EducationCertifications = () => {
             </motion.div>
           </div>
         </div>
+
+        {/* 2. CERTIFICATIONS SECTION (Moved down) */}
+        <div>
+          <div className="flex items-center justify-between mb-6 pb-2.5 border-b border-gray-200 dark:border-gray-800">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 text-white flex items-center justify-center shadow-xs">
+                <FaCertificate className="text-sm" />
+              </div>
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
+                  {t("credentials.certificationsTitle", "Certifications")}
+                </h3>
+                <p className="text-[11px] sm:text-xs text-indigo-600 dark:text-indigo-400 font-semibold">
+                  {t("credentials.authorizedBy", "Authorized by NamasteDev.com")}
+                </p>
+              </div>
+            </div>
+
+            <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700">
+              <FaCheckCircle className="text-[10px]" /> {t("credentials.verifiedBadge", "Verified Credentials")}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
+            {profileData.certifications.map((cert, index) => {
+              const certId = cert.id.replace("namaste-", "");
+              const certDetails = t(`credentials.certifications.${certId}`, {
+                returnObjects: true,
+                defaultValue: {},
+              });
+
+              return (
+                <motion.div
+                  key={cert.id}
+                  initial={{ opacity: 0, y: 30, rotateX: 10 }}
+                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                  transition={{ type: "spring", stiffness: 100, damping: 15, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8, scale: 1.02, rotateZ: index % 2 === 0 ? 1 : -1 }}
+                  className="group relative rounded-xl p-5 bg-white dark:bg-gray-900/90 border border-gray-200/90 dark:border-gray-800 shadow-md hover:shadow-[0_20px_40px_-15px_rgba(99,102,241,0.2)] dark:hover:shadow-[0_20px_40px_-15px_rgba(99,102,241,0.1)] transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                >
+                  <div
+                    className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${cert.gradient}`}
+                  />
+
+                  <div>
+                    {/* Header: Icon & Tag */}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="w-9 h-9 rounded-lg p-2 bg-gray-50 dark:bg-gray-800 shadow-2xs border border-gray-100 dark:border-gray-700 flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <img
+                          src={cert.icon}
+                          alt={cert.name}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                        {cert.issuer}
+                      </span>
+                    </div>
+
+                    {/* Certificate Name */}
+                    <h4 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      {certDetails.name || cert.name}
+                    </h4>
+
+                    {/* Instructor */}
+                    <p className="text-[11px] font-medium text-gray-500 dark:text-gray-400 mt-0.5">
+                      Instructor: <span className="text-gray-800 dark:text-gray-200 font-semibold">{cert.instructor}</span>
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
+                      {certDetails.description}
+                    </p>
+
+                    {/* Key Topics */}
+                    <div className="mt-3 flex flex-wrap gap-1">
+                      {cert.skills.map((skill, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className="text-[10px] px-1.5 py-0.5 rounded font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Verification Link */}
+                  <div className="mt-4 pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                    <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+                      <FaCheckCircle className="text-[10px]" /> Verified
+                    </span>
+                    <a
+                      href={cert.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+                    >
+                      <span>{t("credentials.viewCert", "View Certificate")}</span>
+                      <FaExternalLinkAlt className="text-[9px]" />
+                    </a>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
       </div>
     </section>
   );

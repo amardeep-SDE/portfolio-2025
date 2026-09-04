@@ -569,6 +569,17 @@ const profileData = {
       gradient: "from-emerald-500 to-green-700",
       skills: ["libuv & Event Loop", "Streams & Buffers", "RESTful Architecture", "Express & MongoDB", "Auth & Security"],
     },
+    {
+      id: "namaste-ds",
+      name: "Namaste DSA",
+      nameKey: "certifications.ds.name",
+      instructor: "Akshay Saini",
+      issuer: "NamasteDev.com",
+      url: "https://namastedev.com",
+      icon: "https://www.svgrepo.com/show/353641/data-structures.svg",
+      gradient: "from-orange-500 to-red-600",
+      skills: ["Arrays & Strings", "Linked Lists", "Trees", "Graphs", "Dynamic Programming"],
+    },
   ],
 
   contact: {

@@ -135,7 +135,7 @@ const Experience = () => {
 
                 {/* Experience Card */}
                 <div
-                  className="relative rounded-2xl p-5 sm:p-6 bg-white/95 dark:bg-gray-900/95 border border-gray-200/90 dark:border-gray-800 shadow-md hover:shadow-xl transition-all duration-300 backdrop-blur-xl overflow-hidden group-hover:-translate-y-0.5"
+                  className="relative rounded-2xl p-4 sm:p-4 bg-white/95 dark:bg-gray-900/95 border border-gray-200/90 dark:border-gray-800 shadow-md hover:shadow-xl transition-all duration-300 backdrop-blur-xl overflow-hidden group-hover:-translate-y-0.5"
                   style={{
                     boxShadow: `0 8px 24px -8px ${theme.glowColor}`,
                   }}
@@ -187,30 +187,12 @@ const Experience = () => {
                     </div>
                   </div>
 
-                  {/* Impact / Quick Highlight Cards */}
-                  {theme.metrics && (
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 my-4">
-                      {theme.metrics.map((metric, mIdx) => (
-                        <div
-                          key={mIdx}
-                          className="px-3 py-2 rounded-lg bg-gray-50/80 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800/80 flex items-center justify-between"
-                        >
-                          <span className="text-[10px] font-medium text-gray-500 dark:text-gray-400">
-                            {metric.label}
-                          </span>
-                          <span className="text-[11px] font-bold text-gray-800 dark:text-gray-200 flex items-center gap-1">
-                            <FiTrendingUp className="text-indigo-500 text-[10px]" />
-                            {metric.value}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  {/* Removed Impact Metrics for conciseness */}
 
                   {/* Associated Projects Tags */}
                   {item.projectsAssociated && item.projectsAssociated.length > 0 && (
-                    <div className="mb-4 flex flex-wrap items-center gap-1.5">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 flex items-center gap-1">
+                    <div className="mb-3 mt-3 flex flex-wrap items-center gap-1.5">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 flex items-center gap-1">
                         <FiLayers className="text-indigo-500" /> Featured Work:
                       </span>
                       {item.projectsAssociated.map((proj, pIdx) => (
@@ -225,21 +207,21 @@ const Experience = () => {
                   )}
 
                   {/* Detailed Resume Bullets */}
-                  <div className="space-y-2.5">
+                  <div className="space-y-1.5">
                     {Array.isArray(bullets) && bullets.length > 0 ? (
                       bullets.map((bullet, bIdx) => (
                         <div
                           key={bIdx}
-                          className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed"
+                          className="flex items-start gap-2 text-[11px] sm:text-[11.5px] text-gray-700 dark:text-gray-300 leading-relaxed"
                         >
-                          <div className="mt-0.5 w-4 h-4 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 border border-indigo-200/60 dark:border-indigo-800/60">
-                            <FiCheckCircle className="text-[10px]" />
+                          <div className="mt-0.5 w-3.5 h-3.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 border border-indigo-200/60 dark:border-indigo-800/60">
+                            <FiCheckCircle className="text-[9px]" />
                           </div>
                           <span>{bullet}</span>
                         </div>
                       ))
                     ) : (
-                      <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                      <p className="text-[11px] sm:text-[11.5px] text-gray-700 dark:text-gray-300 leading-relaxed">
                         {t(item.descriptionKey)}
                       </p>
                     )}
@@ -247,7 +229,7 @@ const Experience = () => {
 
                   {/* Skills / Tech Stack Used */}
                   {item.skills && item.skills.length > 0 && (
-                    <div className="mt-5 pt-3.5 border-t border-gray-100 dark:border-gray-800">
+                    <div className="mt-3 pt-2.5 border-t border-gray-100 dark:border-gray-800">
                       <div className="flex flex-wrap items-center gap-1.5">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mr-1.5">
                           Technologies:
