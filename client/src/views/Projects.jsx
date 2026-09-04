@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import profileData from "../data/profileData";
 import ProjectCard from "../components/ProjectCard";
+import StarlightCelebration from "../components/StarlightCelebration";
 import {
   FiShield,
   FiVideo,
@@ -26,6 +27,39 @@ const Projects = () => {
   const { projects } = profileData;
   const [selectedCompany, setSelectedCompany] = useState("all");
   const [selectedModalProject, setSelectedModalProject] = useState(null);
+  const [starTrigger, setStarTrigger] = useState(0);
+  const projectsSectionRef = useRef(null);
+  const lastStarTime = useRef(0);
+
+  const triggerStarlight = () => {
+    setStarTrigger((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    const node = projectsSectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const now = Date.now();
+            if (now - lastStarTime.current > 5000) {
+              lastStarTime.current = now;
+              triggerStarlight();
+            }
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const companyFilters = [
     { id: "all", label: "All Projects" },
@@ -118,11 +152,15 @@ const Projects = () => {
   return (
     <section
       id="projects"
+      ref={projectsSectionRef}
       className="relative py-20 px-4 sm:px-6 overflow-hidden
                  bg-gradient-to-b from-[#f5f3ff] via-[#faf5ff] to-[#ede9fe]
                  dark:from-[#0d091e] dark:via-[#130d29] dark:to-[#0a0718]
                  transition-colors duration-300"
     >
+      {/* Starlight Celebration Cascade */}
+      <StarlightCelebration trigger={starTrigger} />
+
       {/* Ambient Violet Studio Glows */}
       <div className="absolute top-1/3 -left-28 w-96 h-96 bg-purple-500/10 dark:bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-28 w-96 h-96 bg-violet-500/10 dark:bg-violet-600/15 rounded-full blur-3xl pointer-events-none" />
@@ -130,9 +168,22 @@ const Projects = () => {
       <div className="relative max-w-6xl mx-auto z-10">
         {/* Section Heading */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 mb-2.5">
-            <FiLayers /> 3+ Years Production Highlights & Optimization
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60 shadow-xs mb-3 backdrop-blur-md"
+          >
+            <span className="text-sm animate-spin" style={{ animationDuration: "6s" }}>✨</span>
+            <span>Production Systems • Shipped to Scale</span>
+            <button
+              onClick={triggerStarlight}
+              type="button"
+              className="ml-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-violet-600 to-indigo-600 text-white hover:opacity-90 active:scale-95 transition-transform cursor-pointer shadow-xs"
+            >
+              Celebrate 🌟
+            </button>
+          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 15 }}

@@ -46,9 +46,18 @@ const Skills = () => {
       <div className="relative max-w-6xl mx-auto z-10">
         {/* Section Heading */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 mb-2.5">
-            <FiCode /> Production Tech Stack & Tooling
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700/60 shadow-xs mb-2.5"
+          >
+            <span className="inline-block animate-pulse text-amber-500">⚡</span>
+            <span>Level Up: Production Tech Stack</span>
+            <span className="px-1.5 py-0.5 rounded-md bg-emerald-200/80 dark:bg-emerald-800/80 text-[10px] uppercase tracking-wide">
+              Active
+            </span>
+          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: -15 }}

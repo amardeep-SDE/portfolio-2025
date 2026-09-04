@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { FiMail, FiPhone, FiMapPin, FiUser, FiMessageCircle, FiClock, FiSend } from "react-icons/fi";
-import toast, { Toaster } from "react-hot-toast";
 import profileData from "../data/profileData";
+import RocketCelebration from "../components/RocketCelebration";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -21,8 +21,16 @@ const Contact = () => {
     message: "",
   });
 
+  const [errors, setErrors] = useState({});
+  const [showRocketCelebration, setShowRocketCelebration] = useState(false);
+  const [celebrationName, setCelebrationName] = useState("");
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const validateEmail = (email) => {
@@ -34,18 +42,31 @@ const Contact = () => {
     e.preventDefault();
 
     const { name, email, message } = formData;
+    const newErrors = {};
 
-    if (!name || !email || !message) {
-      toast.error("Please fill all fields!");
+    if (!name.trim()) {
+      newErrors.name = t("contact.errors.nameRequired", "Name is required");
+    }
+
+    if (!email.trim()) {
+      newErrors.email = t("contact.errors.emailRequired", "Email is required");
+    } else if (!validateEmail(email)) {
+      newErrors.email = t("contact.errors.emailInvalid", "Please enter a valid email address");
+    }
+
+    if (!message.trim()) {
+      newErrors.message = t("contact.errors.messageRequired", "Message cannot be empty");
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
-    if (!validateEmail(email)) {
-      toast.error("Please enter a valid email address!");
-      return;
-    }
-
-    toast.success("Message sent successfully!");
+    // Success: clear errors and launch rocket celebration modal (no toast)
+    setErrors({});
+    setCelebrationName(name);
+    setShowRocketCelebration(true);
     setFormData({ name: "", email: "", message: "" });
     setFocused({ name: false, email: false, message: false });
   };
@@ -58,7 +79,12 @@ const Contact = () => {
                  dark:from-[#180811] dark:via-[#220c19] dark:to-[#14060e]
                  transition-colors duration-300"
     >
-      <Toaster position="top-right" reverseOrder={false} />
+      {/* Rocket & Fireworks Celebration Modal */}
+      <RocketCelebration
+        isActive={showRocketCelebration}
+        senderName={celebrationName}
+        onClose={() => setShowRocketCelebration(false)}
+      />
 
       {/* Ambient Rose & Ruby Glows */}
       <div className="absolute top-1/4 -left-28 w-96 h-96 bg-rose-500/10 dark:bg-rose-600/15 rounded-full blur-3xl pointer-events-none" />
@@ -145,6 +171,7 @@ const Contact = () => {
               setFocused={setFocused}
               value={formData.name}
               onChange={handleChange}
+              error={errors.name}
             />
 
             <FloatingInput
@@ -156,6 +183,7 @@ const Contact = () => {
               setFocused={setFocused}
               value={formData.email}
               onChange={handleChange}
+              error={errors.email}
             />
 
             <FloatingTextarea
@@ -166,6 +194,7 @@ const Contact = () => {
               setFocused={setFocused}
               value={formData.message}
               onChange={handleChange}
+              error={errors.message}
             />
 
             <motion.button
@@ -258,25 +287,38 @@ const FloatingInput = ({
   setFocused,
   value,
   onChange,
+  error,
 }) => (
   <div className="relative">
-    <div className="absolute top-3 left-3 text-gray-400 text-sm">{icon}</div>
-    <input
-      type={type}
-      name={field}
-      value={value}
-      onChange={onChange}
-      onFocus={() => setFocused({ ...focused, [field]: true })}
-      onBlur={(e) => setFocused({ ...focused, [field]: !!e.target.value })}
-      className="w-full pl-9 pr-3 py-2.5 rounded-xl text-sm border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition"
-    />
-    <label
-      className={`absolute left-9 top-2.5 text-xs sm:text-sm transition-all duration-300 text-gray-400 pointer-events-none ${
-        focused[field] || value ? "opacity-0" : "opacity-100"
-      }`}
-    >
-      {placeholder} <span className="text-red-500">*</span>
-    </label>
+    <div className="relative">
+      <div className="absolute top-3 left-3 text-gray-400 text-sm">{icon}</div>
+      <input
+        type={type}
+        name={field}
+        value={value}
+        onChange={onChange}
+        onFocus={() => setFocused({ ...focused, [field]: true })}
+        onBlur={(e) => setFocused({ ...focused, [field]: !!e.target.value })}
+        className={`w-full pl-9 pr-3 py-2.5 rounded-xl text-sm border bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white focus:outline-none transition ${
+          error
+            ? "border-rose-500 dark:border-rose-500 focus:ring-2 focus:ring-rose-500/40"
+            : "border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-indigo-500/50"
+        }`}
+      />
+      <label
+        className={`absolute left-9 top-2.5 text-xs sm:text-sm transition-all duration-300 pointer-events-none ${
+          error ? "text-rose-400" : "text-gray-400"
+        } ${focused[field] || value ? "opacity-0" : "opacity-100"}`}
+      >
+        {placeholder} <span className="text-red-500">*</span>
+      </label>
+    </div>
+    {error && (
+      <p className="text-[11.5px] text-rose-500 dark:text-rose-400 font-semibold mt-1 pl-1 flex items-center gap-1.5">
+        <span>⚠️</span>
+        <span>{error}</span>
+      </p>
+    )}
   </div>
 );
 
@@ -288,25 +330,38 @@ const FloatingTextarea = ({
   setFocused,
   value,
   onChange,
+  error,
 }) => (
   <div className="relative">
-    <div className="absolute top-3 left-3 text-gray-400 text-sm">{icon}</div>
-    <textarea
-      name={field}
-      rows="3"
-      value={value}
-      onChange={onChange}
-      onFocus={() => setFocused({ ...focused, [field]: true })}
-      onBlur={(e) => setFocused({ ...focused, [field]: !!e.target.value })}
-      className="w-full pl-9 pr-3 py-2.5 rounded-xl text-sm border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition resize-none"
-    />
-    <label
-      className={`absolute left-9 top-2.5 text-xs sm:text-sm transition-all duration-300 text-gray-400 pointer-events-none ${
-        focused[field] || value ? "opacity-0" : "opacity-100"
-      }`}
-    >
-      {placeholder}
-    </label>
+    <div className="relative">
+      <div className="absolute top-3 left-3 text-gray-400 text-sm">{icon}</div>
+      <textarea
+        name={field}
+        rows="3"
+        value={value}
+        onChange={onChange}
+        onFocus={() => setFocused({ ...focused, [field]: true })}
+        onBlur={(e) => setFocused({ ...focused, [field]: !!e.target.value })}
+        className={`w-full pl-9 pr-3 py-2.5 rounded-xl text-sm border bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white focus:outline-none transition resize-none ${
+          error
+            ? "border-rose-500 dark:border-rose-500 focus:ring-2 focus:ring-rose-500/40"
+            : "border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-indigo-500/50"
+        }`}
+      />
+      <label
+        className={`absolute left-9 top-2.5 text-xs sm:text-sm transition-all duration-300 pointer-events-none ${
+          error ? "text-rose-400" : "text-gray-400"
+        } ${focused[field] || value ? "opacity-0" : "opacity-100"}`}
+      >
+        {placeholder} <span className="text-red-500">*</span>
+      </label>
+    </div>
+    {error && (
+      <p className="text-[11.5px] text-rose-500 dark:text-rose-400 font-semibold mt-1 pl-1 flex items-center gap-1.5">
+        <span>⚠️</span>
+        <span>{error}</span>
+      </p>
+    )}
   </div>
 );
 

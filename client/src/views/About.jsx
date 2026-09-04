@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import profileData from "../data/profileData";
@@ -125,32 +125,10 @@ const About = () => {
             {t("about.description")}
           </p>
 
-          {/* Modern Metrics / Stats Bar - No Truncation, Bold Impact Numbers */}
+          {/* Modern Metrics / Stats Bar with Celebratory Count-Up */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 my-5">
             {stats.map((stat, i) => (
-              <div
-                key={i}
-                className={`p-3 rounded-xl border backdrop-blur-md transition-all duration-300
-                  ${stat.highlight
-                    ? "bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-300/80 dark:border-emerald-700/50 shadow-xs"
-                    : "bg-white/80 dark:bg-gray-800/60 border-gray-200/80 dark:border-gray-700/60 shadow-2xs"
-                  }
-                  hover:-translate-y-0.5 hover:shadow-md`}
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs">{stat.icon}</span>
-                  <span className="text-base sm:text-lg font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                    {stat.value}
-                    {stat.unit && <span className="text-[10px] font-bold text-gray-500 ml-0.5">{stat.unit}</span>}
-                  </span>
-                </div>
-                <div className="text-[11px] font-bold text-gray-800 dark:text-gray-200 leading-tight">
-                  {stat.label}
-                </div>
-                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5 truncate">
-                  {stat.subtext}
-                </div>
-              </div>
+              <AnimatedStatCard key={i} stat={stat} index={i} />
             ))}
           </div>
 
@@ -256,6 +234,81 @@ const About = () => {
         </div>
       )}
     </section>
+  );
+};
+
+const AnimatedStatCard = ({ stat, index }) => {
+  const [displayValue, setDisplayValue] = useState(0);
+  const [celebrated, setCelebrated] = useState(false);
+  const cardRef = useRef(null);
+
+  const numericTarget = parseInt(stat.value, 10) || 0;
+  const suffix = stat.value.replace(/^[0-9]+/, "");
+
+  useEffect(() => {
+    let startTime = null;
+    const duration = 1000 + index * 200;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          const step = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(easeOut * numericTarget);
+            setDisplayValue(current);
+
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              setDisplayValue(numericTarget);
+              setCelebrated(true);
+            }
+          };
+          requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    if (cardRef.current) observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, [numericTarget, index]);
+
+  return (
+    <div
+      ref={cardRef}
+      className={`relative p-3 rounded-xl border backdrop-blur-md transition-all duration-300 overflow-hidden
+        ${
+          stat.highlight
+            ? "bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-300/80 dark:border-emerald-700/50 shadow-xs"
+            : "bg-white/80 dark:bg-gray-800/60 border-gray-200/80 dark:border-gray-700/60 shadow-2xs"
+        }
+        hover:-translate-y-1 hover:shadow-md group`}
+    >
+      {/* Celebratory Sparkle Ping */}
+      {celebrated && (
+        <span className="absolute top-1.5 right-1.5 text-xs animate-ping opacity-60 pointer-events-none">
+          ✨
+        </span>
+      )}
+
+      <div className="flex items-center justify-between mb-1">
+        <span className="text-xs group-hover:scale-115 transition-transform">{stat.icon}</span>
+        <span className="text-base sm:text-lg font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent flex items-center">
+          {displayValue}
+          <span>{suffix}</span>
+          {stat.unit && <span className="text-[10px] font-bold text-gray-500 ml-0.5">{stat.unit}</span>}
+        </span>
+      </div>
+      <div className="text-[11px] font-bold text-gray-800 dark:text-gray-200 leading-tight">
+        {stat.label}
+      </div>
+      <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5 truncate">
+        {stat.subtext}
+      </div>
+    </div>
   );
 };
 
