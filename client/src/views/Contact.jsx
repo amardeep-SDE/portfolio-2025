@@ -299,16 +299,14 @@ const FloatingInput = ({
         onChange={onChange}
         onFocus={() => setFocused({ ...focused, [field]: true })}
         onBlur={(e) => setFocused({ ...focused, [field]: !!e.target.value })}
-        className={`w-full pl-9 pr-3 py-2.5 rounded-xl text-sm border bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white focus:outline-none transition ${
-          error
+        className={`w-full pl-9 pr-3 py-2.5 rounded-xl text-sm border bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white focus:outline-none transition ${error
             ? "border-rose-500 dark:border-rose-500 focus:ring-2 focus:ring-rose-500/40"
             : "border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-indigo-500/50"
-        }`}
+          }`}
       />
       <label
-        className={`absolute left-9 top-2.5 text-xs sm:text-sm transition-all duration-300 pointer-events-none ${
-          error ? "text-rose-400" : "text-gray-400"
-        } ${focused[field] || value ? "opacity-0" : "opacity-100"}`}
+        className={`absolute left-9 top-2.5 text-xs sm:text-sm transition-all duration-300 pointer-events-none ${error ? "text-rose-400" : "text-gray-400"
+          } ${focused[field] || value ? "opacity-0" : "opacity-100"}`}
       >
         {placeholder} <span className="text-red-500">*</span>
       </label>
@@ -342,16 +340,14 @@ const FloatingTextarea = ({
         onChange={onChange}
         onFocus={() => setFocused({ ...focused, [field]: true })}
         onBlur={(e) => setFocused({ ...focused, [field]: !!e.target.value })}
-        className={`w-full pl-9 pr-3 py-2.5 rounded-xl text-sm border bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white focus:outline-none transition resize-none ${
-          error
+        className={`w-full pl-9 pr-3 py-2.5 rounded-xl text-sm border bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white focus:outline-none transition resize-none ${error
             ? "border-rose-500 dark:border-rose-500 focus:ring-2 focus:ring-rose-500/40"
             : "border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-indigo-500/50"
-        }`}
+          }`}
       />
       <label
-        className={`absolute left-9 top-2.5 text-xs sm:text-sm transition-all duration-300 pointer-events-none ${
-          error ? "text-rose-400" : "text-gray-400"
-        } ${focused[field] || value ? "opacity-0" : "opacity-100"}`}
+        className={`absolute left-9 top-2.5 text-xs sm:text-sm transition-all duration-300 pointer-events-none ${error ? "text-rose-400" : "text-gray-400"
+          } ${focused[field] || value ? "opacity-0" : "opacity-100"}`}
       >
         {placeholder} <span className="text-red-500">*</span>
       </label>

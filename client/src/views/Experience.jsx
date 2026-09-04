@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import profileData from "../data/profileData";
 import { motion } from "framer-motion";
@@ -60,45 +60,10 @@ const companyThemes = [
 
 const Experience = () => {
   const { t } = useTranslation();
-  const [isCelebrating, setIsCelebrating] = useState(false);
-  const sectionRef = useRef(null);
-  const lastTriggerTime = useRef(0);
-
-  const triggerMilestoneCelebration = () => {
-    setIsCelebrating(true);
-    setTimeout(() => setIsCelebrating(false), 2500);
-  };
-
-  useEffect(() => {
-    const node = sectionRef.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const now = Date.now();
-            if (now - lastTriggerTime.current > 5000) {
-              lastTriggerTime.current = now;
-              triggerMilestoneCelebration();
-            }
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(node);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   return (
     <section
       id="experience"
-      ref={sectionRef}
       className="relative py-20 px-4 sm:px-6 overflow-hidden
                  bg-gradient-to-b from-[#fffdf7] via-[#fef8ee] to-[#fff5e6]
                  dark:from-[#130f0a] dark:via-[#1c150c] dark:to-[#0f0b07]
@@ -111,22 +76,9 @@ const Experience = () => {
       <div className="relative max-w-6xl mx-auto z-10">
         {/* Section Heading */}
         <div className="text-center mb-14">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 shadow-xs mb-3 backdrop-blur-md"
-          >
-            <span className="text-sm animate-bounce">🏆</span>
-            <span>3+ Years Career Milestones • Unlocked</span>
-            <button
-              onClick={triggerMilestoneCelebration}
-              type="button"
-              className="ml-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:opacity-90 active:scale-95 transition-transform cursor-pointer shadow-xs"
-            >
-              Celebrate 🌟
-            </button>
-          </motion.div>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 mb-2.5">
+            <FiAward /> Career Roadmap & Impact
+          </div>
 
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
@@ -152,18 +104,6 @@ const Experience = () => {
 
         {/* Experience Timeline */}
         <div className="relative space-y-8 before:absolute before:inset-0 before:left-5 before:w-[2px] before:rounded-full before:bg-gradient-to-b before:from-indigo-500 before:via-cyan-500 before:to-emerald-500 before:opacity-50 before:hidden md:before:block">
-          {/* Animated Golden Career Laser Pulse */}
-          <motion.div
-            initial={{ top: "0%", opacity: 0 }}
-            animate={
-              isCelebrating
-                ? { top: ["0%", "100%"], opacity: [0, 1, 1, 0] }
-                : { top: "0%", opacity: 0 }
-            }
-            transition={{ duration: 2.2, ease: "easeInOut" }}
-            className="hidden md:block absolute left-5 -translate-x-1/2 w-1.5 h-24 bg-gradient-to-b from-transparent via-amber-400 to-transparent shadow-[0_0_14px_#f59e0b] rounded-full pointer-events-none z-20"
-          />
-
           {profileData.experience.map((item, index) => {
             const theme = companyThemes[index] || companyThemes[0];
             const bullets = t(`${item.bulletsKey}`, {
@@ -184,10 +124,6 @@ const Experience = () => {
                 <div
                   className={`hidden md:flex absolute left-5 top-7 -translate-x-1/2 w-10 h-10 rounded-xl bg-white/95 dark:bg-gray-900/95 border-2 ${theme.nodeBorder} ${theme.nodeGlow} items-center justify-center shadow-md group-hover:scale-115 transition-all duration-300 z-10 backdrop-blur-md`}
                 >
-                  {/* Golden Achievement Shockwave when celebrating */}
-                  {isCelebrating && (
-                    <span className="absolute -inset-2.5 rounded-2xl border-2 border-amber-400/80 animate-ping opacity-60 pointer-events-none" />
-                  )}
                   {theme.nodeIcon}
                   {index === 0 && (
                     <span className="absolute -top-1 -right-1 flex h-3 w-3">

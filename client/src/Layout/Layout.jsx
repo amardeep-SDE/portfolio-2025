@@ -4,15 +4,15 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-   <>
-  <div className="overflow-x-hidden">
-    <Navbar />
-    <main className="min-h-[80vh]">
-      <Outlet />
-    </main>
-    <Footer />
-  </div>
-</>
+    <>
+      <div className="overflow-x-hidden">
+        <Navbar />
+        <main className="min-h-[80vh]">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </>
 
   );
 };

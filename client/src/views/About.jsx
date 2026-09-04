@@ -280,10 +280,9 @@ const AnimatedStatCard = ({ stat, index }) => {
     <div
       ref={cardRef}
       className={`relative p-3 rounded-xl border backdrop-blur-md transition-all duration-300 overflow-hidden
-        ${
-          stat.highlight
-            ? "bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-300/80 dark:border-emerald-700/50 shadow-xs"
-            : "bg-white/80 dark:bg-gray-800/60 border-gray-200/80 dark:border-gray-700/60 shadow-2xs"
+        ${stat.highlight
+          ? "bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-300/80 dark:border-emerald-700/50 shadow-xs"
+          : "bg-white/80 dark:bg-gray-800/60 border-gray-200/80 dark:border-gray-700/60 shadow-2xs"
         }
         hover:-translate-y-1 hover:shadow-md group`}
     >
