@@ -252,7 +252,7 @@ const CelebrationConfetti = ({ trigger = 0 }) => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-50 w-full h-full"
+      className="fixed inset-0 pointer-events-none z-[100] w-full h-full"
       style={{ pointerEvents: "none" }}
     />
   );

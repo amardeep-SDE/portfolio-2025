@@ -1,9 +1,23 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { FiMail, FiPhone, FiMapPin, FiUser, FiMessageCircle, FiClock, FiSend } from "react-icons/fi";
+import {
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiUser,
+  FiMessageCircle,
+  FiClock,
+  FiSend,
+  FiCopy,
+  FiCheck,
+} from "react-icons/fi";
 import profileData from "../data/profileData";
 import RocketCelebration from "../components/RocketCelebration";
+import {
+  playCelestialChime,
+  playLuxuryGlassChime,
+} from "../utils/audioEffects";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -63,7 +77,8 @@ const Contact = () => {
       return;
     }
 
-    // Success: clear errors and launch rocket celebration modal (no toast)
+    // Success: play Rocket Victory Chime & launch rocket celebration modal
+    playCelestialChime();
     setErrors({});
     setCelebrationName(name);
     setShowRocketCelebration(true);
@@ -128,28 +143,33 @@ const Contact = () => {
               label={t("contact.emailLabel", "Email")}
               value={contact.email}
               href={`mailto:${contact.email}`}
+              copyable={true}
             />
             <ContactItem
               icon={<FiMail />}
               label={t("contact.altEmailLabel", "Alternate Email")}
               value={contact.alternateEmail}
               href={`mailto:${contact.alternateEmail}`}
+              copyable={true}
             />
             <ContactItem
               icon={<FiPhone />}
               label={t("contact.phoneLabel", "Phone")}
               value={contact.phone}
               href={`tel:${contact.phone}`}
+              copyable={true}
             />
             <ContactItem
               icon={<FiClock />}
               label={t("contact.noticeLabel", "Availability")}
               value={t("contact.noticeValue", "1 Month Notice Period")}
+              copyable={false}
             />
             <ContactItem
               icon={<FiMapPin />}
               label={t("contact.locationLabel", "Location")}
               value={t("contact.location", "Chandigarh, India")}
+              copyable={false}
             />
           </motion.div>
 
@@ -201,10 +221,12 @@ const Contact = () => {
               type="submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full py-2.5 bg-gradient-to-r from-indigo-600 to-pink-500 hover:from-indigo-700 hover:to-pink-600 text-white font-semibold text-sm rounded-xl shadow-md transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+              className="group relative overflow-hidden w-full py-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 hover:from-indigo-700 hover:to-pink-600 text-white font-bold text-sm rounded-xl shadow-md shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/40 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
-              <FiSend className="text-sm" />
-              <span>{t("contact.send", "Send Message")}</span>
+              {/* Shimmer sweep */}
+              <span className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-1000 ease-out pointer-events-none" />
+              <FiSend className="text-sm group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform duration-200 relative z-10" />
+              <span className="relative z-10">{t("contact.send", "Send Message")}</span>
             </motion.button>
           </motion.form>
         </div>
@@ -213,70 +235,113 @@ const Contact = () => {
   );
 };
 
-const ContactItem = ({ icon, label, value, href }) => (
-  <motion.div
-    whileHover={{ y: -3, scale: 1.01 }}
-    transition={{ type: "spring", stiffness: 220, damping: 18 }}
-    className="
-      group relative overflow-hidden
-      flex items-center gap-3.5 p-3.5
-      rounded-xl
-      bg-white/80 dark:bg-gray-800/80
-      backdrop-blur-lg
-      border border-gray-200/70 dark:border-gray-700/60
-      shadow-xs hover:shadow-md transition-all duration-300
-    "
-  >
-    {/* Subtle Glow on hover */}
-    <span
-      className="
-      absolute inset-0 opacity-0 group-hover:opacity-100
-      bg-gradient-to-r from-indigo-500/5 to-pink-500/5
-      transition duration-300
-    "
-    />
+const ContactItem = ({ icon, label, value, href, copyable = false }) => {
+  const [copied, setCopied] = useState(false);
 
-    {/* Compact Icon badge */}
-    <div
+  const handleCopy = () => {
+    try {
+      navigator.clipboard.writeText(value);
+      playLuxuryGlassChime();
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    } catch (e) {
+      // fallback
+    }
+  };
+
+  return (
+    <motion.div
+      whileHover={{ y: -2.5, scale: 1.01 }}
+      transition={{ type: "spring", stiffness: 220, damping: 18 }}
       className="
-      relative z-10
-      w-10 h-10 flex items-center justify-center
-      rounded-lg
-      bg-gradient-to-br from-indigo-600 to-pink-500
-      text-white text-base
-      shadow-xs shrink-0
-    "
+        group relative overflow-hidden
+        flex items-center justify-between gap-3 p-3.5
+        rounded-2xl
+        bg-white/85 dark:bg-gray-800/85
+        backdrop-blur-lg
+        border border-gray-200/80 dark:border-gray-700/70
+        shadow-xs hover:shadow-md hover:border-indigo-400/50 dark:hover:border-indigo-500/50 transition-all duration-300
+      "
     >
-      {icon}
-    </div>
+      {/* Subtle Glow on hover */}
+      <span
+        className="
+        absolute inset-0 opacity-0 group-hover:opacity-100
+        bg-gradient-to-r from-indigo-500/5 to-pink-500/5
+        transition duration-300 pointer-events-none
+      "
+      />
 
-    {/* Text content */}
-    <div className="relative z-10 min-w-0 flex-1">
-      <p className="text-[11px] uppercase tracking-wider text-gray-400 dark:text-gray-400 font-semibold">
-        {label}
-      </p>
-
-      {href ? (
-        <a
-          href={href}
+      <div className="flex items-center gap-3.5 min-w-0 flex-1 relative z-10">
+        {/* Compact Icon badge */}
+        <div
           className="
-            block text-xs sm:text-sm font-semibold
-            text-gray-900 dark:text-white
-            hover:text-indigo-600 dark:hover:text-indigo-400
-            transition truncate
-          "
-          rel="noopener noreferrer"
+          relative z-10
+          w-10 h-10 flex items-center justify-center
+          rounded-xl
+          bg-gradient-to-br from-indigo-600 to-pink-500
+          text-white text-base
+          shadow-xs shrink-0 group-hover:scale-105 transition-transform
+        "
         >
-          {value}
-        </a>
-      ) : (
-        <p className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white truncate">
-          {value}
-        </p>
+          {icon}
+        </div>
+
+        {/* Text content */}
+        <div className="relative z-10 min-w-0 flex-1">
+          <p className="text-[11px] uppercase tracking-wider text-gray-400 dark:text-gray-400 font-semibold">
+            {label}
+          </p>
+
+          {href ? (
+            <a
+              href={href}
+              className="
+                block text-xs sm:text-sm font-semibold
+                text-gray-900 dark:text-white
+                hover:text-indigo-600 dark:hover:text-indigo-400
+                transition truncate
+              "
+              rel="noopener noreferrer"
+            >
+              {value}
+            </a>
+          ) : (
+            <p className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white truncate">
+              {value}
+            </p>
+          )}
+        </div>
+      </div>
+
+      {/* 1-Click Copy Button */}
+      {copyable && (
+        <button
+          type="button"
+          onClick={handleCopy}
+          className={`relative z-10 px-2.5 py-1.5 rounded-xl transition-all duration-200 cursor-pointer flex items-center gap-1 text-xs font-semibold shrink-0 active:scale-95 ${
+            copied
+              ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/40 shadow-xs"
+              : "bg-gray-100/90 dark:bg-gray-700/60 text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 border border-gray-200/80 dark:border-gray-600/50"
+          }`}
+          title={`Copy ${label} to clipboard`}
+        >
+          {copied ? (
+            <>
+              <FiCheck className="text-emerald-500 text-xs animate-bounce" />
+              <span className="text-[10px] font-bold">Copied!</span>
+            </>
+          ) : (
+            <>
+              <FiCopy className="text-xs" />
+              <span className="hidden sm:inline-block text-[10px]">Copy</span>
+            </>
+          )}
+        </button>
       )}
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 const FloatingInput = ({
   icon,
