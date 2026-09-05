@@ -4,6 +4,7 @@ import Landing from "./views/Landing";
 import WhatsAppButton from "./components/WhatsAppButton";
 import DevTerminal from "./components/DevTerminal";
 import AiRecruiterChatbot from "./components/AiRecruiterChatbot";
+import WelcomeAiModal from "./components/WelcomeAiModal";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const App = () => {
       <WhatsAppButton />
       <DevTerminal />
       <AiRecruiterChatbot />
+      <WelcomeAiModal />
     </>
   );
 };

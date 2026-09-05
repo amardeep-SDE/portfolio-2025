@@ -18,6 +18,7 @@ import {
   FaAward,
   FaCheckCircle,
   FaCode,
+  FaRobot,
   FaCheck,
   FaFilePdf,
   FaExternalLinkAlt,
@@ -32,6 +33,7 @@ import {
   playLuxuryGlassChime,
   playLevelUpSound,
 } from "../utils/audioEffects";
+import { openWhatsAppModal } from "../utils/whatsappHelper";
 
 const About = () => {
   const { t } = useTranslation();
@@ -144,16 +146,19 @@ const About = () => {
       highlight: true,
     },
     {
-      value: "3x",
-      label: "NamasteDev",
-      subtext: "Verified Certifications",
-      icon: <FaAward className="text-amber-500 text-sm" />,
-    },
-    {
       value: "9+",
       label: "Web Projects",
       subtext: "Production Deployed",
       icon: <FaCheckCircle className="text-sky-500 text-sm" />,
+    },
+    {
+      value: "Live",
+      customValue: "Live",
+      label: "AI Copilot",
+      subtext: "Gemini & LLM Apps",
+      icon: <FaRobot className="text-cyan-500 text-sm" />,
+      aiCard: true,
+      onClick: () => window.dispatchEvent(new CustomEvent("open-ai-chat")),
     },
   ];
 
@@ -193,10 +198,8 @@ const About = () => {
             <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
               <Typewriter
                 words={[
+                  "MERN Full Stack AI Developer",
                   "React Developer",
-                  "MERN Stack Developer",
-                  "Frontend Specialist",
-                  "Full Stack Engineer",
                 ]}
                 loop={0}
                 cursor
@@ -208,7 +211,7 @@ const About = () => {
             </span>
           </div>
 
-          {/* Location & YOE Badges with Interactive Hover Previews */}
+          {/* Location, YOE & AI Badges with Interactive Hover Previews */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-5 text-xs sm:text-sm">
             <ChandigarhHoverCard>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 font-medium border border-gray-200/60 dark:border-gray-700/60 shadow-2xs hover:border-emerald-500/60 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/40 transition-all duration-300 group">
@@ -229,6 +232,14 @@ const About = () => {
                 </span>
               </span>
             </ExperienceHoverCard>
+
+            {/* <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-purple-500/10 text-cyan-800 dark:text-cyan-300 font-semibold border border-cyan-300/80 dark:border-cyan-700/50 shadow-2xs transition-all duration-300 group">
+              <FaRobot className="text-cyan-600 dark:text-cyan-400 text-xs animate-pulse" />
+              <span>Gemini &amp; LLM Apps</span>
+              <span className="text-[10px] text-cyan-600 dark:text-cyan-300 font-bold bg-cyan-100/80 dark:bg-cyan-900/60 px-1 rounded ml-0.5">
+                AI Copilot Live
+              </span>
+            </span> */}
           </div>
 
           {/* Professional Summary Description */}
@@ -269,13 +280,12 @@ const About = () => {
               onClick={handleDownloadResume}
               className={`group relative px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white
                          shadow-md transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer 
-                         flex items-center gap-2 overflow-hidden ${
-                           downloadState === "downloaded"
-                             ? "bg-emerald-600 shadow-emerald-500/30"
-                             : downloadState === "downloading"
-                             ? "bg-indigo-600 shadow-indigo-500/30"
-                             : "bg-gradient-to-r from-pink-600 via-rose-600 to-orange-500 shadow-rose-500/25 hover:shadow-xl hover:shadow-rose-500/40"
-                         }`}
+                         flex items-center gap-2 overflow-hidden ${downloadState === "downloaded"
+                  ? "bg-emerald-600 shadow-emerald-500/30"
+                  : downloadState === "downloading"
+                    ? "bg-indigo-600 shadow-indigo-500/30"
+                    : "bg-gradient-to-r from-pink-600 via-rose-600 to-orange-500 shadow-rose-500/25 hover:shadow-xl hover:shadow-rose-500/40"
+                }`}
             >
               {/* Sleek sheen sweep on hover */}
               <span className="absolute inset-0 w-1/3 h-full bg-white/25 skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-1000 ease-out pointer-events-none" />
@@ -379,22 +389,20 @@ const About = () => {
                 <div className="flex items-center bg-gray-200/80 dark:bg-gray-800/90 p-1 rounded-xl border border-gray-300/60 dark:border-gray-700 text-xs font-semibold">
                   <button
                     onClick={() => setResumeTab("pdf")}
-                    className={`px-3 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 ${
-                      resumeTab === "pdf"
-                        ? "bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-xs"
-                        : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-                    }`}
+                    className={`px-3 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 ${resumeTab === "pdf"
+                      ? "bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-xs"
+                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                      }`}
                   >
                     <FaFilePdf className="text-xs" />
                     <span>PDF View</span>
                   </button>
                   <button
                     onClick={() => setResumeTab("summary")}
-                    className={`px-3 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 ${
-                      resumeTab === "summary"
-                        ? "bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-xs"
-                        : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-                    }`}
+                    className={`px-3 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 ${resumeTab === "summary"
+                      ? "bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-xs"
+                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                      }`}
                   >
                     <FaBolt className="text-xs text-amber-500" />
                     <span>Executive ATS Summary</span>
@@ -548,15 +556,19 @@ const About = () => {
                             </>
                           )}
                         </button>
-                        <a
-                          href="https://wa.me/919451996500?text=Hi%20Amardeep,%20I%20reviewed%20your%20resume%20and%20portfolio.%20Let's%20connect!"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm cursor-pointer"
+                        <button
+                          type="button"
+                          onClick={() =>
+                            openWhatsAppModal(
+                              "Hi Amardeep, I reviewed your resume and portfolio. Let's connect!"
+                            )
+                          }
+                          className="px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm cursor-pointer hover:scale-105 active:scale-95"
+                          title="Open WhatsApp chat panel"
                         >
                           <FaWhatsapp className="text-sm" />
                           <span>WhatsApp</span>
-                        </a>
+                        </button>
                         <a
                           href="mailto:amardeepdwivedi77@gmail.com"
                           className="px-3.5 py-1.5 rounded-xl bg-white text-indigo-600 font-bold text-xs hover:bg-gray-100 transition shadow-sm whitespace-nowrap cursor-pointer"
@@ -665,15 +677,19 @@ const AnimatedStatCard = ({ stat, index }) => {
   return (
     <div
       ref={cardRef}
+      onClick={stat.onClick}
       className={`relative p-3 rounded-xl border backdrop-blur-md transition-all duration-300 overflow-hidden
         ${stat.highlight
           ? "bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-300/80 dark:border-emerald-700/50 shadow-xs"
-          : "bg-white/80 dark:bg-gray-800/60 border-gray-200/80 dark:border-gray-700/60 shadow-2xs"
+          : stat.aiCard
+            ? "bg-cyan-50/80 dark:bg-cyan-950/30 border-cyan-300/80 dark:border-cyan-700/50 shadow-xs cursor-pointer hover:border-cyan-400"
+            : "bg-white/80 dark:bg-gray-800/60 border-gray-200/80 dark:border-gray-700/60 shadow-2xs"
         }
         hover:-translate-y-1 hover:shadow-md group`}
+      title={stat.aiCard ? "Click to open Amardeep AI Copilot" : undefined}
     >
       {/* Celebratory Sparkle Ping */}
-      {celebrated && (
+      {(celebrated || stat.aiCard) && (
         <span className="absolute top-1.5 right-1.5 text-xs animate-ping opacity-60 pointer-events-none">
           ✨
         </span>
@@ -682,9 +698,18 @@ const AnimatedStatCard = ({ stat, index }) => {
       <div className="flex items-center justify-between mb-1">
         <span className="text-xs group-hover:scale-115 transition-transform">{stat.icon}</span>
         <span className="text-base sm:text-lg font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent flex items-center">
-          {displayValue}
-          <span>{suffix}</span>
-          {stat.unit && <span className="text-[10px] font-bold text-gray-500 ml-0.5">{stat.unit}</span>}
+          {stat.customValue ? (
+            <span className="flex items-center gap-1">
+              <span>{stat.customValue}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            </span>
+          ) : (
+            <>
+              {displayValue}
+              <span>{suffix}</span>
+              {stat.unit && <span className="text-[10px] font-bold text-gray-500 ml-0.5">{stat.unit}</span>}
+            </>
+          )}
         </span>
       </div>
       <div className="text-[11px] font-bold text-gray-800 dark:text-gray-200 leading-tight">

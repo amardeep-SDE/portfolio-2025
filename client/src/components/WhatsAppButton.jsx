@@ -31,6 +31,47 @@ const WhatsAppButton = () => {
 
   const phoneNumber = "918964051727";
 
+  // 5-minute alternating realistic Online/Offline status (5m online -> 5m offline -> 5m online...)
+  const computeOnlineStatus = () => {
+    const now = Date.now();
+    const cycleMinutes = 5;
+    const cycleMs = cycleMinutes * 60 * 1000;
+    const cycleIndex = Math.floor(now / cycleMs);
+    const isOnline = cycleIndex % 2 === 0;
+
+    // Time when the current 5-minute block began (used for realistic "last seen at HH:MM AM/PM")
+    const cycleStartDate = new Date(cycleIndex * cycleMs);
+    const lastSeenTime = cycleStartDate.toLocaleTimeString([], {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+    return { isOnline, lastSeenTime };
+  };
+
+  const [onlineStatus, setOnlineStatus] = useState(computeOnlineStatus);
+
+  useEffect(() => {
+    // Check every 5 seconds so transitions flip smoothly in real-time
+    const timer = setInterval(() => {
+      setOnlineStatus(computeOnlineStatus());
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleOpenModal = (e) => {
+      setIsOpen(true);
+      setHasOpenedBefore(true);
+      if (e?.detail?.message) {
+        setUserMsg(e.detail.message);
+      }
+    };
+
+    window.addEventListener("open-whatsapp-modal", handleOpenModal);
+    return () => window.removeEventListener("open-whatsapp-modal", handleOpenModal);
+  }, []);
+
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 150);
@@ -89,18 +130,38 @@ const WhatsAppButton = () => {
                     alt={profileData.name}
                     className="w-10 h-10 rounded-full object-cover border-2 border-white/40 shadow-sm"
                   />
-                  <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-[#075e54] rounded-full" />
+                  <span
+                    className={`absolute bottom-0 right-0 w-3 h-3 border-2 border-[#075e54] rounded-full transition-colors duration-300 ${
+                      onlineStatus.isOnline ? "bg-emerald-400" : "bg-amber-400"
+                    }`}
+                  />
                 </div>
                 <div>
                   <div className="font-bold text-sm leading-tight flex items-center gap-1.5">
                     <span>{profileData.name}</span>
-                    <span className="text-[10px] bg-emerald-400/20 px-1.5 py-0.2 rounded border border-emerald-400/30 text-emerald-200">
-                      Active
+                    <span
+                      className={`text-[10px] px-1.5 py-0.5 rounded-full border transition-colors duration-300 font-medium ${
+                        onlineStatus.isOnline
+                          ? "bg-emerald-400/20 border-emerald-400/30 text-emerald-200"
+                          : "bg-white/15 border-white/20 text-emerald-100"
+                      }`}
+                    >
+                      {onlineStatus.isOnline ? "Active" : "Away"}
                     </span>
                   </div>
-                  <div className="text-[11px] text-emerald-100/80 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-                    <span>Online now • Replies in ~15m</span>
+                  <div className="text-[11px] text-emerald-100/85 flex items-center gap-1">
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                        onlineStatus.isOnline
+                          ? "bg-emerald-300 animate-pulse"
+                          : "bg-amber-300/90"
+                      }`}
+                    />
+                    <span>
+                      {onlineStatus.isOnline
+                        ? "Online now • Replies in ~15m"
+                        : `Last seen at ${onlineStatus.lastSeenTime} • Replies in ~15m`}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -227,13 +288,29 @@ const WhatsAppButton = () => {
       <div className="relative group flex items-center justify-end select-none">
         {/* Hover Pill Tooltip */}
         <span className="absolute right-16 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900/90 dark:bg-gray-800/95 text-white text-xs font-medium shadow-xl backdrop-blur-md border border-gray-700 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap pointer-events-none">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
+          <span
+            className={`w-2 h-2 rounded-full inline-block ${
+              onlineStatus.isOnline
+                ? "bg-emerald-400 animate-ping"
+                : "bg-amber-400"
+            }`}
+          />
           <span>Chat with Amardeep</span>
-          <span className="text-[10px] text-emerald-400 font-semibold">• Online</span>
+          <span
+            className={`text-[10px] font-semibold ${
+              onlineStatus.isOnline
+                ? "text-emerald-400"
+                : "text-amber-400"
+            }`}
+          >
+            • {onlineStatus.isOnline ? "Online" : "Away (Replies soon)"}
+          </span>
         </span>
 
-        {/* Outer Pulsing Ping Wave Radar Rings */}
-        <span className="absolute inset-0 rounded-full bg-emerald-500/30 animate-ping pointer-events-none" />
+        {/* Outer Pulsing Ping Wave Radar Rings (active when online) */}
+        {onlineStatus.isOnline && (
+          <span className="absolute inset-0 rounded-full bg-emerald-500/30 animate-ping pointer-events-none" />
+        )}
         <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 opacity-40 blur-md group-hover:opacity-75 transition-opacity duration-300 pointer-events-none" />
 
         {/* Unread "1" Notification Beacon Pill */}

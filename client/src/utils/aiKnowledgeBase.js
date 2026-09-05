@@ -54,6 +54,27 @@ export const QUICK_PROMPTS = [
 export const getAiResponse = (rawInput) => {
   const q = rawInput.toLowerCase().trim();
 
+  // 0. PRIVACY: AGE / DOB / BIRTH / DEMOGRAPHICS
+  if (
+    q.includes("age") ||
+    q.includes("umar") ||
+    q.includes("umr") ||
+    q.includes("how old") ||
+    q.includes("dob") ||
+    q.includes("date of birth") ||
+    q.includes("birth date") ||
+    q.includes("birthday") ||
+    q.includes("janam")
+  ) {
+    const isHindi = q.includes("kitni") || q.includes("kya") || q.includes("umar") || q.includes("hai");
+    return {
+      text: isHindi
+        ? `Amardeep apne personal details jaise age ya date of birth share nahi karte hain. Unka poora focus unke **3+ saal ke verified production software engineering experience**, React 19/MERN stack mastery, aur Agora WebRTC video architecture par hai.\n\nKya aap unke **technical skills**, **production projects**, ya **1-month notice period** ke baare me jaan-na chahenge?`
+        : `Amardeep prefers to keep personal details like age and date of birth private. His profile is strictly evaluated on his **3+ years of verified production software engineering experience**, core mastery in **React 19, Redux Toolkit, Node.js**, and **Agora WebRTC video streaming**.\n\nWould you like to know more about his **technical projects**, **skills**, or **notice period**?`,
+      actions: ["view_resume", "whatsapp"],
+    };
+  }
+
   // 1. WHY HIRE / STRENGTHS
   if (
     q.includes("why hire") ||
@@ -298,19 +319,30 @@ export const analyzeJobDescriptionMatch = (jdText) => {
     }
   });
 
-  // Base match calculation
-  let matchPercentage = 82;
-  if (totalWeight > 0) {
-    matchPercentage = Math.min(98, Math.round(75 + (matchedWeight / totalWeight) * 23));
+  // Honest match calculation
+  let matchPercentage = 15;
+  if (matchedSkills.length > 0) {
+    matchPercentage = Math.min(98, Math.round(50 + (matchedWeight / 120) * 48));
   } else {
-    matchPercentage = 88; // Default strong match for generic web engineering roles
+    // If JD is completely outside MERN / React stack (e.g. Java Spring Boot, Python, iOS, etc.)
+    return {
+      score: 10,
+      matchedSkills: [],
+      missingSkills: ["Required stack is outside Amardeep's core React / MERN focus"],
+      fitLevel: "Role Mismatch",
+      noticePeriod: "1 Month (Available for immediate hire)",
+      experienceYears: "3+ Years Production Experience",
+      summary: "This role requires a different technology stack. Amardeep specializes in React, Redux Toolkit, MERN stack, and Agora WebRTC video platforms with 3+ years of production experience.",
+    };
   }
 
   return {
     score: matchPercentage,
-    matchedSkills: matchedSkills.length > 0 ? matchedSkills : ["React", "JavaScript", "MERN Stack", "Tailwind CSS"],
+    matchedSkills: matchedSkills,
+    missingSkills: [],
+    fitLevel: matchPercentage >= 70 ? "High Match" : "Moderate Match",
     noticePeriod: "1 Month (Available for immediate hire)",
     experienceYears: "3+ Years Production Experience",
-    summary: `Amardeep is a **${matchPercentage}% strong match** for this role based on his 3+ years of production experience in React, MERN stack, state management, and real-time architectures!`,
+    summary: `Amardeep is a **${matchPercentage}% match** for this role based on his 3+ years of verified production experience in React, MERN stack, state management, and real-time architectures!`,
   };
 };

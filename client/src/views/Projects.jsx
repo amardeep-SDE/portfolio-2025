@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import profileData from "../data/profileData";
 import ProjectCard from "../components/ProjectCard";
-import StarlightCelebration from "../components/StarlightCelebration";
 import {
   FiShield,
   FiVideo,
@@ -27,39 +26,6 @@ const Projects = () => {
   const { projects } = profileData;
   const [selectedCompany, setSelectedCompany] = useState("all");
   const [selectedModalProject, setSelectedModalProject] = useState(null);
-  const [starTrigger, setStarTrigger] = useState(0);
-  const projectsSectionRef = useRef(null);
-  const lastStarTime = useRef(0);
-
-  const triggerStarlight = () => {
-    setStarTrigger((prev) => prev + 1);
-  };
-
-  useEffect(() => {
-    const node = projectsSectionRef.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const now = Date.now();
-            if (now - lastStarTime.current > 5000) {
-              lastStarTime.current = now;
-              triggerStarlight();
-            }
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    observer.observe(node);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   const companyFilters = [
     { id: "all", label: "All Projects" },
@@ -152,15 +118,11 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      ref={projectsSectionRef}
       className="relative py-20 px-4 sm:px-6 overflow-hidden
                  bg-gradient-to-b from-[#f5f3ff] via-[#faf5ff] to-[#ede9fe]
                  dark:from-[#0d091e] dark:via-[#130d29] dark:to-[#0a0718]
                  transition-colors duration-300"
     >
-      {/* Starlight Celebration Cascade */}
-      <StarlightCelebration trigger={starTrigger} />
-
       {/* Ambient Violet Studio Glows */}
       <div className="absolute top-1/3 -left-28 w-96 h-96 bg-purple-500/10 dark:bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-28 w-96 h-96 bg-violet-500/10 dark:bg-violet-600/15 rounded-full blur-3xl pointer-events-none" />
@@ -174,15 +136,8 @@ const Projects = () => {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60 shadow-xs mb-3 backdrop-blur-md"
           >
-            <span className="text-sm animate-spin" style={{ animationDuration: "6s" }}>✨</span>
+            <span className="text-sm">✨</span>
             <span>Production Systems • Shipped to Scale</span>
-            <button
-              onClick={triggerStarlight}
-              type="button"
-              className="ml-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-violet-600 to-indigo-600 text-white hover:opacity-90 active:scale-95 transition-transform cursor-pointer shadow-xs"
-            >
-              Celebrate 🌟
-            </button>
           </motion.div>
 
           <motion.h2
@@ -474,6 +429,43 @@ const Projects = () => {
                       ))}
                   </div>
                 </div>
+
+                {/* 🎥 Agora WebRTC Deep Technical Architecture Spotlight */}
+                {selectedModalProject.tags && selectedModalProject.tags.includes("Agora SDK") && (
+                  <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/30">
+                    <div className="flex items-center gap-2 mb-2.5 text-xs font-bold text-emerald-700 dark:text-emerald-300">
+                      <FiVideo className="text-emerald-500" />
+                      <span>Real-Time WebRTC Architecture (Agora SD-RTN Pipeline)</span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]">
+                      <div className="p-2.5 rounded-lg bg-white/80 dark:bg-gray-800/80 border border-emerald-200/60 dark:border-emerald-800/60">
+                        <span className="font-bold text-emerald-600 dark:text-emerald-400 block mb-0.5">1. Token Security</span>
+                        <span className="text-gray-600 dark:text-gray-300">HMAC-SHA256 dynamic tokens generated server-side via Node.js for encrypted RTC access.</span>
+                      </div>
+                      <div className="p-2.5 rounded-lg bg-white/80 dark:bg-gray-800/80 border border-emerald-200/60 dark:border-emerald-800/60">
+                        <span className="font-bold text-emerald-600 dark:text-emerald-400 block mb-0.5">2. Media Channel</span>
+                        <span className="text-gray-600 dark:text-gray-300">Sub-second video/audio streams, active speaker volume detection, and mute states.</span>
+                      </div>
+                      <div className="p-2.5 rounded-lg bg-white/80 dark:bg-gray-800/80 border border-emerald-200/60 dark:border-emerald-800/60">
+                        <span className="font-bold text-emerald-600 dark:text-emerald-400 block mb-0.5">3. Live Signaling</span>
+                        <span className="text-gray-600 dark:text-gray-300">Socket.IO room events for document notarization, instant chat, and user presence.</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* ⚡ Redux Toolkit State Architecture Spotlight */}
+                {selectedModalProject.tags && selectedModalProject.tags.includes("Redux Toolkit") && !selectedModalProject.tags.includes("Agora SDK") && (
+                  <div className="p-3.5 rounded-xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent border border-indigo-500/30 text-[11.5px]">
+                    <div className="flex items-center gap-2 mb-1.5 font-bold text-indigo-700 dark:text-indigo-300 text-xs">
+                      <FiCpu className="text-indigo-500" />
+                      <span>Enterprise Redux State Architecture</span>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                      Structured with Redux Toolkit slices, memoized selectors, normalized cache state, and automated REST API invalidation for zero re-render waste.
+                    </p>
+                  </div>
+                )}
 
                 {/* Modal Footer with Actions */}
                 <div className="pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">

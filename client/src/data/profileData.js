@@ -2,7 +2,7 @@ import profileImage from "../assets/amardeep-profile.jpeg";
 
 const profileData = {
   name: "Amardeep Dwivedi",
-  title: "React Developer | MERN Stack Developer",
+  title: "MERN Full Stack & Generative AI Developer | React Specialist",
   experienceYears: "3+ YOE",
   noticePeriod: "1 Month",
   location: "Chandigarh, India",

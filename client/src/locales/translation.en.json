@@ -8,26 +8,23 @@
     "credentials": "Education & Certs",
     "contact": "Contact"
   },
-
   "hero": {
     "greeting": "Hi, I'm Amardeep",
-    "role": "React Developer | MERN Stack Developer",
+    "role": "MERN Full Stack AI Developer",
     "noticeBadge": "Notice Period: 1 Month",
     "expBadge": "3+ Years Experience",
     "locationBadge": "Chandigarh, India"
   },
-
   "about": {
     "heading": "Hi, I'm",
     "name": "Amardeep Dwivedi",
-    "role": "React Developer",
-    "role2": "MERN Stack Developer",
+    "role": "MERN Full Stack AI Developer",
+    "role2": "React & AI Developer",
     "location": "Chandigarh, India",
     "noticePeriod": "Notice Period: 1 Month",
     "yoe": "3+ Years of Experience",
     "description": "Software Development Engineer with 3+ years of experience in Frontend & Full Stack development, focused on end-to-end delivery of scalable, high-performance web applications. Strong in JS fundamentals, browser internals & storage, with expertise in performance optimization, secure authentication & authorization, debugging, and Agile-based delivery."
   },
-
   "projects": {
     "heading": "Featured Projects",
     "viewProject": "View Project",
@@ -87,7 +84,6 @@
       "description": "Contributed to the development of Cardio, a healthcare and patient management platform. Worked on intuitive patient dashboards, secure medical data handling, responsive frontend workflows, and RESTful API integrations."
     }
   },
-
   "skills": {
     "heading": "Technical Skills",
     "subheading": "Core competencies & technologies used in production",
@@ -123,7 +119,6 @@
     "Git & GitHub": "Git & GitHub",
     "Razorpay": "Razorpay"
   },
-
   "experience": {
     "heading": "Work Experience",
     "subheading": "Professional journey & project highlights",
@@ -163,7 +158,6 @@
       ]
     }
   },
-
   "credentials": {
     "heading": "Education & Certifications",
     "educationTitle": "Education",
@@ -205,7 +199,6 @@
       }
     }
   },
-
   "contact": {
     "heading": "Get In Touch",
     "subheading": "Looking for a dedicated MERN / React Developer? Let's connect!",
@@ -221,7 +214,6 @@
     "messagePlaceholder": "Your Message",
     "send": "Send Message"
   },
-
   "footer": {
     "contact": "Contact Info",
     "quickLinks": "Quick Links",

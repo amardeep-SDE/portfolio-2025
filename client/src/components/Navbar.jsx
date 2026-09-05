@@ -83,10 +83,9 @@ const Navbar = () => {
       <header className="fixed top-0 inset-x-0 z-50 px-3 sm:px-6 pt-2.5 sm:pt-3 pointer-events-none">
         <div
           className={`max-w-6xl mx-auto rounded-2xl sm:rounded-full pointer-events-auto transition-all duration-300
-            ${
-              isScrolled
-                ? "bg-white/80 dark:bg-[#0b101b]/85 backdrop-blur-xl border border-indigo-500/20 dark:border-indigo-500/30 shadow-xl shadow-black/5 dark:shadow-black/50 py-2 sm:py-2.5 px-4 sm:px-6"
-                : "bg-white/60 dark:bg-[#0d1322]/65 backdrop-blur-lg border border-white/40 dark:border-white/10 shadow-md py-2.5 sm:py-3 px-4 sm:px-6"
+            ${isScrolled
+              ? "bg-white/80 dark:bg-[#0b101b]/85 backdrop-blur-xl border border-indigo-500/20 dark:border-indigo-500/30 shadow-xl shadow-black/5 dark:shadow-black/50 py-2 sm:py-2.5 px-4 sm:px-6"
+              : "bg-white/60 dark:bg-[#0d1322]/65 backdrop-blur-lg border border-white/40 dark:border-white/10 shadow-md py-2.5 sm:py-3 px-4 sm:px-6"
             } flex items-center justify-between`}
         >
           {/* 1. Brand Logo with <AD /> Monogram & Availability Beacon */}
@@ -108,10 +107,13 @@ const Navbar = () => {
                 <span className="text-sm sm:text-base font-extrabold text-gray-900 dark:text-white tracking-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   Amardeep
                 </span>
+                <span className="text-[9.5px] font-extrabold px-1.5 py-0.2 rounded-full bg-gradient-to-r from-indigo-500/15 via-purple-500/15 to-pink-500/15 border border-indigo-400/30 text-indigo-700 dark:text-cyan-300 hidden sm:inline shadow-2xs">
+                  MERN + AI
+                </span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
               </div>
               <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 leading-none hidden sm:inline">
-                Open to Hire • 1 Mo Notice
+                Open to Work • 1 Month NP
               </span>
             </div>
           </ScrollLink>
@@ -129,10 +131,9 @@ const Navbar = () => {
                   duration={500}
                   onClick={() => setActiveSection(section)}
                   className={`relative px-3.5 py-1 rounded-full text-xs font-semibold cursor-pointer transition-all duration-200
-                    ${
-                      isActive
-                        ? "text-white dark:text-gray-900 font-bold shadow-xs"
-                        : "text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-white"
+                    ${isActive
+                      ? "text-white dark:text-gray-900 font-bold shadow-xs"
+                      : "text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-white"
                     }`}
                 >
                   {/* Active Sliding Capsule Background */}
@@ -266,10 +267,9 @@ const Navbar = () => {
                         setIsMenuOpen(false);
                       }}
                       className={`block px-4 py-3 rounded-2xl text-base font-bold transition cursor-pointer
-                        ${
-                          isActive
-                            ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
-                            : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        ${isActive
+                          ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
+                          : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         }`}
                     >
                       {t(`nav.${section}`)}

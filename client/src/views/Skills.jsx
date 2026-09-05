@@ -139,7 +139,7 @@ const Skills = () => {
         {/* Compact Skills Grid - High density, zero clutter */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3"
         >
           <AnimatePresence>
             {filteredSkills.map((skill) => (
