@@ -287,7 +287,7 @@ const AiRecruiterChatbot = ({ isOpen: controlledIsOpen, setIsOpen: controlledSet
       id: "welcome-1",
       sender: "ai",
       text: `### 👋 Hi! I'm Amardeep AI.
-I'm an **AI Recruiter & Engineering Copilot** built with **Google Gemini 3.6 Flash**.
+I'm an **AI Recruiter & Engineering Copilot** built with **Google Gemini AI**.
 
 Ask me anything in **English, Hindi, or Hinglish** — about my 3+ years experience, Agora WebRTC video architecture, notice period, or tech stack!`,
       actions: ["view_resume", "whatsapp"],
@@ -443,7 +443,7 @@ Direct Contact:
                           }`}
                       >
                         <FaBolt className={`text-[8.5px] ${isGeminiConfigured() ? "text-emerald-400 animate-pulse" : "text-indigo-300"}`} />
-                        <span>{isGeminiConfigured() ? "Gemini 3.6 Flash • Live" : "AI Copilot • Ready"}</span>
+                        <span>{isGeminiConfigured() ? "Google Gemini • Live" : "AI Copilot • Ready"}</span>
                       </span>
                     </div>
                     <p className="text-[11px] text-indigo-200/80 font-medium mt-0.5">
@@ -564,7 +564,7 @@ Direct Contact:
                           {msg.source === "gemini" && (
                             <div className="flex items-center gap-1.5 mt-2.5 pt-2 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 border-t border-slate-200/60 dark:border-slate-800/60">
                               <FaBolt className="text-[9px] text-amber-500" />
-                              <span>Google Gemini 3.6 Flash • Verified Response</span>
+                              <span>Google Gemini AI • Verified Response</span>
                             </div>
                           )}
                         </div>
@@ -672,7 +672,7 @@ Direct Contact:
                       <span className="flex items-center gap-1.5 font-medium">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                         {isGeminiConfigured()
-                          ? "Google Gemini 3.6 Flash Active"
+                          ? "Google Gemini AI (Live Active)"
                           : "Local Knowledge Engine Active"}
                       </span>
                       <button
@@ -750,7 +750,7 @@ Direct Contact:
                       {isAnalyzingJd ? (
                         <>
                           <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          <span>Gemini 3.6 Flash Analyzing Match...</span>
+                          <span>Gemini AI Analyzing Match...</span>
                         </>
                       ) : (
                         <>

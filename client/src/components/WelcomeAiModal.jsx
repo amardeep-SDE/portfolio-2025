@@ -132,7 +132,7 @@ const WelcomeAiModal = () => {
                   <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white flex items-center gap-1.5">
                     <span>Ask Amardeep AI Copilot</span>
                     <span className="text-[10px] font-extrabold px-1.5 py-0.2 rounded bg-cyan-100 dark:bg-cyan-900/60 text-cyan-700 dark:text-cyan-300">
-                      Gemini 3.6
+                      Gemini AI
                     </span>
                   </h4>
                   <p className="text-[11.5px] text-gray-600 dark:text-gray-300 mt-1 leading-relaxed">
