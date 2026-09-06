@@ -399,7 +399,7 @@ Direct Contact:
       {/* 🚀 AI Chatbot Modal Window (Launched from Header / Navbar) */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-slate-950/80 backdrop-blur-xl transition-all">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-1.5 sm:p-4 md:p-6 bg-slate-950/80 backdrop-blur-xl transition-all">
             {/* Ambient Background Glow Aura */}
             <div className="absolute w-[500px] h-[500px] bg-gradient-to-tr from-indigo-600/20 via-purple-600/20 to-cyan-500/20 rounded-full blur-3xl pointer-events-none -z-0" />
 
@@ -408,56 +408,80 @@ Direct Contact:
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 25 }}
               transition={{ type: "spring", stiffness: 340, damping: 28 }}
-              className={`bg-white/95 dark:bg-[#0c121e]/95 backdrop-blur-2xl rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.6)] w-full transition-all duration-300 relative flex flex-col border border-indigo-500/30 dark:border-indigo-500/40 overflow-hidden font-sans z-10 ${isExpanded
-                  ? "max-w-5xl h-[94vh]"
-                  : "max-w-2xl md:max-w-3xl h-[720px] max-h-[90vh]"
+              className={`bg-white/95 dark:bg-[#0c121e]/95 backdrop-blur-2xl rounded-2xl sm:rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.6)] w-full transition-all duration-300 relative flex flex-col border border-indigo-500/30 dark:border-indigo-500/40 overflow-hidden font-sans z-10 ${isExpanded
+                  ? "max-w-5xl h-[95vh]"
+                  : "max-w-2xl md:max-w-3xl h-[88vh] sm:h-[720px] max-h-[95vh] sm:max-h-[90vh]"
                 }`}
             >
               {/* Top Window Header */}
-              <div className="px-4 sm:px-6 py-3.5 bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-950 text-white flex items-center justify-between border-b border-indigo-500/30 shrink-0 relative overflow-hidden">
+              <div className="px-3.5 sm:px-6 py-2.5 sm:py-3.5 bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-950 text-white border-b border-indigo-500/30 shrink-0 relative overflow-hidden">
                 {/* Ambient top light beam */}
                 <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
 
-                <div className="flex items-center gap-3.5">
-                  <div className="relative">
-                    <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 ring-2 ring-white/15">
-                      <FaRobot className="text-lg animate-pulse" />
-                    </div>
-                    <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border-2 border-slate-950" />
-                    </span>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-sm sm:text-base font-black tracking-tight text-white flex items-center gap-1.5">
-                        <span>Amardeep AI</span>
-                        <span className="text-[10px] font-bold bg-indigo-500/30 text-cyan-300 px-1.5 py-0.5 rounded-md border border-cyan-400/30">
-                          v2.5
-                        </span>
-                      </h3>
-                      <span
-                        className={`text-[9.5px] px-2.5 py-0.5 rounded-full border flex items-center gap-1.5 font-semibold ${isGeminiConfigured()
-                            ? "bg-emerald-500/20 text-emerald-300 border-emerald-400/40 shadow-xs shadow-emerald-500/20"
-                            : "bg-indigo-500/20 text-indigo-300 border-indigo-400/40"
-                          }`}
-                      >
-                        <FaBolt className={`text-[8.5px] ${isGeminiConfigured() ? "text-emerald-400 animate-pulse" : "text-indigo-300"}`} />
-                        <span>{isGeminiConfigured() ? "Google Gemini • Live" : "AI Copilot • Ready"}</span>
+                {/* Header Row 1: Brand + Live Status + Window Controls */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                    <div className="relative shrink-0">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/30 ring-2 ring-white/15">
+                        <FaRobot className="text-sm sm:text-lg animate-pulse" />
+                      </div>
+                      <span className="absolute -bottom-0.5 -right-0.5 flex h-2.5 w-2.5 sm:h-3 sm:w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-emerald-500 border-2 border-slate-950" />
                       </span>
                     </div>
-                    <p className="text-[11px] text-indigo-200/80 font-medium mt-0.5">
-                      Engineering Copilot & Technical Recruiter Assistant
-                    </p>
+
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 sm:gap-2">
+                        <h3 className="text-sm sm:text-base font-black tracking-tight text-white whitespace-nowrap">
+                          Amardeep AI
+                        </h3>
+                        <span className="text-[9px] sm:text-[10px] font-bold bg-indigo-500/30 text-cyan-300 px-1.5 py-0.5 rounded border border-cyan-400/30 shrink-0">
+                          v2.5
+                        </span>
+                        <span
+                          className={`text-[9px] sm:text-[9.5px] px-2 py-0.5 rounded-full border flex items-center gap-1 font-semibold shrink-0 whitespace-nowrap ${isGeminiConfigured()
+                              ? "bg-emerald-500/20 text-emerald-300 border-emerald-400/40 shadow-xs shadow-emerald-500/20"
+                              : "bg-indigo-500/20 text-indigo-300 border-indigo-400/40"
+                            }`}
+                        >
+                          <FaBolt className={`text-[8px] ${isGeminiConfigured() ? "text-emerald-400 animate-pulse" : "text-indigo-300"}`} />
+                          <span className="hidden sm:inline">{isGeminiConfigured() ? "Google Gemini • Live" : "AI Copilot • Ready"}</span>
+                          <span className="sm:hidden inline">{isGeminiConfigured() ? "Gemini Live" : "Ready"}</span>
+                        </span>
+                      </div>
+                      <p className="text-[10px] sm:text-[11px] text-indigo-200/80 font-medium truncate hidden sm:block">
+                        Engineering Copilot & Technical Recruiter Assistant
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Window Controls (Expand & Close) */}
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <button
+                      onClick={() => setIsExpanded((prev) => !prev)}
+                      className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-white/10 hover:bg-white/20 text-white hidden sm:flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                      title={isExpanded ? "Collapse view" : "Expand screen (maximize)"}
+                    >
+                      {isExpanded ? <FaCompress size={11} /> : <FaExpand size={11} />}
+                    </button>
+
+                    <button
+                      onClick={() => setIsOpen(false)}
+                      className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-white/10 hover:bg-rose-500/30 hover:text-rose-300 text-white flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                      title="Close"
+                    >
+                      <FaTimes size={12} />
+                    </button>
                   </div>
                 </div>
 
-                {/* Tab Switcher & Control Buttons */}
-                <div className="flex items-center gap-2.5">
-                  <div className="flex items-center bg-black/40 backdrop-blur-md p-1 rounded-2xl border border-white/10 text-[11px] sm:text-xs font-semibold">
+                {/* Header Row 2: Clean Segmented Tab Switcher (Fits mobile & desktop without overflow) */}
+                <div className="mt-2 sm:mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between gap-2">
+                  <div className="flex items-center bg-black/40 backdrop-blur-md p-1 rounded-xl sm:rounded-2xl border border-white/10 text-xs font-semibold w-full sm:w-auto">
                     <button
                       onClick={() => setActiveTab("chat")}
-                      className={`px-3.5 py-1.5 rounded-xl transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${activeTab === "chat"
+                      className={`flex-1 sm:flex-initial px-3 sm:px-4 py-1.5 rounded-lg sm:rounded-xl transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 text-xs ${activeTab === "chat"
                           ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/30 font-bold"
                           : "text-indigo-200 hover:text-white"
                         }`}
@@ -466,7 +490,7 @@ Direct Contact:
                     </button>
                     <button
                       onClick={() => setActiveTab("matcher")}
-                      className={`px-3.5 py-1.5 rounded-xl transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${activeTab === "matcher"
+                      className={`flex-1 sm:flex-initial px-3 sm:px-4 py-1.5 rounded-lg sm:rounded-xl transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 text-xs ${activeTab === "matcher"
                           ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/30 font-bold"
                           : "text-indigo-200 hover:text-white"
                         }`}
@@ -476,22 +500,10 @@ Direct Contact:
                     </button>
                   </div>
 
-                  {/* Expand / Maximize Toggle */}
-                  <button
-                    onClick={() => setIsExpanded((prev) => !prev)}
-                    className="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 text-white hidden sm:flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer"
-                    title={isExpanded ? "Collapse view" : "Expand screen (maximize)"}
-                  >
-                    {isExpanded ? <FaCompress size={12} /> : <FaExpand size={12} />}
-                  </button>
-
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="w-8 h-8 rounded-xl bg-white/10 hover:bg-rose-500/30 hover:text-rose-300 text-white flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer"
-                    title="Close"
-                  >
-                    <FaTimes size={13} />
-                  </button>
+                  <div className="hidden sm:flex items-center gap-2 text-[10.5px] text-indigo-300/80 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>English, Hindi & Hinglish</span>
+                  </div>
                 </div>
               </div>
 
@@ -623,19 +635,19 @@ Direct Contact:
                   </div>
 
                   {/* Real-time AI Chat Floating Dock Input Bar */}
-                  <div className="p-3 sm:p-4 bg-white dark:bg-[#0b101b] border-t border-slate-200 dark:border-slate-800/80 shrink-0 space-y-2">
+                  <div className="p-2.5 sm:p-4 bg-white dark:bg-[#0b101b] border-t border-slate-200 dark:border-slate-800/80 shrink-0 space-y-2">
                     {/* Follow-up Prompts Pills (Naturally wrapped, NO horizontal scrollbar) */}
                     {messages.length > 1 && (
                       <div className="flex flex-wrap items-center gap-1.5 px-0.5">
-                        <span className="text-[10.5px] font-semibold text-slate-400 dark:text-slate-500 shrink-0">
-                          Suggested next:
+                        <span className="text-[10px] sm:text-[10.5px] font-semibold text-slate-400 dark:text-slate-500 shrink-0">
+                          Suggested:
                         </span>
                         {QUICK_PROMPTS.slice(0, 4).map((qp) => (
                           <button
                             key={qp.id}
                             onClick={() => handleSendMessage(qp.prompt)}
                             disabled={isTyping}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10.5px] font-medium bg-slate-100 dark:bg-slate-800/80 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-cyan-300 transition-all cursor-pointer hover:scale-105 active:scale-95"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[10.5px] font-medium bg-slate-100 dark:bg-slate-800/80 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-cyan-300 transition-all cursor-pointer hover:scale-105 active:scale-95"
                           >
                             <span>{qp.label}</span>
                           </button>
@@ -647,39 +659,41 @@ Direct Contact:
                         e.preventDefault();
                         handleSendMessage();
                       }}
-                      className="relative flex items-center bg-slate-100 dark:bg-[#141c2e] rounded-2xl p-1.5 border border-slate-200 dark:border-slate-700/80 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all shadow-inner"
+                      className="relative flex items-center bg-slate-100 dark:bg-[#141c2e] rounded-2xl p-1 sm:p-1.5 border border-slate-200 dark:border-slate-700/80 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all shadow-inner"
                     >
                       <input
                         ref={inputRef}
                         type="text"
                         value={inputVal}
                         onChange={(e) => setInputVal(e.target.value)}
-                        placeholder="Ask anything in English or Hindi (e.g. 'notice period', 'Agora WebRTC projects')..."
-                        className="flex-1 px-3.5 py-2 text-xs sm:text-[13px] bg-transparent text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none"
+                        placeholder="Ask in English or Hindi (e.g. 'notice period', 'WebRTC')..."
+                        className="flex-1 px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-xs sm:text-[13px] bg-transparent text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none min-w-0"
                       />
                       <button
                         type="submit"
                         disabled={!inputVal.trim() || isTyping}
-                        className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white font-bold text-xs disabled:opacity-30 hover:opacity-95 active:scale-95 transition cursor-pointer shadow-md shadow-indigo-500/25 shrink-0 flex items-center gap-1.5"
+                        className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white font-bold text-xs disabled:opacity-30 hover:opacity-95 active:scale-95 transition cursor-pointer shadow-md shadow-indigo-500/25 shrink-0 flex items-center gap-1.5"
                         title="Send to Amardeep AI"
                       >
-                        <span>Send</span>
+                        <span className="hidden xs:inline">Send</span>
                         <FaPaperPlane className="text-[10px]" />
                       </button>
                     </form>
 
-                    <div className="flex items-center justify-between text-[10.5px] text-slate-400 dark:text-slate-500 px-1">
-                      <span className="flex items-center gap-1.5 font-medium">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        {isGeminiConfigured()
-                          ? "Google Gemini AI (Live Active)"
-                          : "Local Knowledge Engine Active"}
+                    <div className="flex items-center justify-between text-[10px] sm:text-[10.5px] text-slate-400 dark:text-slate-500 px-1 gap-2">
+                      <span className="flex items-center gap-1.5 font-medium truncate">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                        <span className="truncate">
+                          {isGeminiConfigured()
+                            ? "Google Gemini AI (Live Active)"
+                            : "Local Knowledge Engine Active"}
+                        </span>
                       </span>
                       <button
                         onClick={() => setActiveTab("matcher")}
-                        className="font-bold text-indigo-600 dark:text-cyan-400 hover:underline cursor-pointer flex items-center gap-1"
+                        className="font-bold text-indigo-600 dark:text-cyan-400 hover:underline cursor-pointer flex items-center gap-1 shrink-0 whitespace-nowrap"
                       >
-                        <span>Switch to JD Matcher</span>
+                        <span>JD Matcher</span>
                         <span>→</span>
                       </button>
                     </div>
