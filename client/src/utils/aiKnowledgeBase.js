@@ -149,7 +149,7 @@ Amardeep has architected and deployed real-time communication modules in product
 - **Official Notice Period:** **1 Month** (Open for immediate buyout/negotiation)
 - **Base Location:** **Chandigarh / Mohali Tricity IT Hub**
 - **Work Preferences:** Open to **Remote**, **Hybrid**, or **Relocation** for top opportunities!
-- **Target Roles:** React Developer, MERN Stack Developer, Frontend Engineer, Full Stack Engineer
+- **Target Roles:** React Developer, MERN Stack Developer, AI Integration Specialist, Frontend Engineer
 - **Compensation / CTC:** Competitive and negotiable based on role scope and equity/benefits.`,
       actions: ["whatsapp", "email"],
     };

@@ -108,7 +108,7 @@ const Navbar = () => {
                   Amardeep
                 </span>
                 <span className="text-[9.5px] font-extrabold px-1.5 py-0.2 rounded-full bg-gradient-to-r from-indigo-500/15 via-purple-500/15 to-pink-500/15 border border-indigo-400/30 text-indigo-700 dark:text-cyan-300 hidden sm:inline shadow-2xs">
-                  MERN + AI
+                  MERN • AI Integration
                 </span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
               </div>
