@@ -25,14 +25,8 @@ import {
   FaBolt,
   FaCopy,
   FaWhatsapp,
-  FaVolumeUp,
-  FaVolumeMute,
 } from "react-icons/fa";
-import {
-  playCelestialChime,
-  playLuxuryGlassChime,
-  playLevelUpSound,
-} from "../utils/audioEffects";
+import { playCelestialChime } from "../utils/audioEffects";
 import { openWhatsAppModal } from "../utils/whatsappHelper";
 
 const About = () => {
@@ -44,37 +38,10 @@ const About = () => {
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [toastMessage, setToastMessage] = useState(null);
   const [copiedLink, setCopiedLink] = useState(false);
-  const [soundTheme, setSoundTheme] = useState("celestial"); // 'celestial' | 'apple' | 'arcade' | 'mute'
 
-  const soundPresets = [
-    { id: "celestial", label: "Celestial Harp ✨", fn: playCelestialChime },
-    { id: "apple", label: "Glass Bell 🔔", fn: playLuxuryGlassChime },
-    { id: "arcade", label: "Level-Up 🎮", fn: playLevelUpSound },
-    { id: "mute", label: "Muted 🔇", fn: null },
-  ];
-
-  // 🎵 Play active celebratory sound preset
-  const playActiveSound = () => {
-    const preset = soundPresets.find((p) => p.id === soundTheme);
-    if (preset && preset.fn) {
-      preset.fn();
-    }
-  };
-
-  // Cycle sound preset & trigger preview
-  const cycleSoundTheme = () => {
-    const currentIndex = soundPresets.findIndex((p) => p.id === soundTheme);
-    const nextIndex = (currentIndex + 1) % soundPresets.length;
-    const nextPreset = soundPresets[nextIndex];
-    setSoundTheme(nextPreset.id);
-    if (nextPreset.fn) {
-      nextPreset.fn();
-    }
-  };
-
-  // View Resume action
+  // View Resume action (single celestial celebratory chime)
   const handleViewResume = () => {
-    playActiveSound();
+    playCelestialChime();
     setConfettiTrigger((p) => p + 1);
     setResumeOpen(true);
   };
@@ -82,7 +49,7 @@ const About = () => {
   // Download Resume with live animated progress & toast
   const handleDownloadResume = (e) => {
     if (e) e.preventDefault();
-    playActiveSound();
+    playCelestialChime();
     setConfettiTrigger((p) => p + 1);
     setDownloadState("downloading");
     setDownloadProgress(15);
@@ -315,27 +282,6 @@ const About = () => {
                   <span className="relative z-10">Download Resume</span>
                 </>
               )}
-            </button>
-
-            {/* Interactive Audio Theme Switcher & Preview Pill */}
-            <button
-              type="button"
-              onClick={cycleSoundTheme}
-              className="px-3 py-2 rounded-xl text-xs font-semibold 
-                         bg-white/80 dark:bg-[#151c2c]/80 hover:bg-white dark:hover:bg-[#1e273d]
-                         text-gray-700 dark:text-gray-300 border border-gray-200/80 dark:border-gray-700/80
-                         shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer flex items-center gap-1.5 active:scale-95"
-              title="Click to switch celebration sound style & test live"
-            >
-              {soundTheme === "mute" ? (
-                <FaVolumeMute className="text-gray-400 text-xs" />
-              ) : (
-                <FaVolumeUp className="text-indigo-500 text-xs animate-pulse" />
-              )}
-              <span className="text-[11px] text-gray-400 font-medium">Sound:</span>
-              <span className="text-[11px] font-bold bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-transparent">
-                {soundPresets.find((p) => p.id === soundTheme)?.label}
-              </span>
             </button>
           </div>
         </motion.div>
