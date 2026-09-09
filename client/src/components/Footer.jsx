@@ -12,7 +12,8 @@ import {
   FiExternalLink,
   FiFileText,
 } from "react-icons/fi";
-import { FaInstagram, FaWhatsapp, FaCode, FaRocket, FaFilePdf } from "react-icons/fa";
+import { FaInstagram, FaCode, FaRocket, FaFilePdf } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io5";
 import { Link as ScrollLink } from "react-scroll";
 import { useTranslation } from "react-i18next";
 import profileData from "../data/profileData";
@@ -91,7 +92,7 @@ const Footer = () => {
         openWhatsAppModal(
           "Hi Amardeep! I found your portfolio and wanted to connect with you."
         ),
-      icon: <FaWhatsapp className="text-base" />,
+      icon: <IoLogoWhatsapp className="text-lg" />,
       label: "WhatsApp",
       glow: "hover:bg-emerald-500/15 hover:border-emerald-500/50 hover:text-emerald-400 hover:shadow-[0_0_16px_rgba(16,185,129,0.35)]",
     },
@@ -155,7 +156,7 @@ const Footer = () => {
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#151c38] text-emerald-600 dark:text-emerald-400 border border-emerald-300/80 dark:border-emerald-500/30 hover:border-emerald-500 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/40 hover:scale-105 active:scale-95 transition-all shadow-2xs cursor-pointer"
                 title="Open interactive WhatsApp chat"
               >
-                <FaWhatsapp className="text-base" />
+                <IoLogoWhatsapp className="text-lg text-emerald-500" />
                 <span>WhatsApp</span>
               </button>
 

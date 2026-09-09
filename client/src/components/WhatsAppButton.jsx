@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FaWhatsapp,
   FaPaperPlane,
   FaCheckDouble,
   FaTimes,
@@ -9,6 +8,7 @@ import {
   FaRocket,
   FaCoffee,
 } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io5";
 import profileData from "../data/profileData";
 
 /**
@@ -250,7 +250,7 @@ const WhatsAppButton = () => {
                   rel="noopener noreferrer"
                   className="w-full py-2 px-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] active:scale-[0.98] text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-md shadow-emerald-500/30 transition cursor-pointer"
                 >
-                  <FaWhatsapp className="text-base" />
+                  <IoLogoWhatsapp className="text-lg" />
                   <span>Start WhatsApp Chat</span>
                 </a>
               </div>
@@ -336,7 +336,7 @@ const WhatsAppButton = () => {
           {isOpen ? (
             <FaTimes className="text-xl transition-transform duration-300" />
           ) : (
-            <FaWhatsapp className="text-3xl drop-shadow-md" />
+            <IoLogoWhatsapp className="text-3xl drop-shadow-md" />
           )}
         </motion.button>
       </div>

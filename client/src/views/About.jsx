@@ -24,8 +24,8 @@ import {
   FaExternalLinkAlt,
   FaBolt,
   FaCopy,
-  FaWhatsapp,
 } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io5";
 import { playCelestialChime } from "../utils/audioEffects";
 import { openWhatsAppModal } from "../utils/whatsappHelper";
 
@@ -513,7 +513,7 @@ const About = () => {
                           className="px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm cursor-pointer hover:scale-105 active:scale-95"
                           title="Open WhatsApp chat panel"
                         >
-                          <FaWhatsapp className="text-sm" />
+                          <IoLogoWhatsapp className="text-base" />
                           <span>WhatsApp</span>
                         </button>
                         <a
