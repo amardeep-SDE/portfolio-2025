@@ -82,29 +82,29 @@ const Skills = () => {
         </div>
 
         {/* Search & Category Filter Bar */}
-        <div className="mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mb-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Quick Search Input */}
-          <div className="relative w-full sm:w-72 shrink-0">
-            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
+          <div className="relative w-full sm:w-56 shrink-0">
+            <FiSearch className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search skill (e.g. React, Node, AWS)..."
-              className="w-full pl-9 pr-8 py-2 rounded-xl text-xs sm:text-sm bg-white/90 dark:bg-gray-800/90 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
+              placeholder="Search skill (e.g. React, Node)..."
+              className="w-full pl-8 pr-7 py-1.5 rounded-lg text-xs bg-white/90 dark:bg-gray-800/90 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-emerald-500/60 transition-all"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 cursor-pointer"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 cursor-pointer"
               >
                 <FiX className="text-xs" />
               </button>
             )}
           </div>
 
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-1.5 w-full">
+          {/* Category Filter Tabs (Compact Size) */}
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-1 sm:gap-1.5">
             {categories.map((cat) => {
               const count =
                 cat.id === "all"
@@ -115,17 +115,17 @@ const Skills = () => {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-1.5 cursor-pointer
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all duration-200 flex items-center gap-1 cursor-pointer
                     ${activeCategory === cat.id
-                      ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-500/20 scale-102"
-                      : "bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+                      ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-xs shadow-emerald-500/30"
+                      : "bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200/80 dark:border-gray-700/80"
                     }`}
                 >
                   <span>{cat.label}</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full ${activeCategory === cat.id
+                    className={`text-[9px] font-mono px-1 py-0.2 rounded-full ${activeCategory === cat.id
                       ? "bg-white/20 text-white"
-                      : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                      : "bg-gray-100 dark:bg-gray-700/80 text-gray-500 dark:text-gray-400"
                       }`}
                   >
                     {count}
