@@ -13,6 +13,16 @@ import { playCelestialChime } from "../utils/audioEffects";
 
 const WelcomeAiModal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasPlayedSound, setHasPlayedSound] = useState(false);
+
+  const playWelcomeSound = () => {
+    try {
+      playCelestialChime();
+      setHasPlayedSound(true);
+    } catch (e) {
+      // ignore
+    }
+  };
 
   useEffect(() => {
     // Clear any previous blocking flag so it opens smoothly
@@ -26,14 +36,14 @@ const WelcomeAiModal = () => {
     // Graceful delay after page renders for smooth entrance
     const timer = setTimeout(() => {
       setIsOpen(true);
-      try {
-        playCelestialChime();
-      } catch (e) {
-        // Audio autoplay policy fallback
-      }
+      playWelcomeSound();
     }, 600);
 
-    const handleManualOpen = () => setIsOpen(true);
+    const handleManualOpen = () => {
+      setIsOpen(true);
+      playWelcomeSound();
+    };
+
     window.addEventListener("open-welcome-modal", handleManualOpen);
     return () => {
       clearTimeout(timer);
@@ -46,6 +56,9 @@ const WelcomeAiModal = () => {
   };
 
   const handleOpenAi = () => {
+    try {
+      playCelestialChime();
+    } catch (e) {}
     handleClose();
     // Dispatch custom event to trigger AI Recruiter Chatbot
     setTimeout(() => {
@@ -53,10 +66,22 @@ const WelcomeAiModal = () => {
     }, 200);
   };
 
+  const handleExplore = () => {
+    try {
+      playCelestialChime();
+    } catch (e) {}
+    handleClose();
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div
+          onClick={() => {
+            if (!hasPlayedSound) playWelcomeSound();
+          }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+        >
           {/* Backdrop Blur */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -165,7 +190,7 @@ const WelcomeAiModal = () => {
               </button>
 
               <button
-                onClick={handleClose}
+                onClick={handleExplore}
                 className="w-full sm:w-auto py-3 px-5 rounded-xl text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800/90 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 cursor-pointer active:scale-98 transition flex items-center justify-center gap-1.5"
               >
                 <FaRocket className="text-xs text-indigo-500" />

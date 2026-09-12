@@ -6,17 +6,79 @@
  * - Zero external assets, 0ms latency, zero bandwidth
  */
 
-const getAudioContext = () => {
+let sharedAudioCtx = null;
+
+export const getAudioContext = () => {
   try {
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     if (!AudioCtx) return null;
-    const ctx = new AudioCtx();
-    if (ctx.state === "suspended") {
-      ctx.resume();
+    if (!sharedAudioCtx) {
+      sharedAudioCtx = new AudioCtx();
     }
-    return ctx;
+    return sharedAudioCtx;
   } catch (e) {
     return null;
+  }
+};
+
+// Auto-unlock AudioContext on very first user interaction
+if (typeof window !== "undefined") {
+  const unlockEvents = ["click", "pointerdown", "keydown", "touchstart"];
+  const unlock = () => {
+    try {
+      const ctx = getAudioContext();
+      if (ctx && ctx.state === "suspended") {
+        ctx.resume();
+      }
+      unlockEvents.forEach((evt) =>
+        window.removeEventListener(evt, unlock, true)
+      );
+    } catch (e) {}
+  };
+  unlockEvents.forEach((evt) =>
+    window.addEventListener(evt, unlock, { capture: true, once: true })
+  );
+}
+
+/**
+ * Execute audio callback safely, resuming AudioContext if suspended or queueing on next interaction
+ */
+const withAudioContext = (callback) => {
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  if (ctx.state === "suspended") {
+    ctx
+      .resume()
+      .then(() => {
+        callback(ctx);
+      })
+      .catch(() => {
+        // If browser autoplay policy blocked immediate resume, execute on first user interaction
+        const onNextGesture = () => {
+          try {
+            if (ctx.state === "suspended") {
+              ctx
+                .resume()
+                .then(() => callback(ctx))
+                .catch(() => {});
+            } else {
+              callback(ctx);
+            }
+          } catch (e) {}
+          ["pointerdown", "click", "keydown", "touchstart"].forEach((evt) =>
+            window.removeEventListener(evt, onNextGesture, true)
+          );
+        };
+        ["pointerdown", "click", "keydown", "touchstart"].forEach((evt) =>
+          window.addEventListener(evt, onNextGesture, {
+            capture: true,
+            once: true,
+          })
+        );
+      });
+  } else {
+    callback(ctx);
   }
 };
 
@@ -25,10 +87,8 @@ const getAudioContext = () => {
  * Gorgeous ascending pentatonic shimmer with stereo room reflection & bell overtones.
  */
 export const playCelestialChime = () => {
-  const ctx = getAudioContext();
-  if (!ctx) return;
-
-  const now = ctx.currentTime;
+  withAudioContext((ctx) => {
+    const now = ctx.currentTime;
 
   // Master output
   const master = ctx.createGain();
@@ -143,6 +203,7 @@ export const playCelestialChime = () => {
   bassGain.connect(master);
   bassOsc.start(bassStart);
   bassOsc.stop(bassStart + 1.2);
+  });
 };
 
 /**
@@ -150,50 +211,50 @@ export const playCelestialChime = () => {
  * Modern, ultra-crisp double glass ping with long acoustic resonance.
  */
 export const playLuxuryGlassChime = () => {
-  const ctx = getAudioContext();
-  if (!ctx) return;
-  const now = ctx.currentTime;
+  withAudioContext((ctx) => {
+    const now = ctx.currentTime;
 
-  const master = ctx.createGain();
-  master.gain.setValueAtTime(0.35, now);
-  master.connect(ctx.destination);
+    const master = ctx.createGain();
+    master.gain.setValueAtTime(0.35, now);
+    master.connect(ctx.destination);
 
-  // Ping 1 (A5) -> Ping 2 (E6 + A6 Chord) 85ms later
-  const pings = [
-    { freq: 880.0, time: 0, gain: 0.14, dur: 1.0 },
-    { freq: 1318.51, time: 0.085, gain: 0.16, dur: 1.5 },
-    { freq: 1760.0, time: 0.085, gain: 0.12, dur: 1.6 },
-  ];
+    // Ping 1 (A5) -> Ping 2 (E6 + A6 Chord) 85ms later
+    const pings = [
+      { freq: 880.0, time: 0, gain: 0.14, dur: 1.0 },
+      { freq: 1318.51, time: 0.085, gain: 0.16, dur: 1.5 },
+      { freq: 1760.0, time: 0.085, gain: 0.12, dur: 1.6 },
+    ];
 
-  pings.forEach((p) => {
-    const pStart = now + p.time;
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
+    pings.forEach((p) => {
+      const pStart = now + p.time;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
 
-    osc.type = "sine";
-    osc.frequency.setValueAtTime(p.freq, pStart);
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(p.freq, pStart);
 
-    gain.gain.setValueAtTime(0.0001, pStart);
-    gain.gain.exponentialRampToValueAtTime(p.gain, pStart + 0.005);
-    gain.gain.exponentialRampToValueAtTime(0.0001, pStart + p.dur);
+      gain.gain.setValueAtTime(0.0001, pStart);
+      gain.gain.exponentialRampToValueAtTime(p.gain, pStart + 0.005);
+      gain.gain.exponentialRampToValueAtTime(0.0001, pStart + p.dur);
 
-    // Inharmonic ring overtone
-    const overtone = ctx.createOscillator();
-    const overGain = ctx.createGain();
-    overtone.type = "sine";
-    overtone.frequency.setValueAtTime(p.freq * 2.76, pStart);
-    overGain.gain.setValueAtTime(p.gain * 0.25, pStart);
-    overGain.gain.exponentialRampToValueAtTime(0.0001, pStart + 0.35);
+      // Inharmonic ring overtone
+      const overtone = ctx.createOscillator();
+      const overGain = ctx.createGain();
+      overtone.type = "sine";
+      overtone.frequency.setValueAtTime(p.freq * 2.76, pStart);
+      overGain.gain.setValueAtTime(p.gain * 0.25, pStart);
+      overGain.gain.exponentialRampToValueAtTime(0.0001, pStart + 0.35);
 
-    overtone.connect(overGain);
-    overGain.connect(master);
-    osc.connect(gain);
-    gain.connect(master);
+      overtone.connect(overGain);
+      overGain.connect(master);
+      osc.connect(gain);
+      gain.connect(master);
 
-    osc.start(pStart);
-    osc.stop(pStart + p.dur);
-    overtone.start(pStart);
-    overtone.stop(pStart + 0.4);
+      osc.start(pStart);
+      osc.stop(pStart + p.dur);
+      overtone.start(pStart);
+      overtone.stop(pStart + 0.4);
+    });
   });
 };
 
@@ -201,35 +262,35 @@ export const playLuxuryGlassChime = () => {
  * 🎮 3. Level-Up Victory Jingle (Upbeat Arcade Triumph)
  */
 export const playLevelUpSound = () => {
-  const ctx = getAudioContext();
-  if (!ctx) return;
-  const now = ctx.currentTime;
+  withAudioContext((ctx) => {
+    const now = ctx.currentTime;
 
-  const master = ctx.createGain();
-  master.gain.setValueAtTime(0.25, now);
-  master.connect(ctx.destination);
+    const master = ctx.createGain();
+    master.gain.setValueAtTime(0.25, now);
+    master.connect(ctx.destination);
 
-  const notes = [
-    { f: 440.0, t: 0.0, d: 0.08 },    // A4
-    { f: 554.37, t: 0.08, d: 0.08 },  // C#5
-    { f: 659.25, t: 0.16, d: 0.08 },  // E5
-    { f: 880.0, t: 0.24, d: 0.4 },    // A5
-  ];
+    const notes = [
+      { f: 440.0, t: 0.0, d: 0.08 },    // A4
+      { f: 554.37, t: 0.08, d: 0.08 },  // C#5
+      { f: 659.25, t: 0.16, d: 0.08 },  // E5
+      { f: 880.0, t: 0.24, d: 0.4 },    // A5
+    ];
 
-  notes.forEach((n) => {
-    const start = now + n.t;
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = "triangle";
-    osc.frequency.setValueAtTime(n.f, start);
+    notes.forEach((n) => {
+      const start = now + n.t;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(n.f, start);
 
-    gain.gain.setValueAtTime(0.0001, start);
-    gain.gain.exponentialRampToValueAtTime(0.18, start + 0.005);
-    gain.gain.exponentialRampToValueAtTime(0.0001, start + n.d);
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(0.18, start + 0.005);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + n.d);
 
-    osc.connect(gain);
-    gain.connect(master);
-    osc.start(start);
-    osc.stop(start + n.d);
+      osc.connect(gain);
+      gain.connect(master);
+      osc.start(start);
+      osc.stop(start + n.d);
+    });
   });
 };
