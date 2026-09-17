@@ -316,8 +316,8 @@ const DevTerminal = () => {
 
   return (
     <>
-      {/* 🚀 Floating Bottom-Left Terminal Launcher Pill */}
-      <div className="fixed bottom-6 left-6 z-50">
+      {/* 🚀 Floating Bottom-Left Terminal Launcher Pill (Hidden on Mobile/Small Screens) */}
+      <div className="hidden md:block fixed bottom-6 left-6 z-50">
         <motion.button
           onClick={() => setIsOpen((prev) => !prev)}
           whileHover={{ scale: 1.05 }}
