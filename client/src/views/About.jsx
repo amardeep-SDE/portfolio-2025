@@ -39,18 +39,62 @@ const About = () => {
   const [toastMessage, setToastMessage] = useState(null);
   const [copiedLink, setCopiedLink] = useState(false);
 
-  // View Resume action (single celestial celebratory chime)
-  const handleViewResume = () => {
+  // View Resume action (single celestial celebratory chime & mobile-aware direct open)
+  const handleViewResume = (e) => {
     playCelestialChime();
     setConfettiTrigger((p) => p + 1);
+
+    const isMobile =
+      typeof window !== "undefined" &&
+      (window.innerWidth < 768 ||
+        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        ));
+
+    if (isMobile) {
+      if (!e) {
+        // Called programmatically (e.g. from toast)
+        window.open(profileData.resume, "_blank", "noopener,noreferrer");
+      }
+      // On mobile when triggered by an <a> tag, do not preventDefault so browser opens PDF directly!
+      return;
+    }
+
+    if (e && e.preventDefault) e.preventDefault();
     setResumeOpen(true);
   };
 
-  // Download Resume with live animated progress & toast
+  // Download Resume with live animated progress & toast (synchronous on mobile to prevent popup/download block)
   const handleDownloadResume = (e) => {
-    if (e) e.preventDefault();
     playCelestialChime();
     setConfettiTrigger((p) => p + 1);
+
+    const isMobile =
+      typeof window !== "undefined" &&
+      (window.innerWidth < 768 ||
+        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        ));
+
+    if (isMobile) {
+      // Mobile browsers (iOS Safari, Android Chrome) block async programmatic downloads: open directly
+      const link = document.createElement("a");
+      link.href = profileData.resume;
+      link.download = "Amardeep_Dwivedi_Resume.pdf";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      setToastMessage({
+        title: "Opening Resume! 🎉",
+        desc: "Opening Amardeep_Dwivedi_Resume.pdf directly in your browser.",
+      });
+      return;
+    }
+
+    if (e && e.preventDefault) e.preventDefault();
     setDownloadState("downloading");
     setDownloadProgress(15);
 
@@ -224,8 +268,11 @@ const About = () => {
 
           {/* Resume Action Buttons */}
           <div className="flex flex-wrap gap-3 justify-center lg:justify-start mt-6">
-            {/* View Resume with Confetti & Chime */}
-            <button
+            {/* View Resume with Confetti & Chime (direct open on mobile, modal on desktop) */}
+            <a
+              href={profileData.resume}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={handleViewResume}
               className="group relative px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white
                          bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600
@@ -241,7 +288,7 @@ const About = () => {
               <span className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded text-white font-bold ml-0.5 relative z-10">
                 PDF
               </span>
-            </button>
+            </a>
 
             {/* Download Resume with Live State Animation, Sound & Confetti */}
             <button
@@ -388,12 +435,36 @@ const About = () => {
               {/* Modal Content */}
               <div className="flex-1 overflow-hidden relative">
                 {resumeTab === "pdf" ? (
-                  <iframe
-                    src={profileData.resume}
-                    title="Resume PDF Preview"
-                    className="w-full h-full bg-gray-100 dark:bg-gray-950"
-                    style={{ border: "none" }}
-                  />
+                  <div className="w-full h-full relative flex flex-col">
+                    {/* Mobile fallback banner: mobile browsers cannot render embedded PDF iframes */}
+                    <div className="md:hidden flex flex-col items-center justify-center p-6 text-center h-full bg-slate-900/95 text-white space-y-4">
+                      <div className="w-14 h-14 rounded-2xl bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-2xl text-indigo-400">
+                        <FaFilePdf />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-sm text-white">Mobile PDF Direct View</h4>
+                        <p className="text-xs text-slate-300 max-w-xs mt-1">
+                          Mobile browsers cannot render embedded PDFs inside popups. Tap below to view the full PDF directly in your browser.
+                        </p>
+                      </div>
+                      <a
+                        href={profileData.resume}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold text-xs shadow-lg shadow-indigo-500/30 flex items-center gap-2 cursor-pointer active:scale-95 transition-transform"
+                      >
+                        <FaExternalLinkAlt size={12} /> Open PDF in Full Screen
+                      </a>
+                    </div>
+
+                    {/* Desktop Iframe */}
+                    <iframe
+                      src={profileData.resume}
+                      title="Resume PDF Preview"
+                      className="hidden md:block w-full h-full bg-gray-100 dark:bg-gray-950"
+                      style={{ border: "none" }}
+                    />
+                  </div>
                 ) : (
                   /* Executive ATS Summary Card */
                   <div className="p-6 overflow-y-auto h-full space-y-6 text-gray-800 dark:text-gray-200">
