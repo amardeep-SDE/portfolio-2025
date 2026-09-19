@@ -371,7 +371,7 @@ Ask me anything in **English, Hindi, or Hinglish** — about my 3+ years experie
     const reportText = `🎯 Candidate Compatibility Report: Amardeep Dwivedi
 --------------------------------------------------
 Role Fit Score: ${jdResult.score}% (${jdResult.fitLevel || "Evaluated Match"})
-Notice Period: 1 Month (Negotiable for urgent joiners)
+Notice Period: 1 Month
 
 ✅ Verified Production Skills:
 ${(jdResult.matchedSkills || []).map((s) => `  • ${s}`).join("\n") || "  • React, Redux Toolkit, Node.js"}
@@ -753,7 +753,7 @@ Direct Contact:
                       rows={5}
                       value={jdInput}
                       onChange={(e) => setJdInput(e.target.value)}
-                      placeholder="Paste your JD here (or click a sample above to test immediately)..."
+                      placeholder="Paste your JD here (or click a sample above to test)..."
                       className="w-full p-4 rounded-2xl text-xs sm:text-[13px] bg-slate-100 dark:bg-[#141c2e] border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 resize-none font-sans leading-relaxed shadow-inner"
                     />
                     <button

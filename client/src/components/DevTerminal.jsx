@@ -208,7 +208,7 @@ const DevTerminal = () => {
           type: "output",
           content: [
             "🤝 RECRUITMENT & HIRING DETAILS:",
-            `• Notice Period:    ${profileData.noticePeriod} (Available Immediately)`,
+            `• Notice Period:    ${profileData.noticePeriod}`,
             "• Preferred Roles:  React Developer / MERN Stack Developer / AI Integration",
             "• Work Mode:        Remote / Hybrid / On-site",
             "• Contact Direct:   amardeepdwivedi77@gmail.com | +91 8964051727",
@@ -426,7 +426,7 @@ const DevTerminal = () => {
                           <span>AMARDEEP DWIVEDI // Full Stack &amp; React Developer</span>
                         </div>
                         <div className="text-gray-300 text-[11px]">
-                          Interactive Portfolio Terminal [v2.0] • Notice Period: 1 Month (Immediate)
+                          Interactive Portfolio Terminal [v2.0] • Notice Period: 1 Month
                         </div>
                         <div className="text-indigo-300/80 text-[10.5px] pt-0.5">
                           💡 Type any command below or click the quick pills above, then hit <span className="text-indigo-200 font-semibold underline">Run ↵</span>.
