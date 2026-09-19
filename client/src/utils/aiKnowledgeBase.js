@@ -99,8 +99,8 @@ export const getAiResponse = (rawInput) => {
 4. **4x NamasteDev Certified by Akshay Saini:**
    Verified in *Namaste React, Namaste Node.js, Frontend System Design*, and *DSA*.
 
-5. **Immediate Value with 1 Month Notice:**
-   Notice period is **1 Month**, ready to onboard quickly for High-Growth Startups & Enterprises!`,
+5. **1 Month Notice Period:**
+   Notice period is **1 Month** (standard 30 days notice), ready to transition smoothly for High-Growth Startups & Enterprises!`,
       actions: ["view_resume", "whatsapp", "email"],
     };
   }
@@ -146,7 +146,7 @@ Amardeep has architected and deployed real-time communication modules in product
       text: `### 💼 Availability & Candidacy Details:
 
 - **Current Employer:** **Suffescom Solutions Inc** (React Developer)
-- **Official Notice Period:** **1 Month** (Open for immediate buyout/negotiation)
+- **Official Notice Period:** **1 Month** (Standard 30 Days Notice Period)
 - **Base Location:** **Chandigarh / Mohali Tricity IT Hub**
 - **Work Preferences:** Open to **Remote**, **Hybrid**, or **Relocation** for top opportunities!
 - **Target Roles:** React Developer, MERN Stack Developer, Frontend Engineer, Full Stack Engineer
@@ -330,7 +330,7 @@ export const analyzeJobDescriptionMatch = (jdText) => {
       matchedSkills: [],
       missingSkills: ["Required stack is outside Amardeep's core React / MERN focus"],
       fitLevel: "Role Mismatch",
-      noticePeriod: "1 Month (Available for immediate hire)",
+      noticePeriod: "1 Month",
       experienceYears: "3+ Years Production Experience",
       summary: "This role requires a different technology stack. Amardeep specializes in React, Redux Toolkit, MERN stack, and Agora WebRTC video platforms with 3+ years of production experience.",
     };
@@ -341,7 +341,7 @@ export const analyzeJobDescriptionMatch = (jdText) => {
     matchedSkills: matchedSkills,
     missingSkills: [],
     fitLevel: matchPercentage >= 70 ? "High Match" : "Moderate Match",
-    noticePeriod: "1 Month (Available for immediate hire)",
+    noticePeriod: "1 Month",
     experienceYears: "3+ Years Production Experience",
     summary: `Amardeep is a **${matchPercentage}% match** for this role based on his 3+ years of verified production experience in React, MERN stack, state management, and real-time architectures!`,
   };

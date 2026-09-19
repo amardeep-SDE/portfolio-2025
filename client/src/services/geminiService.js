@@ -21,7 +21,7 @@ Your mission is to represent Amardeep to technical recruiters, engineering leade
 - Previous Employers:
   1. Codeverse IT Pvt. Ltd. (Junior React Developer, July 2025 – Nov 2025, Indore, M.P.)
   2. Encanto Technologies LLP (Associate Software Developer, April 2023 – June 2025, Indore, M.P.)
-- Notice Period: Exactly 1 Month (Open for immediate buyout / negotiation for urgent joiners)
+- Notice Period: Exactly 1 Month (Strict 30-Day Notice Period; NOT available for immediate joining)
 - Base Location: Chandigarh / Mohali Tricity IT Hub, India
 - Work Preference: Open to Remote, Hybrid, or Relocation for high-growth tech teams
 - Contact Info:
@@ -304,7 +304,7 @@ Respond ONLY with a valid JSON object matching this schema:
             missingSkills: Array.isArray(parsed.missingSkills) ? parsed.missingSkills : [],
             summary: parsed.summary || "Evaluation completed based on verified production experience.",
             fitLevel: parsed.fitLevel || (score >= 70 ? "High Match" : score >= 40 ? "Moderate Match" : "Role Mismatch"),
-            noticePeriod: "1 Month (Available for immediate hire)",
+            noticePeriod: "1 Month",
             source: "gemini",
           };
         }

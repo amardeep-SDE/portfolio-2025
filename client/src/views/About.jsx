@@ -478,7 +478,7 @@ const About = () => {
                       <div className="p-4 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60">
                         <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold">Availability</div>
                         <div className="text-lg font-extrabold text-emerald-600 dark:text-emerald-400">1 Month Notice</div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">Available for Immediate Hire</div>
+                        <div className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">Standard 30 Days Notice Period</div>
                       </div>
                       <div className="p-4 rounded-2xl bg-purple-50/80 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800/60">
                         <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold">Current Employer</div>
