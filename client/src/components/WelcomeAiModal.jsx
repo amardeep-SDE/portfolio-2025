@@ -200,7 +200,7 @@ const WelcomeAiModal = () => {
 
             {/* Footer Note */}
             <div className="mt-3.5 pt-3 border-t border-gray-100 dark:border-gray-800/80 flex items-center justify-between text-[11px] text-gray-400 dark:text-gray-500">
-              <span>Available for Immediate Joining • 1 Mo Notice</span>
+              <span>Notice Period: 1 Month (Standard NP)</span>
               <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Interactive Copilot Ready</span>
