@@ -129,7 +129,7 @@ const Footer = () => {
                 </span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Have a product vision, technical challenge, or hiring for a React / MERN Developer role? I&apos;m ready to contribute immediately.
+                Have a product vision, technical challenge, or hiring for a React / MERN Developer role? Let&apos;s connect and collaborate.
               </p>
             </div>
 

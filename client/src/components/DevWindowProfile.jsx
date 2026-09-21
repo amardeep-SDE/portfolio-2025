@@ -72,7 +72,7 @@ const DevWindowProfile = ({
     title: title,
     experience: `${experienceYears} (Full Stack & Frontend)`,
     currentCompany: "Suffescom Solutions Inc",
-    noticePeriod: `${noticePeriod} (Immediate Joiner)`,
+    noticePeriod: noticePeriod,
     location: location,
     coreStack: [
       "React 19",
