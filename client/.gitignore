@@ -1,3 +1,36 @@
+# ==========================================
+# Client .gitignore (Vite + React)
+# ==========================================
+
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Build Outputs
+dist/
+dist-ssr/
+coverage/
+build/
+
+# Vite & Bundler Cache
+.vite/
+.cache/
+.eslintcache
+*.tsbuildinfo
+
+# Environment & Secret Variables (STRICT)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+.env.*
+*.env
+*.env.*
+!.env.example
+
 # Logs
 logs
 *.log
@@ -7,39 +40,24 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependencies
-node_modules/
-
-# Build Output
-dist/
-dist-ssr/
-coverage/
-
-# Environment Variables
-.env
-.env.*
-!.env.example
-
-# Local Config Files
+# Local Config & Temp Files
 *.local
 
-# Editor Files
+# Editor & IDE Files
 .vscode/*
 !.vscode/extensions.json
 .idea/
-
-# OS Files
-.DS_Store
-Thumbs.db
-
-# Visual Studio
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-
-# Vim
 *.sw?
+*.swo
 
-# TypeScript
-*.tsbuildinfo
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
