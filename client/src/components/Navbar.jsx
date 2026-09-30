@@ -93,13 +93,13 @@ const Navbar = () => {
       </div>
 
       {/* 🛸 Floating Glass Capsule Header */}
-      <header className="fixed top-0 inset-x-0 z-50 px-3 sm:px-6 pt-2.5 sm:pt-3 pointer-events-none">
+      <header className="fixed top-0 inset-x-0 z-50 px-2 sm:px-4 lg:px-6 pt-2 sm:pt-3 pointer-events-none">
         <div
-          className={`max-w-6xl mx-auto rounded-2xl sm:rounded-full pointer-events-auto transition-all duration-300
+          className={`max-w-7xl mx-auto w-full rounded-2xl sm:rounded-full pointer-events-auto transition-all duration-300
             ${isScrolled
-              ? "bg-white/80 dark:bg-[#0b101b]/85 backdrop-blur-xl border border-indigo-500/20 dark:border-indigo-500/30 shadow-xl shadow-black/5 dark:shadow-black/50 py-2 sm:py-2.5 px-4 sm:px-6"
-              : "bg-white/60 dark:bg-[#0d1322]/65 backdrop-blur-lg border border-white/40 dark:border-white/10 shadow-md py-2.5 sm:py-3 px-4 sm:px-6"
-            } flex items-center justify-between`}
+              ? "bg-white/85 dark:bg-[#0b101b]/90 backdrop-blur-xl border border-indigo-500/20 dark:border-indigo-500/30 shadow-xl shadow-black/5 dark:shadow-black/50 py-1.5 sm:py-2 px-3 sm:px-5"
+              : "bg-white/70 dark:bg-[#0d1322]/70 backdrop-blur-lg border border-white/40 dark:border-white/10 shadow-md py-2 sm:py-2.5 px-3 sm:px-5"
+            } flex items-center justify-between gap-2 lg:gap-3`}
         >
           {/* 1. Brand Logo with <AD /> Monogram & Availability Beacon */}
           <ScrollLink
@@ -107,25 +107,25 @@ const Navbar = () => {
             smooth
             offset={-90}
             duration={500}
-            className="cursor-pointer flex items-center gap-2.5 group"
+            className="cursor-pointer flex items-center gap-2 group shrink-0"
           >
             {/* Tech Monogram Icon */}
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform duration-300">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform duration-300 shrink-0">
               <FaCode className="text-sm" />
             </div>
 
             {/* Name + Live Availability Beacon */}
-            <div className="flex flex-col text-left">
+            <div className="flex flex-col text-left shrink-0">
               <div className="flex items-center gap-1.5">
                 <span className="text-sm sm:text-base font-extrabold text-gray-900 dark:text-white tracking-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   Amardeep
                 </span>
-                <span className="text-[9.5px] font-extrabold px-1.5 py-0.2 rounded-full bg-gradient-to-r from-indigo-500/15 via-purple-500/15 to-pink-500/15 border border-indigo-400/30 text-indigo-700 dark:text-cyan-300 hidden sm:inline shadow-2xs">
+                <span className="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full bg-gradient-to-r from-indigo-500/15 via-purple-500/15 to-pink-500/15 border border-indigo-400/30 text-indigo-700 dark:text-cyan-300 hidden 2xl:inline shadow-2xs">
                   MERN • AI Integration
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block shrink-0" />
               </div>
-              <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 leading-none hidden sm:inline">
+              <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 leading-none hidden 2xl:inline">
                 Open to Work • 1 Month NP
               </span>
             </div>
@@ -134,7 +134,7 @@ const Navbar = () => {
           {/* 2. Desktop Navigation Capsule Links */}
           <nav
             onMouseLeave={() => setHoveredSection(null)}
-            className="hidden md:flex items-center gap-0.5 lg:gap-1 bg-white/75 dark:bg-[#070b14]/80 backdrop-blur-2xl p-1.5 rounded-full border border-slate-200/80 dark:border-white/[0.09] shadow-sm dark:shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.08)] relative"
+            className="hidden md:flex items-center gap-1 lg:gap-1.5 xl:gap-2 bg-white/75 dark:bg-[#070b14]/80 backdrop-blur-2xl p-1 sm:p-1.5 rounded-full border border-slate-200/80 dark:border-white/[0.09] shadow-sm dark:shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.08)] relative shrink min-w-0"
           >
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
@@ -151,7 +151,7 @@ const Navbar = () => {
                     setActiveSection(item.id);
                     playLuxuryGlassChime();
                   }}
-                  className={`group relative px-2.5 lg:px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer transition-all duration-200 flex items-center gap-1.5 select-none
+                  className={`group relative px-2.5 lg:px-3 xl:px-3.5 py-1.5 rounded-full text-[11px] lg:text-xs font-semibold cursor-pointer transition-all duration-200 flex items-center gap-1.5 select-none shrink-0
                     ${
                       isActive
                         ? "text-white font-bold"
@@ -201,16 +201,16 @@ const Navbar = () => {
           </nav>
 
           {/* 3. Right Control Actions: Theme, Lang & "Hire Me" CTA */}
-          <div className="hidden md:flex items-center gap-2 sm:gap-2.5">
+          <div className="hidden md:flex items-center gap-1.5 lg:gap-2.5 shrink-0">
             {/* Theme Sun/Moon Toggle */}
             <ThemeToggle />
 
             {/* Language Switcher Pill */}
             <button
               onClick={() => toggleLanguage(i18n)}
-              className="px-2.5 py-1 rounded-full text-[11px] font-bold
+              className="px-2 py-1 rounded-full text-[11px] font-bold
                          bg-gray-200/80 dark:bg-gray-800/90 text-gray-700 dark:text-gray-200
-                         hover:bg-indigo-100 dark:hover:bg-gray-700 transition cursor-pointer border border-gray-300/60 dark:border-gray-700"
+                         hover:bg-indigo-100 dark:hover:bg-gray-700 transition cursor-pointer border border-gray-300/60 dark:border-gray-700 shrink-0"
               title="Change language"
             >
               {i18n.language === "en" ? "🇮🇳 HI" : "🇺🇸 EN"}
@@ -219,10 +219,10 @@ const Navbar = () => {
             {/* "Ask AI 🤖" Glowing Gradient Button */}
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
-              className="group relative px-3.5 py-1.5 rounded-full text-xs font-bold text-white
+              className="group relative px-2.5 lg:px-3 py-1.5 rounded-full text-xs font-bold text-white
                          bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600
                          hover:shadow-lg hover:shadow-cyan-500/30 active:scale-95 
-                         transition-all duration-300 cursor-pointer flex items-center gap-1.5 overflow-hidden"
+                         transition-all duration-300 cursor-pointer flex items-center gap-1.5 overflow-hidden shrink-0"
               title="Ask Amardeep AI (Recruiter Copilot)"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-ping inline-block" />
@@ -236,13 +236,13 @@ const Navbar = () => {
               smooth
               offset={-90}
               duration={600}
-              className="group relative px-3.5 py-1.5 rounded-full text-xs font-bold text-white
+              className="group relative px-3 lg:px-3.5 py-1.5 rounded-full text-xs font-bold text-white
                          bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500
                          hover:shadow-lg hover:shadow-indigo-500/30 active:scale-95 
-                         transition-all duration-300 cursor-pointer flex items-center gap-1.5"
+                         transition-all duration-300 cursor-pointer flex items-center gap-1.5 shrink-0"
             >
               <FaRocket className="text-[11px] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-              <span>Hire Me</span>
+              <span className="whitespace-nowrap">Hire Me</span>
             </ScrollLink>
           </div>
 
