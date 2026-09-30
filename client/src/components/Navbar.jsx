@@ -4,7 +4,16 @@ import { Link as ScrollLink } from "react-scroll";
 import { useTranslation } from "react-i18next";
 import ThemeToggle from "./ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaRocket, FaCode, FaRobot } from "react-icons/fa";
+import {
+  FaRocket,
+  FaCode,
+  FaRobot,
+  FaUserTie,
+  FaBriefcase,
+  FaAward,
+  FaPaperPlane,
+} from "react-icons/fa";
+import { playLuxuryGlassChime } from "../utils/audioEffects";
 
 // 🔁 Language Toggle Helper
 const toggleLanguage = (i18n) => {
@@ -12,14 +21,16 @@ const toggleLanguage = (i18n) => {
   i18n.changeLanguage(newLang);
 };
 
-const navSections = [
-  "about",
-  "skills",
-  "projects",
-  "experience",
-  "credentials",
-  "contact",
+const navItems = [
+  { id: "about", icon: FaUserTie, labelKey: "about" },
+  { id: "skills", icon: FaCode, labelKey: "skills" },
+  { id: "projects", icon: FaRocket, labelKey: "projects" },
+  { id: "experience", icon: FaBriefcase, labelKey: "experience" },
+  { id: "credentials", icon: FaAward, labelKey: "credentials" },
+  { id: "contact", icon: FaPaperPlane, labelKey: "contact" },
 ];
+
+const navSections = navItems.map((item) => item.id);
 
 /**
  * Navbar Component
@@ -28,7 +39,8 @@ const navSections = [
  * - Floating Island (Apple / Linear dynamic capsule style)
  * - Top laser scroll progress indicator
  * - <AD /> Developer Logo with live availability beacon
- * - Active pill indicator for navigation links
+ * - Active pill indicator for navigation links with glowing neon aura
+ * - Smooth gliding magnetic hover indicator
  * - "Hire Me 🚀" glowing gradient CTA button
  * - Clean Theme & Language controls
  * - Smooth animated mobile drawer
@@ -37,6 +49,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
+  const [hoveredSection, setHoveredSection] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   const { t, i18n } = useTranslation();
@@ -119,32 +132,69 @@ const Navbar = () => {
           </ScrollLink>
 
           {/* 2. Desktop Navigation Capsule Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-gray-100/60 dark:bg-gray-800/50 p-1 rounded-full border border-gray-200/50 dark:border-gray-700/50">
-            {navSections.map((section) => {
-              const isActive = activeSection === section;
+          <nav
+            onMouseLeave={() => setHoveredSection(null)}
+            className="hidden md:flex items-center gap-0.5 lg:gap-1 bg-white/75 dark:bg-[#070b14]/80 backdrop-blur-2xl p-1.5 rounded-full border border-slate-200/80 dark:border-white/[0.09] shadow-sm dark:shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.08)] relative"
+          >
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              const Icon = item.icon;
               return (
                 <ScrollLink
-                  key={section}
-                  to={section}
+                  key={item.id}
+                  to={item.id}
                   smooth
                   offset={-90}
                   duration={500}
-                  onClick={() => setActiveSection(section)}
-                  className={`relative px-3.5 py-1 rounded-full text-xs font-semibold cursor-pointer transition-all duration-200
-                    ${isActive
-                      ? "text-white dark:text-gray-900 font-bold shadow-xs"
-                      : "text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-white"
+                  onMouseEnter={() => setHoveredSection(item.id)}
+                  onClick={() => {
+                    setActiveSection(item.id);
+                    playLuxuryGlassChime();
+                  }}
+                  className={`group relative px-2.5 lg:px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer transition-all duration-200 flex items-center gap-1.5 select-none
+                    ${
+                      isActive
+                        ? "text-white font-bold"
+                        : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                     }`}
                 >
                   {/* Active Sliding Capsule Background */}
                   {isActive && (
                     <motion.div
                       layoutId="activeNavPill"
-                      className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-cyan-400 dark:to-indigo-400 shadow-sm -z-10"
-                      transition={{ type: "spring", stiffness: 450, damping: 32 }}
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 dark:from-indigo-600 dark:via-purple-600 dark:to-cyan-500 shadow-md shadow-indigo-500/30 dark:shadow-[0_0_20px_rgba(99,102,241,0.5)] border border-white/20 dark:border-cyan-300/30 -z-10 overflow-hidden"
+                      transition={{ type: "spring", stiffness: 420, damping: 30 }}
+                    >
+                      {/* Specular top rim shine */}
+                      <span className="absolute inset-x-2 top-0.5 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none" />
+                    </motion.div>
+                  )}
+
+                  {/* Magnetic Floating Hover Capsule */}
+                  {hoveredSection === item.id && !isActive && (
+                    <motion.div
+                      layoutId="hoverNavPill"
+                      className="absolute inset-0 rounded-full bg-slate-200/70 dark:bg-white/[0.08] backdrop-blur-sm -z-10"
+                      transition={{ type: "spring", stiffness: 450, damping: 30 }}
                     />
                   )}
-                  <span>{t(`nav.${section}`)}</span>
+
+                  {/* Micro Icon */}
+                  <Icon
+                    className={`text-[11px] transition-transform duration-200 ${
+                      isActive
+                        ? "text-white scale-110"
+                        : "text-slate-400 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-cyan-300 group-hover:scale-110"
+                    }`}
+                  />
+
+                  {/* Label */}
+                  <span className="tracking-tight whitespace-nowrap">{t(`nav.${item.labelKey}`)}</span>
+
+                  {/* Luminous Active Beacon */}
+                  {isActive && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 dark:bg-cyan-300 shadow-[0_0_6px_#38bdf8] animate-pulse ml-0.5 shrink-0" />
+                  )}
                 </ScrollLink>
               );
             })}
@@ -247,32 +297,39 @@ const Navbar = () => {
             </div>
 
             {/* Drawer Navigation Links */}
-            <div className="flex flex-col space-y-3 my-auto py-6">
-              {navSections.map((section, idx) => {
-                const isActive = activeSection === section;
+            <div className="flex flex-col space-y-2.5 my-auto py-6">
+              {navItems.map((item, idx) => {
+                const isActive = activeSection === item.id;
+                const Icon = item.icon;
                 return (
                   <motion.div
-                    key={section}
+                    key={item.id}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
                   >
                     <ScrollLink
-                      to={section}
+                      to={item.id}
                       smooth
                       offset={-80}
                       duration={600}
                       onClick={() => {
-                        setActiveSection(section);
+                        setActiveSection(item.id);
                         setIsMenuOpen(false);
+                        playLuxuryGlassChime();
                       }}
-                      className={`block px-4 py-3 rounded-2xl text-base font-bold transition cursor-pointer
-                        ${isActive
-                          ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
-                          : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-base font-bold transition cursor-pointer
+                        ${
+                          isActive
+                            ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white shadow-lg shadow-indigo-600/30 border border-white/20"
+                            : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800/80"
                         }`}
                     >
-                      {t(`nav.${section}`)}
+                      <Icon className={`text-base ${isActive ? "text-cyan-300" : "text-gray-400"}`} />
+                      <span>{t(`nav.${item.labelKey}`)}</span>
+                      {isActive && (
+                        <span className="w-2 h-2 rounded-full bg-cyan-300 shadow-[0_0_8px_#38bdf8] animate-pulse ml-auto" />
+                      )}
                     </ScrollLink>
                   </motion.div>
                 );
