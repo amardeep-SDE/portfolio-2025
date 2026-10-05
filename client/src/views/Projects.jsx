@@ -300,6 +300,49 @@ const Projects = () => {
           </div>
         </motion.div>
 
+        {/* 🤖 Flagship Project Spotlight: Google Gemini AI Recruiter Copilot */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-purple-500/15 dark:from-cyan-950/40 dark:via-indigo-950/30 dark:to-purple-950/40 border border-cyan-400/40 dark:border-cyan-500/30 shadow-md flex flex-col md:flex-row items-center justify-between gap-4"
+        >
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-600 flex items-center justify-center text-white text-2xl shrink-0 shadow-lg">
+              <FiCpu />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h4 className="text-sm sm:text-base font-bold text-gray-900 dark:text-white">
+                  Featured AI System: Google Gemini 2.0 Recruiter Copilot
+                </h4>
+                <span className="text-[9.5px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 animate-pulse">
+                  Live Interactive
+                </span>
+              </div>
+              <p className="text-xs text-gray-600 dark:text-gray-300 mt-1 max-w-2xl">
+                Production conversational AI integration utilizing Google Gemini REST APIs, client-side RAG candidate context injection, prompt engineering, and real-time recruiter Q&amp;A.
+              </p>
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {["Google Gemini 2.0", "Prompt Engineering", "Conversational AI", "Context Injection", "Streaming Markdown"].map((t, i) => (
+                  <span key={i} className="text-[10px] font-semibold px-2 py-0.5 rounded bg-white/80 dark:bg-gray-800/80 text-cyan-700 dark:text-cyan-300 border border-cyan-300/60 dark:border-cyan-700/50">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
+            className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer shrink-0 flex items-center gap-2 whitespace-nowrap"
+          >
+            <span>Test AI Copilot</span>
+            <span>💬</span>
+          </button>
+        </motion.div>
+
         {/* Company Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
           {companyFilters.map((tab) => (

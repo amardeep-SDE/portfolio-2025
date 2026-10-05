@@ -76,6 +76,7 @@ const DevWindowProfile = ({
     location: location,
     coreStack: [
       "React 19",
+      "Google Gemini AI",
       "Redux Toolkit",
       "Node.js",
       "Express.js",
@@ -83,6 +84,11 @@ const DevWindowProfile = ({
       "Socket.IO",
       "Agora Video SDK",
       "Tailwind CSS",
+    ],
+    aiSpecialization: [
+      "Google Gemini 2.0 Integration",
+      "LLM Conversational Agents",
+      "Prompt Engineering & RAG",
     ],
     verifiedCredentials: [
       "Namaste React (Akshay Saini)",
@@ -182,7 +188,7 @@ const DevWindowProfile = ({
               {/* Code Comment Header */}
               <div className="flex items-center justify-between text-[10px] text-gray-500 mb-1.5 px-1 font-mono">
                 <span className="text-indigo-400/90 truncate">
-                  // engineer = new FullStackDeveloper();
+                  // engineer = new FullStackAndAiEngineer();
                 </span>
                 <span className="text-gray-600 text-[9px] shrink-0 ml-1">Ln 1, Col 1</span>
               </div>
@@ -214,6 +220,19 @@ const DevWindowProfile = ({
                   <span className="font-semibold">{experienceYears}</span>
                 </div>
 
+                {/* 📌 Top-Center Micro Badge: AI Integrated */}
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.dispatchEvent(new CustomEvent("open-ai-chat"));
+                  }}
+                  className="absolute top-1.5 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-gray-950/85 backdrop-blur-xs border border-cyan-400/50 flex items-center gap-1 text-[8px] text-cyan-300 shadow-xs cursor-pointer hover:border-cyan-300 hover:scale-105 transition-all"
+                  title="Click to test AI Copilot"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shrink-0" />
+                  <span className="font-bold">AI Integrated ⚡</span>
+                </div>
+
                 {/* 📌 Top-Right Micro Badge: Current Company */}
                 <div className="absolute top-1.5 right-1.5 px-1.5 py-0.5 rounded bg-gray-950/70 backdrop-blur-xs border border-cyan-500/30 flex items-center gap-1 text-[8.5px] text-cyan-300 shadow-xs">
                   <FaBriefcase className="text-cyan-400 text-[8.5px] shrink-0" />
@@ -225,8 +244,8 @@ const DevWindowProfile = ({
                   <div className="flex items-center gap-1 truncate">
                     <span className="font-bold text-gray-100">{name}</span>
                     <span className="text-[7.5px] text-gray-500">•</span>
-                    <span className="text-[8.5px] text-emerald-400 font-semibold truncate">
-                      MERN Stack
+                    <span className="text-[8.5px] text-cyan-300 font-bold truncate">
+                      MERN &amp; AI Integration
                     </span>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
