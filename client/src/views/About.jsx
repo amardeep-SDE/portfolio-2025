@@ -165,9 +165,10 @@ const About = () => {
     {
       value: "Live",
       customValue: "Live",
-      label: "AI Copilot",
-      subtext: "Gemini & LLM Apps",
-      icon: <FaRobot className="text-cyan-500 text-sm" />,
+      label: "AI Copilot & LLMs",
+      subtext: "Gemini 2.0 Integration",
+      badge: "Test Bot 💬",
+      icon: <FaRobot className="text-cyan-500 text-sm animate-pulse" />,
       aiCard: true,
       onClick: () => window.dispatchEvent(new CustomEvent("open-ai-chat")),
     },
@@ -196,6 +197,32 @@ const About = () => {
           className="flex-1 text-center lg:text-left"
         >
 
+          {/* 🤖 Top Eyebrow Badge: Full-Stack + AI Integration */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
+            className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full mb-3
+                       bg-gradient-to-r from-cyan-500/15 via-indigo-500/15 to-purple-500/15 
+                       dark:from-cyan-500/25 dark:via-indigo-500/25 dark:to-purple-500/25
+                       border border-cyan-400/60 dark:border-cyan-400/50 
+                       shadow-sm shadow-cyan-500/15 backdrop-blur-md cursor-pointer hover:border-cyan-400 hover:scale-105 active:scale-95 transition-all duration-300"
+            title="Ask Amardeep AI (Recruiter Copilot)"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+            </span>
+            <span className="text-xs sm:text-sm font-extrabold bg-gradient-to-r from-cyan-600 via-indigo-600 to-purple-600 dark:from-cyan-300 dark:via-indigo-300 dark:to-purple-300 bg-clip-text text-transparent flex items-center gap-1.5">
+              <FaRobot className="text-cyan-500 text-xs" />
+              <span>MERN Stack &amp; AI Integration Engineer</span>
+            </span>
+            <span className="text-[10px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30">
+              Gemini 2.0 Live ⚡
+            </span>
+          </motion.div>
+
           {/* Name */}
           <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-2">
             {t("about.name", "Amardeep Dwivedi")}
@@ -209,9 +236,10 @@ const About = () => {
             <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
               <Typewriter
                 words={[
-                  "MERN Stack Developer",
-                  "React Developer",
-                  "AI Integration Specialist",
+                  "MERN Stack & AI Integration Specialist",
+                  "AI-Powered Web Apps & LLM Copilots",
+                  "React 19 & Full Stack Developer",
+                  "Agora WebRTC & Real-Time Architect",
                 ]}
                 loop={0}
                 cursor
@@ -245,19 +273,70 @@ const About = () => {
               </span>
             </ExperienceHoverCard>
 
-            {/* <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-purple-500/10 text-cyan-800 dark:text-cyan-300 font-semibold border border-cyan-300/80 dark:border-cyan-700/50 shadow-2xs transition-all duration-300 group">
-              <FaRobot className="text-cyan-600 dark:text-cyan-400 text-xs animate-pulse" />
-              <span>Gemini &amp; LLM Apps</span>
-              <span className="text-[10px] text-cyan-600 dark:text-cyan-300 font-bold bg-cyan-100/80 dark:bg-cyan-900/60 px-1 rounded ml-0.5">
-                AI Copilot Live
+            {/* 🤖 Interactive AI Badge */}
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg 
+                         bg-gradient-to-r from-cyan-500/15 via-indigo-500/15 to-purple-500/15 
+                         text-cyan-900 dark:text-cyan-200 font-semibold 
+                         border border-cyan-400/60 dark:border-cyan-500/50 shadow-2xs 
+                         hover:border-cyan-400 hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer"
+              title="Chat with Amardeep AI Recruiter Copilot"
+            >
+              <FaRobot className="text-cyan-500 text-xs animate-bounce" />
+              <span>AI Integration Specialist</span>
+              <span className="text-[10px] text-cyan-600 dark:text-cyan-300 font-bold bg-cyan-100 dark:bg-cyan-950/80 px-1.5 py-0.5 rounded border border-cyan-300 dark:border-cyan-800 ml-0.5 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                <span>Gemini Copilot ⚡</span>
               </span>
-            </span> */}
+            </button>
           </div>
 
           {/* Professional Summary Description */}
-          <p className="text-xs sm:text-sm text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-2xl mb-6">
+          <p className="text-xs sm:text-sm text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-2xl mb-4">
             {t("about.description")}
           </p>
+
+          {/* 🤖 Interactive AI Integration Spotlight Strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.5 }}
+            onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
+            className="mb-5 p-2.5 sm:p-3 rounded-xl 
+                       bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-purple-500/15 
+                       dark:from-cyan-950/50 dark:via-indigo-950/40 dark:to-purple-950/50 
+                       border border-cyan-400/50 dark:border-cyan-400/40 
+                       shadow-xs shadow-cyan-500/10 hover:border-cyan-400 dark:hover:border-cyan-400 
+                       hover:shadow-md hover:shadow-cyan-500/15 transition-all duration-300 
+                       cursor-pointer group flex items-center justify-between gap-3 text-left"
+            title="Click to launch interactive AI Recruiter Copilot"
+          >
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-600 flex items-center justify-center text-white shrink-0 shadow-xs group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <FaRobot className="text-base" />
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
+                    Production AI Integration
+                  </span>
+                  <span className="text-[9.5px] font-black uppercase tracking-wider px-1.5 py-0.2 rounded bg-cyan-100 dark:bg-cyan-900/60 text-cyan-700 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-700/60">
+                    Google Gemini 2.0
+                  </span>
+                </div>
+                <p className="text-[11px] text-gray-600 dark:text-gray-300 truncate mt-0.5">
+                  Embedded Recruiter Copilot, prompt engineering, streaming responses &amp; LLM workflows.
+                </p>
+              </div>
+            </div>
+
+            <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 rounded-lg bg-cyan-500/15 dark:bg-cyan-500/25 text-cyan-700 dark:text-cyan-300 font-bold text-xs shrink-0 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300 border border-cyan-400/30">
+              <span>Try Copilot</span>
+              <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+            </div>
+          </motion.div>
 
           {/* Modern Metrics / Stats Bar with Celebratory Count-Up */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 my-5">
