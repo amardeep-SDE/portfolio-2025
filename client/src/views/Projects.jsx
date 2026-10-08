@@ -19,6 +19,9 @@ import {
   FiX,
   FiExternalLink,
   FiBriefcase,
+  FiGrid,
+  FiList,
+  FiArrowUpRight,
 } from "react-icons/fi";
 
 const Projects = () => {
@@ -26,6 +29,8 @@ const Projects = () => {
   const { projects } = profileData;
   const [selectedCompany, setSelectedCompany] = useState("all");
   const [selectedModalProject, setSelectedModalProject] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [viewMode, setViewMode] = useState("grid"); // 'grid' | 'dense'
 
   const companyFilters = [
     { id: "all", label: "All Projects" },
@@ -110,10 +115,20 @@ const Projects = () => {
     { label: "Network Optimization", value: "~50% Fewer Hits", detail: "TanStack Caching & Debounce" },
   ];
 
-  const filteredProjects =
-    selectedCompany === "all"
-      ? projects
-      : projects.filter((p) => p.company === selectedCompany);
+  const filteredProjects = projects.filter((p) => {
+    const matchesCompany =
+      selectedCompany === "all" || p.company === selectedCompany;
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return matchesCompany;
+    const title = t(p.titleKey, "").toLowerCase();
+    const desc = t(p.descriptionKey, "").toLowerCase();
+    const tagsMatch =
+      p.tags && p.tags.some((tag) => tag.toLowerCase().includes(query));
+    return (
+      matchesCompany &&
+      (title.includes(query) || desc.includes(query) || tagsMatch)
+    );
+  });
 
   return (
     <section
@@ -343,53 +358,221 @@ const Projects = () => {
           </button>
         </motion.div>
 
-        {/* Company Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-6 sm:mb-7">
-          {companyFilters.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setSelectedCompany(tab.id)}
-              className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer
-                ${selectedCompany === tab.id
-                  ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/25 scale-105"
-                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+        {/* 🎛️ Interactive Filter & Search Controls Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-6 sm:mb-7">
+          {/* Company Filter Tabs */}
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2">
+            {companyFilters.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setSelectedCompany(tab.id)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-300 cursor-pointer
+                  ${selectedCompany === tab.id
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/25 scale-105"
+                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+                  }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Quick Search & View Toggle Controls */}
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
+            {/* Quick Search Input */}
+            <div className="relative flex-1 sm:w-52">
+              <FiSearch className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Filter tech (e.g. React, Node)..."
+                className="w-full pl-8 pr-7 py-1.5 rounded-xl text-xs bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-all"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xs cursor-pointer"
+                >
+                  <FiX />
+                </button>
+              )}
+            </div>
+
+            {/* View Mode Switcher (Grid vs Dense List) */}
+            <div className="flex items-center p-0.5 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shrink-0">
+              <button
+                onClick={() => setViewMode("grid")}
+                className={`p-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
+                  viewMode === "grid"
+                    ? "bg-white dark:bg-gray-700 text-indigo-600 dark:text-cyan-400 shadow-xs"
+                    : "text-gray-500 hover:text-gray-900 dark:hover:text-white"
                 }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+                title="Grid View"
+              >
+                <FiGrid />
+              </button>
+              <button
+                onClick={() => setViewMode("dense")}
+                className={`p-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
+                  viewMode === "dense"
+                    ? "bg-white dark:bg-gray-700 text-indigo-600 dark:text-cyan-400 shadow-xs"
+                    : "text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                }`}
+                title="Dense List View"
+              >
+                <FiList />
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Projects Grid - Compact & Responsive Layout */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 items-stretch"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                layout
-                key={project.id}
-                initial={{ opacity: 0, scale: 0.92, y: 15 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.92, y: 10 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 320,
-                  damping: 24,
-                  delay: (index % 3) * 0.04,
-                }}
-                className="h-full flex"
-              >
-                <ProjectCard
-                  project={project}
-                  index={index}
-                  onOpenModal={(proj) => setSelectedModalProject(proj)}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        {/* Project Results Count Indicator */}
+        <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-3 px-1">
+          <span>
+            Showing <strong className="text-gray-800 dark:text-gray-200">{filteredProjects.length}</strong> of {projects.length} production platforms
+          </span>
+          {searchQuery && (
+            <span className="text-[11px] text-indigo-600 dark:text-cyan-400 font-medium">
+              Filtered by: "{searchQuery}"
+            </span>
+          )}
+        </div>
+
+        {/* Empty State */}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-12 px-4 rounded-2xl bg-white/60 dark:bg-gray-900/40 border border-dashed border-gray-300 dark:border-gray-700 my-4">
+            <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+              No projects found matching "{searchQuery}"
+            </p>
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setSelectedCompany("all");
+              }}
+              className="mt-3 px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white cursor-pointer hover:bg-indigo-700 transition"
+            >
+              Reset Filters
+            </button>
+          </div>
+        )}
+
+        {/* View Mode 1: Compact Grid */}
+        {viewMode === "grid" && filteredProjects.length > 0 && (
+          <motion.div
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 items-stretch"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  layout
+                  key={project.id}
+                  initial={{ opacity: 0, scale: 0.92, y: 15 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.92, y: 10 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 320,
+                    damping: 24,
+                    delay: (index % 3) * 0.04,
+                  }}
+                  className="h-full flex"
+                >
+                  <ProjectCard
+                    project={project}
+                    index={index}
+                    onOpenModal={(proj) => setSelectedModalProject(proj)}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        )}
+
+        {/* View Mode 2: Ultra-Compact Dense Row List */}
+        {viewMode === "dense" && filteredProjects.length > 0 && (
+          <div className="space-y-2">
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => setSelectedModalProject(project)}
+                  className="p-2.5 sm:p-3 rounded-xl bg-white/95 dark:bg-[#0c1220]/95 border border-gray-200/90 dark:border-gray-800/90 hover:border-indigo-500/50 dark:hover:border-cyan-500/50 shadow-xs hover:shadow-lg transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 cursor-pointer group select-none"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className="text-[10px] font-mono font-bold text-gray-400 dark:text-gray-500 px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800/80 shrink-0">
+                      #{String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-gray-900 border border-gray-800/80">
+                      <img
+                        src={project.image}
+                        alt=""
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate group-hover:text-indigo-600 dark:group-hover:text-cyan-400 transition-colors">
+                          {t(project.titleKey)}
+                        </h4>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-semibold shrink-0">
+                          {project.company}
+                        </span>
+                        <span className="text-[9px] text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1 shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          <span>Production</span>
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-gray-500 dark:text-gray-400 truncate mt-0.5 max-w-xl">
+                        {t(project.descriptionKey)}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between sm:justify-end gap-2.5 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-gray-100 dark:border-gray-800">
+                    <div className="hidden md:flex items-center gap-1 flex-wrap">
+                      {project.tags &&
+                        project.tags.slice(0, 3).map((tag, i) => (
+                          <span
+                            key={i}
+                            className="text-[9px] px-1.5 py-0.5 rounded font-medium bg-indigo-50/80 dark:bg-indigo-950/50 text-indigo-700 dark:text-cyan-300 border border-indigo-200/60 dark:border-indigo-900/40"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center gap-1.5">
+                      {project.link && project.link !== "#" && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-[10px] font-bold text-cyan-600 dark:text-cyan-400 px-2 py-1 rounded bg-cyan-50 dark:bg-cyan-950/50 hover:bg-cyan-100 transition-colors flex items-center gap-0.5"
+                        >
+                          <span>Live</span>
+                          <FiExternalLink className="text-[9px]" />
+                        </a>
+                      )}
+                      <button className="text-[10.5px] font-bold text-gray-700 dark:text-gray-200 group-hover:text-indigo-600 dark:group-hover:text-cyan-400 px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 group-hover:bg-indigo-50 dark:group-hover:bg-cyan-950/60 transition-colors flex items-center gap-1">
+                        <span>Specs</span>
+                        <FiArrowUpRight className="text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        )}
       </div>
 
       {/* 🌟 Modern Project Details Open Modal Dialog */}
