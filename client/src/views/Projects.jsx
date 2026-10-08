@@ -344,12 +344,12 @@ const Projects = () => {
         </motion.div>
 
         {/* Company Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-6 sm:mb-7">
           {companyFilters.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setSelectedCompany(tab.id)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer
+              className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer
                 ${selectedCompany === tab.id
                   ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/25 scale-105"
                   : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
@@ -360,20 +360,25 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Projects Grid - items-stretch to enforce equal row card heights */}
+        {/* Projects Grid - Compact & Responsive Layout */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 items-stretch"
         >
-          <AnimatePresence>
+          <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
               <motion.div
                 layout
                 key={project.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, scale: 0.92, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.92, y: 10 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 320,
+                  damping: 24,
+                  delay: (index % 3) * 0.04,
+                }}
                 className="h-full flex"
               >
                 <ProjectCard
