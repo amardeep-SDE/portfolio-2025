@@ -237,9 +237,7 @@ const About = () => {
               <Typewriter
                 words={[
                   "MERN Stack & AI Integration Specialist",
-                  "AI-Powered Web Apps & LLM Copilots",
-                  "React 19 & Full Stack Developer",
-                  "Agora WebRTC & Real-Time Architect",
+                  "React & Full Stack Developer",
                 ]}
                 loop={0}
                 cursor
