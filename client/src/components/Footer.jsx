@@ -18,6 +18,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { useTranslation } from "react-i18next";
 import profileData from "../data/profileData";
 import { openWhatsAppModal } from "../utils/whatsappHelper";
+import { playLuxuryGlassChime } from "../utils/audioEffects";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -45,9 +46,16 @@ const Footer = () => {
   }, []);
 
   const handleCopy = (text, fieldName) => {
-    navigator.clipboard.writeText(text);
-    setCopiedField(fieldName);
-    setTimeout(() => setCopiedField(null), 2000);
+    try {
+      navigator.clipboard.writeText(text);
+      playLuxuryGlassChime();
+      setCopiedField(fieldName);
+      setTimeout(() => setCopiedField(null), 2000);
+    } catch (e) {
+      playLuxuryGlassChime();
+      setCopiedField(fieldName);
+      setTimeout(() => setCopiedField(null), 2000);
+    }
   };
 
   const scrollToTop = () => {
