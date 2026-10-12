@@ -11,6 +11,7 @@ import {
   FaBriefcase,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import { playLuxuryGlassChime } from "../utils/audioEffects";
 
 /**
  * DevWindowProfile Component
@@ -100,9 +101,16 @@ const DevWindowProfile = ({
   };
 
   const handleCopyJson = () => {
-    navigator.clipboard.writeText(JSON.stringify(jsonSpecsData, null, 2));
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      navigator.clipboard.writeText(JSON.stringify(jsonSpecsData, null, 2));
+      playLuxuryGlassChime();
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (e) {
+      playLuxuryGlassChime();
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (

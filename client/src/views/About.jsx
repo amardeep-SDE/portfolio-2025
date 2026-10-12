@@ -26,7 +26,7 @@ import {
   FaCopy,
 } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io5";
-import { playCelestialChime } from "../utils/audioEffects";
+import { playCelestialChime, playLuxuryGlassChime } from "../utils/audioEffects";
 import { openWhatsAppModal } from "../utils/whatsappHelper";
 
 const About = () => {
@@ -136,6 +136,7 @@ const About = () => {
   const handleCopyResumeLink = () => {
     const fullUrl = window.location.origin + profileData.resume;
     navigator.clipboard.writeText(fullUrl).then(() => {
+      playLuxuryGlassChime();
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2000);
     });
