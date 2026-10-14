@@ -230,41 +230,41 @@ const Projects = () => {
           </div>
 
           {/* Section 1: Architecture & Business Capabilities */}
-          <div className="mb-6">
-            <div className="flex items-center gap-2 mb-3.5">
+          <div className="mb-4">
+            <div className="flex items-center gap-2 mb-2.5">
               <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
                 <FiShield /> Core Architecture & Scalable Modules
               </span>
-              <div className="h-px flex-1 bg-gray-100 dark:bg-gray-800" />
+              <div className="h-px flex-1 bg-gray-100 dark:border-gray-800" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
               {architectureHighlights.map((item, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 25, scale: 0.96 }}
+                  initial={{ opacity: 0, y: 20, scale: 0.97 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ type: "spring", stiffness: 220, damping: 18, delay: idx * 0.07 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className={`group relative p-4 rounded-xl border ${item.borderColor} bg-gradient-to-br ${item.gradient} bg-white/70 dark:bg-gray-800/50 backdrop-blur-md shadow-2xs hover:shadow-xl hover:border-indigo-400/50 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-default`}
+                  transition={{ type: "spring", stiffness: 220, damping: 18, delay: idx * 0.05 }}
+                  whileHover={{ y: -4, scale: 1.015 }}
+                  className={`group relative p-3 sm:p-3.5 rounded-xl border ${item.borderColor} bg-gradient-to-br ${item.gradient} bg-white/70 dark:bg-gray-800/50 backdrop-blur-md shadow-2xs hover:shadow-lg hover:border-indigo-400/50 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-default`}
                 >
                   {/* Shimmer Light Sweep on Hover */}
                   <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 dark:via-white/10 to-transparent pointer-events-none z-10" />
 
                   <div className="relative z-0">
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-white dark:bg-gray-800 shadow-xs flex items-center justify-center shrink-0 border border-gray-100 dark:border-gray-700 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <div className="w-7 h-7 rounded-lg bg-white dark:bg-gray-800 shadow-xs flex items-center justify-center shrink-0 border border-gray-100 dark:border-gray-700 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                         {item.icon}
                       </div>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-950/50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      <span className="text-[9.5px] font-bold px-2 py-0.5 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-950/50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                         {item.badge}
                       </span>
                     </div>
-                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white tracking-tight mb-1">
+                    <h4 className="text-xs sm:text-[13px] font-bold text-gray-900 dark:text-white tracking-tight mb-1">
                       {item.title}
                     </h4>
-                    <p className="text-[11px] leading-relaxed text-gray-600 dark:text-gray-300">
+                    <p className="text-[11px] leading-snug text-gray-600 dark:text-gray-300">
                       {item.desc}
                     </p>
                   </div>
@@ -275,37 +275,37 @@ const Projects = () => {
 
           {/* Section 2: Solid Production Performance & Optimization Pillars */}
           <div>
-            <div className="flex items-center gap-2 mb-3.5">
+            <div className="flex items-center gap-2 mb-2.5">
               <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
                 <FiZap /> Production Performance & Optimization Pillars
               </span>
-              <div className="h-px flex-1 bg-gray-100 dark:bg-gray-800" />
+              <div className="h-px flex-1 bg-gray-100 dark:border-gray-800" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
               {optimizationHighlights.map((item, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 25, scale: 0.96 }}
+                  initial={{ opacity: 0, y: 20, scale: 0.97 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ type: "spring", stiffness: 220, damping: 18, delay: idx * 0.07 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className={`group relative p-4 rounded-xl border ${item.borderColor} bg-gradient-to-br ${item.gradient} bg-white/70 dark:bg-gray-800/50 backdrop-blur-md shadow-2xs hover:shadow-xl hover:border-amber-400/50 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-default`}
+                  transition={{ type: "spring", stiffness: 220, damping: 18, delay: idx * 0.05 }}
+                  whileHover={{ y: -4, scale: 1.015 }}
+                  className={`group relative p-3 sm:p-3.5 rounded-xl border ${item.borderColor} bg-gradient-to-br ${item.gradient} bg-white/70 dark:bg-gray-800/50 backdrop-blur-md shadow-2xs hover:shadow-lg hover:border-amber-400/50 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-default`}
                 >
                   {/* Shimmer Light Sweep on Hover */}
                   <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 dark:via-white/10 to-transparent pointer-events-none z-10" />
 
                   <div className="relative z-0">
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-white dark:bg-gray-800 shadow-xs flex items-center justify-center shrink-0 border border-gray-100 dark:border-gray-700 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <div className="w-7 h-7 rounded-lg bg-white dark:bg-gray-800 shadow-xs flex items-center justify-center shrink-0 border border-gray-100 dark:border-gray-700 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                         {item.icon}
                       </div>
                     </div>
-                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white tracking-tight mb-1">
+                    <h4 className="text-xs sm:text-[13px] font-bold text-gray-900 dark:text-white tracking-tight mb-1">
                       {item.title}
                     </h4>
-                    <p className="text-[11px] leading-relaxed text-gray-600 dark:text-gray-300">
+                    <p className="text-[11px] leading-snug text-gray-600 dark:text-gray-300">
                       {item.desc}
                     </p>
                   </div>
