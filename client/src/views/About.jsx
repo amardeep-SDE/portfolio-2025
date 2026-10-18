@@ -96,19 +96,41 @@ const About = () => {
 
     if (e && e.preventDefault) e.preventDefault();
     setDownloadState("downloading");
-    setDownloadProgress(15);
+    setDownloadProgress(20);
 
     const progInterval = setInterval(() => {
       setDownloadProgress((p) => {
-        if (p >= 88) {
+        if (p >= 85) {
           clearInterval(progInterval);
-          return 92;
+          return 90;
         }
         return p + 25;
       });
     }, 110);
 
-    setTimeout(() => {
+    try {
+      const res = await fetch(profileData.resume);
+      if (!res.ok) throw new Error("Fetch failed");
+      const blob = await res.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+
+      clearInterval(progInterval);
+      setDownloadProgress(100);
+
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = "Amardeep_Dwivedi_Resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+
+      setDownloadState("downloaded");
+      setToastMessage({
+        title: "Resume Downloaded! 🎉",
+        desc: "Amardeep_Dwivedi_Resume.pdf has been saved to your downloads.",
+      });
+    } catch {
       clearInterval(progInterval);
       setDownloadProgress(100);
 
@@ -124,12 +146,12 @@ const About = () => {
         title: "Resume Downloaded! 🎉",
         desc: "Amardeep_Dwivedi_Resume.pdf has been saved to your downloads.",
       });
-
+    } finally {
       setTimeout(() => {
         setDownloadState("idle");
         setDownloadProgress(0);
       }, 2600);
-    }, 620);
+    }
   };
 
   // Copy resume URL
@@ -437,7 +459,7 @@ const About = () => {
                   <a
                     href={profileData.resume}
                     download="Amardeep_Dwivedi_Resume.pdf"
-                    onClick={() => setConfettiTrigger((p) => p + 1)}
+                    onClick={(e) => handleDownloadResume(e)}
                     className="px-3 py-1.5 text-xs font-bold rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:opacity-90 shadow-sm flex items-center gap-1.5 transition cursor-pointer"
                   >
                     <FaDownload /> Download
