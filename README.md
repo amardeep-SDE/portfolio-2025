@@ -63,7 +63,7 @@
 
 - 📱 **Instant Recruiter Reach**
   - 1-Click WhatsApp direct messaging with custom prefilled recruiter greeting.
-  - Direct resume download (`/amardeep_React_Fullstack.pdf`).
+  - Direct resume download (`/amardeep_dev_resume.pdf`).
   - Secure contact form with instant client-side feedback.
 
 ---
@@ -116,7 +116,7 @@ portfolio/
     ├── vite.config.js            <-- Vite configuration
     ├── tailwind.config.js        <-- Custom color palettes & animations
     ├── public/
-    │   ├── amardeep_React_Fullstack.pdf  <-- Direct resume asset
+    │   ├── amardeep_dev_resume.pdf       <-- Direct resume asset
     │   └── ...
     └── src/
         ├── assets/               <-- Profile images, illustrations
