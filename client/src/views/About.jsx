@@ -65,7 +65,7 @@ const About = () => {
   };
 
   // Download Resume with live animated progress & toast (synchronous on mobile to prevent popup/download block)
-  const handleDownloadResume = (e) => {
+  const handleDownloadResume = async (e) => {
     playCelestialChime();
     setConfettiTrigger((p) => p + 1);
 
