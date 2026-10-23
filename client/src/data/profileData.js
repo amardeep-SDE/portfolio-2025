@@ -195,7 +195,7 @@ const profileData = {
       experience: "3+ yrs",
       level: "Advanced",
       projects: "5+",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
       gradient: "bg-gradient-to-br from-cyan-500 to-blue-300",
     },
     {
