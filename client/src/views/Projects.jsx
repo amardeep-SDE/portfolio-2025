@@ -193,7 +193,7 @@ const Projects = () => {
                 Key Engineering & Optimization Highlights
               </h3>
               <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">
-                Core architectural patterns, performance engineering, and full-stack optimizations delivered across 8 platforms
+                Core architectural patterns, performance engineering, and full-stack optimizations delivered across 6 production platforms
               </p>
             </div>
             <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/60 dark:to-purple-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/80 dark:border-indigo-800/60 self-start sm:self-auto shrink-0 flex items-center gap-1.5">

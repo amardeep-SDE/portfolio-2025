@@ -23,8 +23,8 @@ const Skills = () => {
   const skillHighlights = [
     { label: "Technologies", value: "36", detail: "100% Production Tested", icon: <FiCode className="text-indigo-500" /> },
     { label: "Core Experience", value: "3+ YOE", detail: "Enterprise Full Stack", icon: <FiTrendingUp className="text-emerald-500" /> },
-    { label: "AI Integrations", value: "5+ APIs", detail: "Gemini • OpenAI • Claude", icon: <FiCpu className="text-purple-500" /> },
-    { label: "Shipped Platforms", value: "8+ Apps", detail: "Suffescom & Encanto", icon: <FiCheckCircle className="text-cyan-500" /> },
+    { label: "AI Integrations", value: "2 Apps", detail: "Gemini & OpenAI APIs", icon: <FiCpu className="text-purple-500" /> },
+    { label: "Shipped Platforms", value: "6 Websites", detail: "Suffescom & Encanto", icon: <FiCheckCircle className="text-cyan-500" /> },
   ];
 
   // Filter skills by category AND search query
