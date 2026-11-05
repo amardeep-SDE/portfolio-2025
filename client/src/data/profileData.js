@@ -7,7 +7,7 @@ const profileData = {
   noticePeriod: "1 Month",
   location: "Chandigarh, India",
   image: profileImage,
-  resume: "/amardeep_dev_resume.pdf",
+  resume: "/amardeep_mern_resume.pdf",
 
   // 7 Projects from Resume
   projects: [
