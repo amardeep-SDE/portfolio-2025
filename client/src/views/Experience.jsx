@@ -21,8 +21,8 @@ import {
   FiGrid,
   FiList,
   FiMessageSquare,
-  FiSparkles,
 } from "react-icons/fi";
+import { HiSparkles } from "react-icons/hi";
 import { FaBuilding, FaRocket } from "react-icons/fa";
 
 // Company specific themes, monograms, accents, exact tenures, and quantitative metrics
@@ -278,7 +278,7 @@ const Experience = () => {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-indigo-50/90 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/80 dark:border-indigo-800/60 shadow-xs mb-3 backdrop-blur-md"
           >
-            <FiSparkles className="text-amber-500 text-sm animate-pulse" />
+            <HiSparkles className="text-amber-500 text-sm animate-pulse" />
             <span>Career Roadmap & Professional Impact</span>
             <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] uppercase tracking-wider font-extrabold border border-emerald-500/30 flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping inline-block" />
